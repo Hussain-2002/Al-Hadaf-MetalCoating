@@ -49,9 +49,9 @@ function LandingPage() {
 
   {/* Hero Content */}
   <div className="relative z-10 flex flex-col justify-center items-center text-center h-full px-6">
-    <h1 className="text-4xl md:text-6xl font-extrabold text-blue-900 mb-4 leading-tight">
+    <h1 className="text-4xl md:text-6xl font-extrabold text-yellow-500 mb-4 leading-tight">
       Welcome to <br />
-      <span className="text-yellow-500">Al-Hadaf Metal Coating LLC</span>
+      <span className="text-blue-900">Al-Hadaf Metal Coating LLC</span>
     </h1>
     <p className="text-lg md:text-xl text-gray-700 mb-6 max-w-2xl">
       We specialize in delivering top-quality surface finishing solutions with precision
