@@ -59,7 +59,7 @@ function Header() {
           {/* Center: Marquee */}
           <div className="overflow-hidden h-6 w-[60%] text-center">
             <div className="animate-marquee-updown whitespace-nowrap">
-              🎉 Limited Time Offer – Get 20% Off On All Services! 🎉
+              🎉 EID-MILAD-UN-NABI – Get 20% Off On All Services! 🎉
             </div>
           </div>
 
