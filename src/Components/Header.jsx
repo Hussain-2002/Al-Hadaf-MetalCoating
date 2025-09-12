@@ -1,11 +1,12 @@
-import { useState, useEffect } from "react"
-import { Link, useNavigate } from "react-router-dom"
+// src/components/Header.jsx
+import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import {
   NavigationMenu,
   NavigationMenuItem,
   NavigationMenuLink,
   NavigationMenuList,
-} from "@/components/ui/navigation-menu"
+} from "@/components/ui/navigation-menu";
 
 import {
   Drawer,
@@ -13,35 +14,30 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "@/components/ui/drawer"
+} from "@/components/ui/drawer";
 
-import { FaFacebookF, FaInstagram, FaTwitter, FaMapMarkerAlt } from "react-icons/fa"
+import { FaFacebookF, FaInstagram, FaTwitter, FaMapMarkerAlt } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 
 function Header() {
-  const [isScrolled, setIsScrolled] = useState(false)
-  const navigate = useNavigate()
+  const [isScrolled, setIsScrolled] = useState(false);
+  const { t } = useTranslation();
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 50)
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+    const handleScroll = () => setIsScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navItems = [
-    { name: "Home", href: "/" },
-    { name: "Services", href: "#services" },
-    { name: "About Us", href: "#aboutus" },
-    { name: "Gallery", href: "#gallery" },
-    { name: "Videos", href: "#videos" },
-    { name: "Testimonials", href: "#testimonials" },
-    { name: "Contact Us", href: "/contact" },
-  ]
-
-  // ✅ Logo click refresh handler
-  const handleLogoClick = () => {
-    navigate("/") // go to homepage
-    window.location.reload() // hard refresh
-  }
+    { name: t("nav.home"), href: "/" },
+    { name: t("nav.services"), href: "#services" },
+    { name: t("nav.about"), href: "#aboutus" },
+    { name: t("nav.gallery"), href: "#gallery" },
+    { name: t("nav.videos"), href: "#videos" },
+    { name: t("nav.testimonials"), href: "#testimonials" },
+    { name: t("nav.contact"), href: "/contact" },
+  ];
 
   return (
     <header className="fixed top-0 left-0 w-full z-50">
@@ -60,13 +56,13 @@ function Header() {
             className="flex items-center gap-1 hover:text-yellow-300 transition"
           >
             <FaMapMarkerAlt className="text-lg" />
-            <span>Al-Hadaf Metal Coating LLC</span>
+            <span>{t("header.location")}</span>
           </a>
 
           {/* Center: Marquee */}
           <div className="overflow-hidden h-6 w-[60%] text-center">
             <div className="animate-marquee-updown whitespace-nowrap">
-              🎉 EID-MILAD-UN-NABI – Get 20% Off On All Services! 🎉
+              {t("header.announcement")}
             </div>
           </div>
 
@@ -88,7 +84,7 @@ function Header() {
         <div className="flex md:hidden flex-col items-center gap-2 px-4 py-2 text-xs">
           <div className="w-full overflow-hidden text-center">
             <div className="animate-marquee-updown whitespace-nowrap">
-              🎉 EID-MILAD-UN-NABI – Get 20% Off On All Services! 🎉
+              {t("header.announcement")}
             </div>
           </div>
 
@@ -99,7 +95,7 @@ function Header() {
             className="flex items-center gap-1 text-xs hover:text-yellow-300 transition"
           >
             <FaMapMarkerAlt className="text-sm" />
-            <span>Al-Hadaf Metal Coating LLC</span>
+            <span>{t("header.location")}</span>
           </a>
 
           <div className="flex gap-4 justify-center">
@@ -124,8 +120,8 @@ function Header() {
       >
         {/* Desktop Layout */}
         <div className="hidden md:flex items-center justify-between px-8 py-4">
-          {/* ✅ Left Logo with refresh */}
-          <div className="flex items-center cursor-pointer" onClick={handleLogoClick}>
+          {/* Left Logo */}
+          <div className="flex items-center cursor-pointer" onClick={() => window.location.reload()}>
             <img
               src="assets/logo.png"
               alt="Logo"
@@ -164,15 +160,14 @@ function Header() {
               to="/contact"
               className="px-6 py-2.5 rounded-md bg-red-500 text-white font-semibold text-sm md:text-base hover:bg-red-900 transition shadow-sm"
             >
-              Enquire Now
+              {t("header.enquireNow")}
             </Link>
           </div>
         </div>
 
         {/* Mobile Layout */}
         <div className="flex md:hidden justify-between items-center px-4 py-3">
-          {/* ✅ Mobile Logo with refresh */}
-          <div className="flex items-center cursor-pointer" onClick={handleLogoClick}>
+          <div className="flex items-center cursor-pointer" onClick={() => window.location.reload()}>
             <img src="/assets/logo.png" alt="Logo" className="h-12 w-auto" />
           </div>
 
@@ -183,7 +178,7 @@ function Header() {
             <DrawerContent className="bg-white p-6">
               <DrawerHeader>
                 <DrawerTitle className="text-lg font-bold text-gray-800">
-                  Menu
+                  {t("header.menu")}
                 </DrawerTitle>
               </DrawerHeader>
               <nav className="flex flex-col space-y-4 mt-4">
@@ -202,7 +197,7 @@ function Header() {
                   to="/contact"
                   className="w-full block text-center px-6 py-2.5 rounded-md bg-red-500 text-white font-semibold text-base hover:bg-yellow-600 transition shadow-sm"
                 >
-                  Enquire Now
+                  {t("header.enquireNow")}
                 </Link>
               </div>
             </DrawerContent>
@@ -210,7 +205,7 @@ function Header() {
         </div>
       </div>
     </header>
-  )
+  );
 }
 
-export default Header
+export default Header;

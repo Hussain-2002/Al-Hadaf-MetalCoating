@@ -1,5 +1,5 @@
 // src/Pages/ContactForm.jsx
-import { useForm } from "react-hook-form"
+import { useForm } from "react-hook-form";
 import {
   Form,
   FormField,
@@ -7,42 +7,44 @@ import {
   FormLabel,
   FormControl,
   FormMessage,
-} from "@/components/ui/form"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Button } from "@/components/ui/button"
-import { useState } from "react"
-import Header from "@/Components/Header"
-import Footer from "@/Components/Footer"
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
+import { useState } from "react";
+import Header from "@/Components/Header";
+import Footer from "@/Components/Footer";
+import { useTranslation } from "react-i18next";
 
 function ContactForm() {
-  const form = useForm()
-  const [loading, setLoading] = useState(false)
-  const [success, setSuccess] = useState(null)
+  const form = useForm();
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(null);
+  const { t } = useTranslation();
 
   const onSubmit = async (data) => {
-    setLoading(true)
-    setSuccess(null)
+    setLoading(true);
+    setSuccess(null);
     try {
       const response = await fetch("YOUR_GOOGLE_APPS_SCRIPT_URL_HERE", {
         method: "POST",
         body: JSON.stringify(data),
         headers: { "Content-Type": "application/json" },
-      })
+      });
 
-      const result = await response.json()
+      const result = await response.json();
       if (result.status === "success") {
-        setSuccess("✅ Your message has been sent successfully!")
-        form.reset()
+        setSuccess(t("contact.success"));
+        form.reset();
       } else {
-        setSuccess("❌ Something went wrong, please try again.")
+        setSuccess(t("contact.error"));
       }
     } catch (error) {
-      console.error(error)
-      setSuccess("❌ Failed to send message.")
+      console.error(error);
+      setSuccess(t("contact.failed"));
     }
-    setLoading(false)
-  }
+    setLoading(false);
+  };
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -71,10 +73,10 @@ function ContactForm() {
           }}
         ></div>
 
-        {/* Overlay with Title (same opacity as LandingPage) */}
+        {/* Overlay with Title */}
         <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
           <h1 className="text-white text-3xl md:text-5xl font-bold">
-            Contact Us
+            {t("contact.title")}
           </h1>
         </div>
       </section>
@@ -83,7 +85,7 @@ function ContactForm() {
       <div className="flex-1 flex items-center justify-center p-4 md:p-8 bg-gray-100">
         <div className="w-full max-w-lg bg-white shadow-lg rounded-xl p-6">
           <h2 className="text-xl md:text-2xl font-semibold mb-4 text-center">
-            Get in Touch
+            {t("contact.getInTouch")}
           </h2>
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
@@ -93,9 +95,12 @@ function ContactForm() {
                 name="name"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Name</FormLabel>
+                    <FormLabel>{t("contact.name")}</FormLabel>
                     <FormControl>
-                      <Input placeholder="Enter your name" {...field} />
+                      <Input
+                        placeholder={t("contact.namePlaceholder")}
+                        {...field}
+                      />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
@@ -108,11 +113,11 @@ function ContactForm() {
                 name="email"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Email</FormLabel>
+                    <FormLabel>{t("contact.email")}</FormLabel>
                     <FormControl>
                       <Input
                         type="email"
-                        placeholder="Enter your email"
+                        placeholder={t("contact.emailPlaceholder")}
                         {...field}
                       />
                     </FormControl>
@@ -127,10 +132,10 @@ function ContactForm() {
                 name="contact"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Contact</FormLabel>
+                    <FormLabel>{t("contact.phone")}</FormLabel>
                     <FormControl>
                       <Input
-                        placeholder="Enter your contact number"
+                        placeholder={t("contact.phonePlaceholder")}
                         {...field}
                       />
                     </FormControl>
@@ -145,10 +150,10 @@ function ContactForm() {
                 name="requirements"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Requirements</FormLabel>
+                    <FormLabel>{t("contact.requirements")}</FormLabel>
                     <FormControl>
                       <Textarea
-                        placeholder="Enter your requirements"
+                        placeholder={t("contact.requirementsPlaceholder")}
                         {...field}
                       />
                     </FormControl>
@@ -159,7 +164,7 @@ function ContactForm() {
 
               {/* Submit Button */}
               <Button type="submit" disabled={loading} className="w-full">
-                {loading ? "Sending..." : "Submit"}
+                {loading ? t("contact.sending") : t("contact.submit")}
               </Button>
             </form>
           </Form>
@@ -169,7 +174,7 @@ function ContactForm() {
 
       <Footer />
     </div>
-  )
+  );
 }
 
-export default ContactForm
+export default ContactForm;

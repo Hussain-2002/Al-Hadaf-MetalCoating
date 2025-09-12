@@ -4,9 +4,11 @@ import { Button } from "@/components/ui/button";
 import { ArrowUp } from "lucide-react";
 import { useEffect, useState } from "react";
 import Footer from "../components/Footer";
+import { useTranslation } from "react-i18next";
 
 function LandingPage() {
   const [showScroll, setShowScroll] = useState(false);
+  const { t } = useTranslation();
 
   // Scroll-to-top button visibility
   useEffect(() => {
@@ -51,15 +53,14 @@ function LandingPage() {
                 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 leading-tight text-center md:text-left"
                 style={{ textShadow: "2px 2px 6px hsla(0, 100%, 50%, 0.30)" }}
               >
-                <span className="text-brand-red block mb-2">Welcome to</span>
-                <span className="text-brand-blue">الهدف لطلاء المعادن ذ.م.م</span>
+                <span className="text-brand-red block mb-2">
+                  {t("welcome")}
+                </span>
               </h1>
 
               {/* Description */}
               <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-800 mb-6 leading-relaxed text-center md:text-left">
-                We specialize in delivering top-quality surface finishing
-                solutions with precision and durability. Explore our wide range
-                of services trusted by industries across UAE.
+                {t("description")}
               </p>
 
               {/* Services Grid (2x3) */}
@@ -89,13 +90,13 @@ function LandingPage() {
                   className="px-6 py-3 bg-brand-red text-brand-white font-bold text-sm sm:text-base lg:text-lg rounded-lg hover:bg-brand-blue transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
                   onClick={() => (window.location.href = "#aboutus")}
                 >
-                  Read More
+                  {t("readMore")}
                 </button>
                 <button
                   className="px-6 py-3 bg-transparent border-2 border-gray-800 text-gray-800 font-bold text-sm sm:text-base lg:text-lg rounded-lg hover:bg-gray-800 hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
                   onClick={() => (window.location.href = "#gallery")}
                 >
-                  View Our Work
+                  {t("viewWork")}
                 </button>
               </div>
             </div>

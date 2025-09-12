@@ -8,11 +8,16 @@ import {
 } from "@/components/ui/dropdown-menu"
 import { Separator } from "@/components/ui/separator"
 import { Button } from "@/components/ui/button"
-
-// ✅ React Icons
 import { FaInstagram, FaLinkedinIn, FaTwitter, FaWhatsapp } from "react-icons/fa"
+import { useTranslation } from "react-i18next"
 
 function Footer() {
+  const { t, i18n } = useTranslation()
+
+  const changeLanguage = (lng) => {
+    i18n.changeLanguage(lng)
+  }
+
   return (
     <footer className="w-screen bg-white border-t border-gray-200 shadow-lg">
       {/* Map */}
@@ -33,29 +38,29 @@ function Footer() {
       <div className="hidden md:grid max-w-screen-xl mx-auto px-6 grid-cols-4 gap-8 py-8">
         {/* Col 1 */}
         <div>
-          <h4 className="text-sm font-semibold mb-2">Useful Links</h4>
+          <h4 className="text-sm font-semibold mb-2">{t("footer.usefulLinks")}</h4>
           <ul className="space-y-1 text-sm text-gray-600">
-            <li><a href="#privacy" className="hover:text-blue-900">Privacy Policy</a></li>
-            <li><a href="#services" className="hover:text-blue-900">Services</a></li>
-            <li><a href="#gallery" className="hover:text-blue-900">Gallery</a></li>
-            <li><a href="#testimonials" className="hover:text-blue-900">Testimonials</a></li>
+            <li><a href="#privacy" className="hover:text-blue-900">{t("footer.privacy")}</a></li>
+            <li><a href="#services" className="hover:text-blue-900">{t("nav.services")}</a></li>
+            <li><a href="#gallery" className="hover:text-blue-900">{t("nav.gallery")}</a></li>
+            <li><a href="#testimonials" className="hover:text-blue-900">{t("nav.testimonials")}</a></li>
           </ul>
         </div>
 
         {/* Col 2 */}
         <div>
-          <h4 className="text-sm font-semibold mb-2">More</h4>
+          <h4 className="text-sm font-semibold mb-2">{t("footer.more")}</h4>
           <ul className="space-y-1 text-sm text-gray-600">
-            <li><a href="#home" className="hover:text-blue-900">Home</a></li>
-            <li><a href="#aboutus" className="hover:text-blue-900">About Us</a></li>
-            <li><a href="#videos" className="hover:text-blue-900">Videos</a></li>
-            <li><a href="#contactus" className="hover:text-blue-900">Contact Us</a></li>
+            <li><a href="#home" className="hover:text-blue-900">{t("nav.home")}</a></li>
+            <li><a href="#aboutus" className="hover:text-blue-900">{t("nav.about")}</a></li>
+            <li><a href="#videos" className="hover:text-blue-900">{t("nav.videos")}</a></li>
+            <li><a href="#contactus" className="hover:text-blue-900">{t("nav.contact")}</a></li>
           </ul>
         </div>
 
         {/* Col 3 */}
         <div>
-          <h4 className="text-sm font-semibold mb-2">Contact</h4>
+          <h4 className="text-sm font-semibold mb-2">{t("footer.contact")}</h4>
           <p className="text-sm text-gray-600">
             <a
               href="https://maps.app.goo.gl/3CcCH556HBTSRaUz6"
@@ -63,13 +68,13 @@ function Footer() {
               rel="noreferrer"
               className="hover:text-blue-900"
             >
-              Industrial Area 15 - Sharjah, UAE
+              {t("footer.address")}
             </a>
           </p>
           <p className="text-sm text-gray-600">
             <a href="tel:+971585328151" className="hover:text-blue-900">+971 585 328 151</a>
             {" · "}
-            <a href="https://wa.me/971585328151" className="hover:text-green-600">WhatsApp</a>
+            <a href="https://wa.me/971585328151" className="hover:text-green-600">{t("footer.whatsapp")}</a>
           </p>
           <p className="text-sm text-gray-600">alhadafmetalcoating@gmail.com</p>
           <p className="text-sm text-gray-600">info@alhadafmetalcoating.com</p>
@@ -77,7 +82,7 @@ function Footer() {
 
         {/* Col 4 */}
         <div>
-          <h4 className="text-sm font-semibold mb-2">Connect</h4>
+          <h4 className="text-sm font-semibold mb-2">{t("footer.connect")}</h4>
           <div className="flex space-x-4 mb-4">
             <a href="https://instagram.com" target="_blank" rel="noreferrer">
               <FaInstagram className="w-6 h-6 text-pink-600 hover:opacity-80" />
@@ -95,12 +100,13 @@ function Footer() {
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="outline" className="w-full justify-between">
-                Change Language
+                {t("footer.changeLang")}
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent>
-              <DropdownMenuItem>English</DropdownMenuItem>
-              <DropdownMenuItem>Arabic (العربية)</DropdownMenuItem>
+              <DropdownMenuItem onClick={() => changeLanguage("en")}>English</DropdownMenuItem>
+              <DropdownMenuItem onClick={() => changeLanguage("ar")}>العربية</DropdownMenuItem>
+              <DropdownMenuItem onClick={() => changeLanguage("hi")}>हिन्दी</DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
@@ -109,27 +115,27 @@ function Footer() {
       {/* Mobile */}
       <div className="md:hidden max-w-screen-md mx-auto px-6 flex flex-col space-y-6 py-6">
         <div>
-          <h4 className="text-sm font-semibold mb-2">Useful Links</h4>
+          <h4 className="text-sm font-semibold mb-2">{t("footer.usefulLinks")}</h4>
           <ul className="space-y-1 text-sm text-gray-600">
-            <li><a href="#privacy" className="hover:text-blue-900">Privacy Policy</a></li>
-            <li><a href="#services" className="hover:text-blue-900">Services</a></li>
-            <li><a href="#gallery" className="hover:text-blue-900">Gallery</a></li>
-            <li><a href="#testimonials" className="hover:text-blue-900">Testimonials</a></li>
+            <li><a href="#privacy" className="hover:text-blue-900">{t("footer.privacy")}</a></li>
+            <li><a href="#services" className="hover:text-blue-900">{t("nav.services")}</a></li>
+            <li><a href="#gallery" className="hover:text-blue-900">{t("nav.gallery")}</a></li>
+            <li><a href="#testimonials" className="hover:text-blue-900">{t("nav.testimonials")}</a></li>
           </ul>
         </div>
 
         <div>
-          <h4 className="text-sm font-semibold mb-2">More</h4>
+          <h4 className="text-sm font-semibold mb-2">{t("footer.more")}</h4>
           <ul className="space-y-1 text-sm text-gray-600">
-            <li><a href="#home" className="hover:text-blue-900">Home</a></li>
-            <li><a href="#aboutus" className="hover:text-blue-900">About Us</a></li>
-            <li><a href="#videos" className="hover:text-blue-900">Videos</a></li>
-            <li><a href="#contactus" className="hover:text-blue-900">Contact Us</a></li>
+            <li><a href="#home" className="hover:text-blue-900">{t("nav.home")}</a></li>
+            <li><a href="#aboutus" className="hover:text-blue-900">{t("nav.about")}</a></li>
+            <li><a href="#videos" className="hover:text-blue-900">{t("nav.videos")}</a></li>
+            <li><a href="#contactus" className="hover:text-blue-900">{t("nav.contact")}</a></li>
           </ul>
         </div>
 
         <div>
-          <h4 className="text-sm font-semibold mb-2">Contact</h4>
+          <h4 className="text-sm font-semibold mb-2">{t("footer.contact")}</h4>
           <p className="text-sm text-gray-600">
             <a
               href="https://maps.app.goo.gl/3CcCH556HBTSRaUz6"
@@ -137,20 +143,20 @@ function Footer() {
               rel="noreferrer"
               className="hover:text-blue-900"
             >
-              Industrial Area 15 - Sharjah, UAE
+              {t("footer.address")}
             </a>
           </p>
           <p className="text-sm text-gray-600">
             <a href="tel:+971585328151" className="hover:text-blue-900">+971 585 328 151</a>
             {" · "}
-            <a href="https://wa.me/971585328151" className="hover:text-green-600">WhatsApp</a>
+            <a href="https://wa.me/971585328151" className="hover:text-green-600">{t("footer.whatsapp")}</a>
           </p>
           <p className="text-sm text-gray-600">alhadafmetalcoating@gmail.com</p>
           <p className="text-sm text-gray-600">info@alhadafmetalcoating.com</p>
         </div>
 
         <div>
-          <h4 className="text-sm font-semibold mb-2">Connect</h4>
+          <h4 className="text-sm font-semibold mb-2">{t("footer.connect")}</h4>
           <div className="flex space-x-4 mb-4">
             <a href="https://instagram.com" target="_blank" rel="noreferrer">
               <FaInstagram className="w-6 h-6 text-pink-600 hover:opacity-80" />
@@ -168,12 +174,13 @@ function Footer() {
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="outline" className="w-full justify-between">
-                Change Language
+                {t("footer.changeLang")}
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent>
-              <DropdownMenuItem>English</DropdownMenuItem>
-              <DropdownMenuItem>Arabic (العربية)</DropdownMenuItem>
+              <DropdownMenuItem onClick={() => changeLanguage("en")}>English</DropdownMenuItem>
+              <DropdownMenuItem onClick={() => changeLanguage("ar")}>العربية</DropdownMenuItem>
+              <DropdownMenuItem onClick={() => changeLanguage("hi")}>हिन्दी</DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>
@@ -181,7 +188,7 @@ function Footer() {
 
       <Separator />
       <div className="text-center text-sm text-gray-600 py-4">
-        © {new Date().getFullYear()} Al Hadaf Metal Coating LLC. All Rights Reserved.
+        © {new Date().getFullYear()} {t("footer.company")}. {t("footer.rights")}
       </div>
     </footer>
   )
