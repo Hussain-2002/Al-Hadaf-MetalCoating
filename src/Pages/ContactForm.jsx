@@ -53,25 +53,41 @@ function ContactForm() {
 
       {/* Hero Section */}
       <section className="relative h-[250px] md:h-[400px] w-screen overflow-hidden">
-        {/* Desktop Background */}
-        <div
-          className="hidden md:block absolute inset-0 w-full h-full bg-cover bg-center"
-          style={{
-            backgroundImage: "url('assets/hero-desktop.png')",
-            backgroundSize: "cover",
-            backgroundRepeat: "no-repeat",
-          }}
-        ></div>
+        {/* Desktop Video with Fallback Poster */}
+        <video
+          className="hidden md:block absolute inset-0 w-full h-full object-cover opacity-70"
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster="assets/hero-desktop.png"
+        >
+          <source src="assets/Contact-us.mp4" type="video/mp4" />
+          {/* Fallback Image if video tag not supported */}
+          <img
+            src="assets/hero-desktop.png"
+            alt="Contact Background"
+            className="w-full h-full object-cover"
+          />
+        </video>
 
-        {/* Mobile Background */}
-        <div
-          className="block md:hidden absolute inset-0 w-full h-full bg-cover bg-center"
-          style={{
-            backgroundImage: "url('assets/hero-mobile.png')",
-            backgroundSize: "cover",
-            backgroundRepeat: "no-repeat",
-          }}
-        ></div>
+        {/* Mobile Video with Fallback Poster */}
+        <video
+          className="block md:hidden absolute inset-0 w-full h-full object-cover opacity-70"
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster="assets/hero-mobile.png"
+        >
+          <source src="assets/mobile-view-contact.mp4" type="video/mp4" />
+          {/* Fallback Image if video tag not supported */}
+          <img
+            src="assets/hero-mobile.png"
+            alt="Contact Background"
+            className="w-full h-full object-cover"
+          />
+        </video>
 
         {/* Overlay with Title */}
         <div className="absolute inset-0 bg-black/40 flex items-center justify-center">

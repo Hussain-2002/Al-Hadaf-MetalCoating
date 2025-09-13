@@ -5,6 +5,7 @@ import i18n from "./i18n.js";
 
 import LandingPage from "./pages/LandingPage.jsx";
 import ContactForm from "./pages/ContactForm.jsx";
+import AboutUs from "./pages/AboutUs.jsx"; // ✅ new import
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           {/* Home route loads Landing Page */}
           <Route path="/" element={<LandingPage />} />
           <Route path="/contact" element={<ContactForm />} />
+          <Route path="/about" element={<AboutUs />} /> {/* ✅ new route */}
         </Routes>
       </Router>
     </I18nextProvider>

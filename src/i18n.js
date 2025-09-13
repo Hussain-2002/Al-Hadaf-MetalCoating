@@ -67,6 +67,19 @@ const resources = {
         error: "❌ Something went wrong, please try again.",
         failed: "❌ Failed to send message.",
       },
+
+      about: {
+        title: "About Us",
+        description:
+          "We are committed to delivering high-quality services with innovation and passion.",
+        ourTeam: "Our Team",
+        team: {
+          ceo: "Chief Executive Officer",
+          manager: "Operations Manager",
+          engineer: "Lead Engineer",
+          designer: "Creative Designer",
+        },
+      },
     },
   },
 
@@ -134,6 +147,18 @@ const resources = {
         error: "❌ حدث خطأ، حاول مرة أخرى.",
         failed: "❌ فشل في إرسال الرسالة.",
       },
+
+      about: {
+        title: "معلومات عنا",
+        description: "نحن ملتزمون بتقديم خدمات عالية الجودة مع الابتكار والشغف.",
+        ourTeam: "فريقنا",
+        team: {
+          ceo: "المدير التنفيذي",
+          manager: "مدير العمليات",
+          engineer: "المهندس الرئيسي",
+          designer: "المصمم الإبداعي",
+        },
+      },
     },
   },
 
@@ -200,6 +225,19 @@ const resources = {
         success: "✅ आपका संदेश सफलतापूर्वक भेजा गया!",
         error: "❌ कुछ गलत हो गया, कृपया पुनः प्रयास करें।",
         failed: "❌ संदेश भेजने में विफल।",
+      },
+
+      about: {
+        title: "हमारे बारे में",
+        description:
+          "हम उच्च गुणवत्ता वाली सेवाएं नवाचार और जुनून के साथ प्रदान करने के लिए प्रतिबद्ध हैं।",
+        ourTeam: "हमारी टीम",
+        team: {
+          ceo: "मुख्य कार्यकारी अधिकारी",
+          manager: "ऑपरेशन्स मैनेजर",
+          engineer: "लीड इंजीनियर",
+          designer: "क्रिएटिव डिज़ाइनर",
+        },
       },
     },
   },

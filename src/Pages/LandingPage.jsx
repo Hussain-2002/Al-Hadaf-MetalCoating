@@ -46,7 +46,7 @@ function LandingPage() {
           </div>
 
           {/* Right: Content */}
-          <div className="relative w-full md:w-1/2 flex items-center justify-center p-6">
+          <div className="relative w-full md:w-1/2 flex items-center justify-center p-6 mt-[-100px]">
             <div className="w-full md:w-[90%] flex flex-col justify-center">
               {/* Heading */}
               <h1
