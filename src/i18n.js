@@ -83,6 +83,42 @@ const resources = {
     },
   },
 
+  // inside en.translation
+serviceSection: {
+  heading: "Our Premium Services",
+  description:
+    "Discover our comprehensive metal coating solutions with cutting-edge technology and superior quality finishes.",
+  viewMore: "View More",
+  items: {
+    powder: {
+      title: "Powder Coating",
+      description: "Free-flowing dry powder applied electrostatically and cured under heat.",
+      shortDesc: "Electrostatically applied coating cured under heat for durable finish."
+    },
+    galvanizing: {
+      title: "Galvanizing",
+      description: "Hot-dip galvanizing process applying zinc coating to steel and iron.",
+      shortDesc: "Zinc coating application to prevent rusting and offer protection."
+    },
+    electroplating: {
+      title: "Electroplating",
+      description: "Metal coating through electrochemical deposition using direct current.",
+      shortDesc: "Electrochemical process for producing superior metal coatings."
+    },
+    tin: {
+      title: "Tin Plating",
+      description: "Cost-effective tinning process offering excellent solderability.",
+      shortDesc: "Affordable tin coating with superior corrosion protection."
+    },
+    goldsilver: {
+      title: "Gold & Silver Plating",
+      description: "Thin layer deposition ideal for jewelry, electronics and decoratives.",
+      shortDesc: "Premium metal plating for jewelry, electronics and decorative items."
+    }
+  }
+},
+
+
   ar: {
     translation: {
       welcome: "مرحبا بكم في الهدف لطلاء المعادن ذ.م.م",

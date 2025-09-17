@@ -27,31 +27,36 @@ function LandingPage() {
       title: "Powder Coating",
       description: "Free-flowing dry powder applied electrostatically and cured under heat.",
       shortDesc: "Electrostatically applied coating cured under heat for durable finish.",
-      image: "/assets/services/powder-coating.jpg"
+      image: "/assets/services/powder-coating.jpg",
+      slug: "powder-coating"
     },
     {
       title: "Galvanizing",
       description: "Hot-dip galvanizing process applying zinc coating to steel and iron.",
       shortDesc: "Zinc coating application to prevent rusting and offer protection.",
-      image: "/assets/services/galvanizing.jpg"
+      image: "/assets/services/galvanizing.jpg",
+      slug: "galvanizing"
     },
     {
       title: "Electroplating",
       description: "Metal coating through electrochemical deposition using direct current.",
       shortDesc: "Electrochemical process for producing superior metal coatings.",
-      image: "/assets/services/electroplating.jpg"
+      image: "/assets/services/electroplating.jpg",
+      slug: "electroplating"
     },
     {
       title: "Tin Plating",
       description: "Cost-effective tinning process offering excellent solderability.",
       shortDesc: "Affordable tin coating with superior corrosion protection.",
-      image: "/assets/services/tin-plating.jpg"
+      image: "/assets/services/tin-plating.jpg",
+      slug: "tin-plating"
     },
     {
       title: "Gold & Silver Plating",
       description: "Thin layer deposition ideal for jewelry, electronics and decoratives.",
       shortDesc: "Premium metal plating for jewelry, electronics and decorative items.",
-      image: "/assets/services/gold-silver-plating.jpg"
+      image: "/assets/services/gold-silver-plating.jpg",
+      slug: "gold-silver-plating"
     }
   ];
 
@@ -83,10 +88,10 @@ function LandingPage() {
       {/* Add top padding so content does not hide behind header */}
       <main className="pt-32 md:pt-40">
         {/* Hero Section - UNCHANGED */}
-        <section className="relative min-h-screen w-full flex flex-col md:flex-row overflow-hidden pb-12 md:pb-0">
+        <section className="relative min-h-screen w-full flex flex-col md:flex-row overflow-hidden pb-1 md:pb-0">
           {/* Left: Video Block */}
           <div className="relative w-full md:w-1/2 h-64 md:h-full flex items-center justify-center">
-            <div className="w-[90%] h-full md:h-[80%] overflow-hidden rounded-lg md:rounded-none">
+            <div className="w-[90%] h-[50%] md:h-[80%] overflow-hidden rounded-lg md:rounded-none">
               <video
                 className="w-full h-full object-cover"
                 autoPlay
@@ -159,139 +164,191 @@ function LandingPage() {
           </div>
         </section>
 
-        {/* NEW SERVICES CAROUSEL SECTION */}
-        <section className="relative w-full py-12 bg-gradient-to-br from-white via-white to-white overflow-hidden">
+        {/* SERVICES SECTION HEADING - SEPARATE WHITE SECTION */}
+        <section className="w-full py-1 bg-white">
           <div className="container mx-auto px-4">
-            {/* Section Title */}
-            <div className="text-center mb-8">
-              <h2 className="text-3xl md:text-4xl font-bold text-black mb-3">
+            <div className="text-center">
+              <h2 className="text-3xl md:text-4xl font-bold mb-3 text-black">
                 Our Premium Services
               </h2>
-              <p className="text-base text-gray-500 max-w-2xl mx-auto">
-                Discover our comprehensive metal coating solutions with cutting-edge technology and superior quality finishes.
+              <p className="text-base md:text-lg max-w-3xl mx-auto text-gray-600">
+                Discover our comprehensive metal coating solutions with
+                cutting-edge technology and superior quality finishes.
               </p>
             </div>
+          </div>
+        </section>
 
-            {/* Carousel Container */}
-            <div className="relative max-w-6xl mx-auto">
-              {/* Desktop Layout */}
-              <div className="hidden md:block">
-                <div className="relative overflow-hidden rounded-2xl h-80">
-                  <div 
-                    className="flex transition-transform duration-700 ease-in-out h-full"
-                    style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-                  >
-                    {services.map((service, index) => (
-                      <div key={index} className="w-full flex-shrink-0 px-2">
-                        <Card className="overflow-hidden bg-gray-900/90 border-gray-700 shadow-2xl backdrop-blur-sm h-full">
-                          <div className="flex h-full">
-                            {/* Left Side - Content */}
-                            <div className="w-1/2 p-6 flex flex-col justify-center bg-gradient-to-r from-gray-900 via-gray-800 to-transparent">
-                              <div className="space-y-4">
-                                <h3 className="text-2xl font-bold text-white">
-                                  {service.title}
-                                </h3>
-                                <p className="text-gray-300 text-base leading-relaxed">
-                                  {service.shortDesc}
-                                </p>
-                                <Button 
-                                  onClick={() => (window.location.href = `/service/${service.slug}`)}
-                                  className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-semibold px-6 py-2 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl w-fit cursor-pointer"
-                                >
-                                  View More
-                                </Button>
-                              </div>
-                            </div>
-                            
-                            {/* Right Side - Image */}
-                            <div className="w-1/2 relative overflow-hidden">
-                              <img 
-                                src={service.image} 
-                                alt={service.title}
-                                className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
-                              />
-                              <div className="absolute inset-0 bg-gradient-to-l from-transparent via-transparent to-gray-900/20"></div>
-                            </div>
+        {/* SERVICES CAROUSEL SECTION - DARK SECTION */}
+        <section className="relative w-full py-8 overflow-hidden">
+          <div className="relative w-full">
+            {/* Desktop Layout */}
+            <div className="hidden md:block w-full">
+              <div className="relative overflow-hidden h-[500px]">
+                <div
+                  className="flex transition-transform duration-700 ease-in-out h-full w-full"
+                  style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+                >
+                  {services.map((service, index) => (
+                    <div key={index} className="w-full flex-shrink-0">
+                      <Card
+                        className="relative flex h-full w-full rounded-2xl shadow-2xl overflow-hidden"
+                        style={{ backgroundColor: "#111827" }}
+                      >
+                        {/* Left Side - Content */}
+                        <div
+                          className="w-1/2 p-10 flex flex-col justify-end items-start z-10"
+                          style={{
+                            background:
+                              "linear-gradient(to right, #111827, #1f2937, transparent)",
+                          }}
+                        >
+                          <div className="space-y-3">
+                            <h3
+                              className="text-2xl font-bold"
+                              style={{ color: "#ffffff" }}
+                            >
+                              {service.title}
+                            </h3>
+                            <p
+                              className="text-base leading-relaxed"
+                              style={{ color: "#d1d5db" }}
+                            >
+                              {service.Des}
+                            </p>
+                            <p
+                              className="text-base leading-relaxed"
+                              style={{ color: "#d1d5db" }}
+                            >
+                              {service.shortDesc}
+                            </p>
                           </div>
-                        </Card>
-                      </div>
-                    ))}
-                  </div>
+                        </div>
+
+                        {/* Right Side - Image */}
+                        <div className="w-1/2 relative">
+                          <img
+                            src={service.image}
+                            alt={service.title}
+                            className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-l from-transparent to-gray-900/30"></div>
+                        </div>
+
+                        {/* Bottom Center Button */}
+                        <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2">
+                          <Button
+                            onClick={() => (window.location.href = `/service/${service.slug}`)}
+                            className="font-semibold px-6 py-2 rounded-lg transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer"
+                            style={{
+                              background: "linear-gradient(to right, #dc2626, #b91c1c)",
+                              color: "#ffffff",
+                            }}
+                          >
+                            View More
+                          </Button>
+                        </div>
+                      </Card>
+                    </div>
+                  ))}
                 </div>
               </div>
-
-              {/* Mobile Layout */}
-              <div className="block md:hidden">
-                <Card className="mx-2 overflow-hidden bg-gray-900/90 border-gray-700 shadow-2xl backdrop-blur-sm">
-                  <div className="flex flex-col">
-                    {/* Image */}
-                    <div className="h-40 relative overflow-hidden">
-                      <img 
-                        src={services[currentSlide].image} 
-                        alt={services[currentSlide].title}
-                        className="w-full h-full object-cover"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent to-transparent"></div>
-                    </div>
-                    
-                    {/* Content */}
-                    <div className="p-5 bg-gradient-to-b from-gray-900 to-gray-800">
-                      <h3 className="text-lg font-bold text-white mb-2">
-                        {services[currentSlide].title}
-                      </h3>
-                      <p className="text-gray-300 text-sm leading-relaxed mb-4">
-                        {services[currentSlide].shortDesc}
-                      </p>
-                      <Button 
-                        onClick={() => (window.location.href = `/service/${services[currentSlide].slug}`)}
-                        className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-semibold px-5 py-2 rounded-lg transition-all duration-300 w-full cursor-pointer"
-                      >
-                        View More
-                      </Button>
-                    </div>
-                  </div>
-                </Card>
-              </div>
-
-              {/* Navigation Arrows - Better positioning */}
-              <div className="absolute inset-0 pointer-events-none">
-                <button
-                  onClick={prevSlide}
-                  className="absolute left-2 top-1/2 transform -translate-y-1/2 bg-black/40 hover:bg-black/60 backdrop-blur-sm text-white p-3 rounded-full transition-all duration-300 hover:scale-110 z-30 shadow-lg pointer-events-auto"
-                >
-                  <ChevronLeft className="w-6 h-6" />
-                </button>
-                
-                <button
-                  onClick={nextSlide}
-                  className="absolute right-2 top-1/2 transform -translate-y-1/2 bg-black/40 hover:bg-black/60 backdrop-blur-sm text-white p-3 rounded-full transition-all duration-300 hover:scale-110 z-30 shadow-lg pointer-events-auto"
-                >
-                  <ChevronRight className="w-6 h-6" />
-                </button>
-              </div>
-
-              {/* Pagination Dots */}
-              <div className="flex justify-center mt-6 space-x-2">
-                {services.map((_, index) => (
-                  <button
-                    key={index}
-                    onClick={() => goToSlide(index)}
-                    className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-                      currentSlide === index 
-                        ? 'bg-red-600 scale-125' 
-                        : 'bg-gray-500 hover:bg-gray-400'
-                    }`}
-                  />
-                ))}
-              </div>
             </div>
-          </div>
 
-          {/* Background Effects */}
-          <div className="absolute inset-0 bg-gradient-to-r from-red-900/5 via-transparent to-blue-900/5 pointer-events-none"></div>
-          <div className="absolute top-0 left-0 w-full h-full opacity-5">
-            <div className="absolute top-20 left-20 w-64 h-64 bg-red-500 rounded-full blur-3xl"></div>
-            <div className="absolute bottom-20 right-20 w-64 h-64 bg-blue-500 rounded-full blur-3xl"></div>
+            {/* Mobile Layout */}
+            <div className="block md:hidden w-full">
+              <Card
+                className="relative mx-4 overflow-hidden rounded-2xl shadow-2xl"
+                style={{ backgroundColor: "#111827" }}
+              >
+                {/* Service Slide */}
+                <div className="flex flex-col">
+                  <div className="h-48 relative overflow-hidden">
+                    <img
+                      src={services[currentSlide].image}
+                      alt={services[currentSlide].title}
+                      className="w-full h-full object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent"></div>
+                  </div>
+                  <div
+                    className="p-6"
+                    style={{
+                      background: "linear-gradient(to bottom, #111827, #1f2937)",
+                    }}
+                  >
+                    <h3
+                      className="text-lg font-bold mb-2"
+                      style={{ color: "#ffffff" }}
+                    >
+                      {services[currentSlide].title}
+                    </h3>
+                    <p
+                      className="text-sm leading-relaxed mb-4"
+                      style={{ color: "#d1d5db" }}
+                    >
+                      {services[currentSlide].shortDesc}
+                    </p>
+                    <Button
+                      onClick={() =>
+                        (window.location.href = `/service/${services[currentSlide].slug}`)
+                      }
+                      className="font-semibold px-5 py-2 rounded-lg transition-all duration-300 w-full cursor-pointer"
+                      style={{
+                        background: "linear-gradient(to right, #dc2626, #b91c1c)",
+                        color: "#ffffff",
+                      }}
+                    >
+                      View More
+                    </Button>
+                  </div>
+                </div>
+              </Card>
+            </div>
+
+            {/* Arrows */}
+            <div className="absolute inset-0 pointer-events-none">
+  <button
+    onClick={prevSlide}
+    className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white pointer-events-auto transition-all duration-300"
+    style={{
+      background: "transparent", // force override index.css
+      border: "none",            // just in case index.css adds it
+      padding: 0,                // remove padding from index.css
+    }}
+  >
+    <ChevronLeft className="w-8 h-8 hover:scale-110 transition-transform duration-200" />
+  </button>
+
+  <button
+    onClick={nextSlide}
+    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-white pointer-events-auto transition-all duration-300"
+    style={{
+      background: "transparent",
+      border: "none",
+      padding: 0,
+    }}
+  >
+    <ChevronRight className="w-8 h-8 hover:scale-110 transition-transform duration-200" />
+  </button>
+</div>
+
+
+
+            {/* Dots */}
+            <div className="flex justify-center mt-6 space-x-2">
+              {services.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => goToSlide(index)}
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                    currentSlide === index
+                      ? "bg-red-600 scale-125"
+                      : "bg-gray-500 hover:bg-gray-400"
+                  }`}
+                />
+              ))}
+            </div>
           </div>
         </section>
 
