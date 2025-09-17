@@ -344,7 +344,7 @@ function LandingPage() {
                   className={`w-3 h-3 rounded-full transition-all duration-300 ${
                     currentSlide === index
                       ? "bg-red-600 scale-125"
-                      : "bg-gray-500 hover:bg-gray-400"
+                      : "bg-gray-500 hover:bg-black"
                   }`}
                 />
               ))}
