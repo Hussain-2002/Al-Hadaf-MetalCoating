@@ -39,7 +39,7 @@ function AboutUs() {
       {/* Hero Section */}
       <section
         className="relative h-[60vh] md:h-[80vh] bg-fixed bg-center bg-cover flex items-center justify-center"
-        style={{ backgroundImage: "url('assets/about-hero.jpg')" }}
+        style={{ backgroundImage: "url('assets/Contact-us.mp4')" }}
       >
         {/* Overlay */}
         <div className="absolute inset-0 bg-black/50" />
