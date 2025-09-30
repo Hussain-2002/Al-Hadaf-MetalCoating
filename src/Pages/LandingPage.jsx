@@ -6,6 +6,7 @@ import { ArrowUp, ChevronLeft, ChevronRight } from "lucide-react";
 import { useEffect, useState } from "react";
 import Footer from "../components/Footer";
 import { useTranslation } from "react-i18next";
+import AboutShort from "@/Components/AboutShort";
 
 function LandingPage() {
   const [showScroll, setShowScroll] = useState(false);
@@ -27,61 +28,69 @@ function LandingPage() {
       title: "Powder Coating",
       description: "Free-flowing dry powder applied electrostatically and cured under heat.",
       shortDesc: "Electrostatically applied coating cured under heat for durable finish.",
-      image: "/assets/services/powder-coating.jpg",
+      image: "/assets/powder-coating.png",
       slug: "powder-coating"
     },
     {
       title: "Galvanizing",
       description: "Hot-dip galvanizing process applying zinc coating to steel and iron.",
       shortDesc: "Zinc coating application to prevent rusting and offer protection.",
-      image: "/assets/services/galvanizing.jpg",
+      image: "/assets/galvanizing.jpg",
       slug: "galvanizing"
     },
     {
       title: "Electroplating",
       description: "Metal coating through electrochemical deposition using direct current.",
       shortDesc: "Electrochemical process for producing superior metal coatings.",
-      image: "/assets/services/electroplating.jpg",
+      image: "/assets/electroplating.png",
       slug: "electroplating"
     },
     {
       title: "Tin Plating",
       description: "Cost-effective tinning process offering excellent solderability.",
       shortDesc: "Affordable tin coating with superior corrosion protection.",
-      image: "/assets/services/tin-plating.jpg",
+      image: "/assets/tin-plating.png",
       slug: "tin-plating"
     },
     {
       title: "Gold & Silver Plating",
       description: "Thin layer deposition ideal for jewelry, electronics and decoratives.",
       shortDesc: "Premium metal plating for jewelry, electronics and decorative items.",
-      image: "/assets/services/gold-silver-plating.jpg",
+      image: "/assets/gold-silver-plating.png",
       slug: "gold-silver-plating"
     }
   ];
 
-  // Auto-slide functionality
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % services.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, [services.length]);
+// Slide navigation without jump/glitch
+const nextSlide = () => {
+  setCurrentSlide((prev) => {
+    if (prev < services.length - 1) {
+      return prev + 1;
+    }
+    return prev; // stay on last
+  });
+};
 
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % services.length);
-  };
+const prevSlide = () => {
+  setCurrentSlide((prev) => {
+    if (prev > 0) {
+      return prev - 1;
+    }
+    return prev; // stay on first
+  });
+};
 
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + services.length) % services.length);
-  };
-
-  const goToSlide = (index) => {
+const goToSlide = (index) => {
+  if (index >= 0 && index < services.length) {
     setCurrentSlide(index);
-  };
+  }
+};
+
+
+
 
   return (
-    <div className="relative min-h-screen w-full bg-white">
+    <div className="relatgold-silver-platingive min-h-screen w-full bg-white">
       {/* Header */}
       <Header />
 
@@ -180,29 +189,36 @@ function LandingPage() {
         </section>
 
         {/* SERVICES CAROUSEL SECTION - DARK SECTION */}
-        <section className="relative w-full py-8 overflow-hidden">
-          <div className="relative w-full">
+        <section className="relative w-full py-8">
+          <div className="relative w-full overflow-hidden">
             {/* Desktop Layout */}
-            <div className="hidden md:block w-full">
-              <div className="relative overflow-hidden h-[500px]">
+            <div className="hidden md:block w-full px-12">
+              <div className="relative h-[500px]">
                 <div
-                  className="flex transition-transform duration-700 ease-in-out h-full w-full"
-                  style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-                >
+  className="flex transition-transform duration-700 ease-in-out h-full"
+  style={{
+    width: `${services.length * 100}%`,
+    transform: `translateX(-${currentSlide * (100 / services.length)}%)`,
+  }}
+>
                   {services.map((service, index) => (
-                    <div key={index} className="w-full flex-shrink-0">
+                    <div key={index} className="flex-shrink-0 px-2" style={{ width: `${100 / services.length}%` }}>
                       <Card
-                        className="relative flex h-full w-full rounded-2xl shadow-2xl overflow-hidden"
+                        className="relative h-full w-full rounded-2xl shadow-2xl overflow-hidden"
                         style={{ backgroundColor: "#111827" }}
                       >
-                        {/* Left Side - Content */}
-                        <div
-                          className="w-1/2 p-10 flex flex-col justify-end items-start z-10"
-                          style={{
-                            background:
-                              "linear-gradient(to right, #111827, #1f2937, transparent)",
-                          }}
-                        >
+                        {/* Background Image - Full Cover */}
+                        <div className="absolute inset-0">
+                          <img
+                            src={service.image}
+                            alt={service.title}
+                            className="w-full h-full object-cover"
+                          />
+                          <div className="absolute inset-0 bg-gradient-to-r from-gray-900/95 via-gray-900/70 to-transparent"></div>
+                        </div>
+
+                        {/* Content */}
+                        <div className="relative h-full w-1/2 p-10 flex flex-col justify-end items-start z-10">
                           <div className="space-y-3">
                             <h3
                               className="text-2xl font-bold"
@@ -214,7 +230,7 @@ function LandingPage() {
                               className="text-base leading-relaxed"
                               style={{ color: "#d1d5db" }}
                             >
-                              {service.Des}
+                              {service.description}
                             </p>
                             <p
                               className="text-base leading-relaxed"
@@ -225,18 +241,8 @@ function LandingPage() {
                           </div>
                         </div>
 
-                        {/* Right Side - Image */}
-                        <div className="w-1/2 relative">
-                          <img
-                            src={service.image}
-                            alt={service.title}
-                            className="w-full h-full object-cover transition-transform duration-700 hover:scale-110"
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-l from-transparent to-gray-900/30"></div>
-                        </div>
-
                         {/* Bottom Center Button */}
-                        <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2">
+                        <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-20">
                           <Button
                             onClick={() => (window.location.href = `/service/${service.slug}`)}
                             className="font-semibold px-6 py-2 rounded-lg transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer"
@@ -307,33 +313,29 @@ function LandingPage() {
             </div>
 
             {/* Arrows */}
-            <div className="absolute inset-0 pointer-events-none">
-  <button
-    onClick={prevSlide}
-    className="absolute left-3 top-1/2 transform -translate-y-1/2 text-white pointer-events-auto transition-all duration-300"
-    style={{
-      background: "transparent", // force override index.css
-      border: "none",            // just in case index.css adds it
-      padding: 0,                // remove padding from index.css
-    }}
-  >
-    <ChevronLeft className="w-8 h-8 hover:scale-110 transition-transform duration-200" />
-  </button>
+            <div className="absolute inset-0 pointer-events-none z-30">
+              <button
+                onClick={prevSlide}
+                className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white pointer-events-auto transition-all duration-300 hover:bg-white/10 rounded-full p-2"
+                style={{
+                  background: "rgba(0, 0, 0, 0.3)",
+                  border: "none",
+                }}
+              >
+                <ChevronLeft className="w-8 h-8" />
+              </button>
 
-  <button
-    onClick={nextSlide}
-    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-white pointer-events-auto transition-all duration-300"
-    style={{
-      background: "transparent",
-      border: "none",
-      padding: 0,
-    }}
-  >
-    <ChevronRight className="w-8 h-8 hover:scale-110 transition-transform duration-200" />
-  </button>
-</div>
-
-
+              <button
+                onClick={nextSlide}
+                className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white pointer-events-auto transition-all duration-300 hover:bg-white/10 rounded-full p-2"
+                style={{
+                  background: "rgba(0, 0, 0, 0.3)",
+                  border: "none",
+                }}
+              >
+                <ChevronRight className="w-8 h-8" />
+              </button>
+            </div>
 
             {/* Dots */}
             <div className="flex justify-center mt-6 space-x-2">
@@ -341,16 +343,15 @@ function LandingPage() {
                 <button
                   key={index}
                   onClick={() => goToSlide(index)}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                    currentSlide === index
-                      ? "bg-red-600 scale-125"
-                      : "bg-gray-500 hover:bg-black"
-                  }`}
+                  style={{ backgroundColor: "black" }}
+                  className="w-3 h-3 rounded-full transition-all duration-300"
                 />
               ))}
             </div>
           </div>
         </section>
+
+        <AboutShort />
 
         {/* Footer */}
         <Footer />
