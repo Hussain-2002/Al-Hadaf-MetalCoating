@@ -79,45 +79,59 @@ const resources = {
           engineer: "Lead Engineer",
           designer: "Creative Designer",
         },
+        short1:
+          "Al Hadaf Metal Coating L.L.C was established on 11.09.2022. We offer a variety of the latest plating solutions with high-quality and budget-friendly options.",
+        short2:
+          "Our engineers always keep an eye on the latest trends and prioritize customer satisfaction, making us a trusted name worldwide.",
+        short3:
+          "The interests of our customers are always top priority, and we hope you enjoy our products as much as we enjoy providing them.",
+        experience: "12+ Years of Experience in Metal Coating",
+      },
+
+      serviceSection: {
+        heading: "Our Services",
+        description: "Explore the high-quality services we offer.",
+        viewMore: "View More",
+        items: {
+          powder: {
+            title: "Powder Coating",
+            description: "High-quality powder coating for all metals.",
+            shortDesc: "Durable and long-lasting finish.",
+          },
+          galvanizing: {
+            title: "Galvanizing",
+            description: "Protect your metal from corrosion.",
+            shortDesc: "Zinc coating for long-term durability.",
+          },
+          electroplating: {
+            title: "Electroplating",
+            description: "Enhance metal surfaces with a sleek finish.",
+            shortDesc: "Perfect for industrial and decorative use.",
+          },
+          tin: {
+            title: "Tin Plating",
+            description: "Corrosion-resistant tin plating solutions.",
+            shortDesc: "Safe and hygienic for food-grade metals.",
+          },
+          goldsilver: {
+            title: "Gold & Silver Plating",
+            description: "Luxury metal plating for premium products.",
+            shortDesc: "High-quality precious metal finish.",
+          },
+          metal: {
+            title: "Metal Plating",
+            description: "Custom metal plating services.",
+            shortDesc: "Tailored for your specific project needs.",
+          },
+          antique: {
+            title: "Antique Finish",
+            description: "Give metals a timeless look.",
+            shortDesc: "Classic antique style for decorative purposes.",
+          },
+        },
       },
     },
   },
-
-  // inside en.translation
-serviceSection: {
-  heading: "Our Premium Services",
-  description:
-    "Discover our comprehensive metal coating solutions with cutting-edge technology and superior quality finishes.",
-  viewMore: "View More",
-  items: {
-    powder: {
-      title: "Powder Coating",
-      description: "Free-flowing dry powder applied electrostatically and cured under heat.",
-      shortDesc: "Electrostatically applied coating cured under heat for durable finish."
-    },
-    galvanizing: {
-      title: "Galvanizing",
-      description: "Hot-dip galvanizing process applying zinc coating to steel and iron.",
-      shortDesc: "Zinc coating application to prevent rusting and offer protection."
-    },
-    electroplating: {
-      title: "Electroplating",
-      description: "Metal coating through electrochemical deposition using direct current.",
-      shortDesc: "Electrochemical process for producing superior metal coatings."
-    },
-    tin: {
-      title: "Tin Plating",
-      description: "Cost-effective tinning process offering excellent solderability.",
-      shortDesc: "Affordable tin coating with superior corrosion protection."
-    },
-    goldsilver: {
-      title: "Gold & Silver Plating",
-      description: "Thin layer deposition ideal for jewelry, electronics and decoratives.",
-      shortDesc: "Premium metal plating for jewelry, electronics and decorative items."
-    }
-  }
-},
-
 
   ar: {
     translation: {
@@ -194,44 +208,59 @@ serviceSection: {
           engineer: "المهندس الرئيسي",
           designer: "المصمم الإبداعي",
         },
+        short1:
+          "تأسست شركة الهدف لطلاء المعادن ذ.م.م في 11.09.2022. نحن نقدم مجموعة متنوعة من أحدث حلول الطلاء بجودة عالية وأسعار مناسبة.",
+        short2:
+          "مهندسونا يواكبون دائمًا أحدث الاتجاهات ويضعون رضا العملاء أولاً، مما يجعلنا اسمًا موثوقًا به عالميًا.",
+        short3:
+          "مصالح عملائنا دائمًا أولوية قصوى، ونأمل أن تستمتعوا بمنتجاتنا كما نستمتع بتقديمها لكم.",
+        experience: "أكثر من 12 عامًا من الخبرة في طلاء المعادن",
+      },
+
+      serviceSection: {
+        heading: "خدماتنا",
+        description: "اكتشف الخدمات عالية الجودة التي نقدمها.",
+        viewMore: "عرض المزيد",
+        items: {
+          powder: {
+            title: "الطلاء بالمسحوق",
+            description: "طلاء عالي الجودة لجميع المعادن.",
+            shortDesc: "تشطيب متين وطويل الأمد.",
+          },
+          galvanizing: {
+            title: "الجلفنة",
+            description: "حماية المعادن من التآكل.",
+            shortDesc: "طلاء الزنك للمتانة الطويلة.",
+          },
+          electroplating: {
+            title: "الطلاء الكهربائي",
+            description: "تحسين أسطح المعادن بمظهر أنيق.",
+            shortDesc: "مثالي للاستخدام الصناعي والزخرفي.",
+          },
+          tin: {
+            title: "طلاء بالقصدير",
+            description: "حلول طلاء مقاومة للتآكل.",
+            shortDesc: "آمن وصحي للمعادن الغذائية.",
+          },
+          goldsilver: {
+            title: "طلاء الذهب والفضة",
+            description: "طلاء المعادن الفاخرة للمنتجات المميزة.",
+            shortDesc: "تشطيب عالي الجودة للمعادن الثمينة.",
+          },
+          metal: {
+            title: "طلاء المعادن",
+            description: "خدمات طلاء المعادن المخصصة.",
+            shortDesc: "مصمم لمتطلبات مشروعك الخاصة.",
+          },
+          antique: {
+            title: "تشطيب عتيق",
+            description: "منح المعادن مظهرًا خالدًا.",
+            shortDesc: "نمط كلاسيكي لأغراض الزينة.",
+          },
+        },
       },
     },
   },
-
-  // inside ar.translation
-serviceSection: {
-  heading: "خدماتنا المميزة",
-  description:
-    "اكتشف حلول الطلاء المعدني الشاملة لدينا باستخدام أحدث التقنيات وأعلى معايير الجودة.",
-  viewMore: "عرض المزيد",
-  items: {
-    powder: {
-      title: "الطلاء بالمسحوق",
-      description: "مسحوق جاف يتم تطبيقه كهربائياً ويُعالج بالحرارة.",
-      shortDesc: "طلاء مطبق كهربائياً يُعالج بالحرارة لطبقة متينة."
-    },
-    galvanizing: {
-      title: "الجلفنة",
-      description: "عملية غمر ساخنة لتطبيق طبقة من الزنك على الفولاذ والحديد.",
-      shortDesc: "طلاء الزنك لحماية المعادن من الصدأ والتآكل."
-    },
-    electroplating: {
-      title: "الطلاء الكهربائي",
-      description: "طلاء معدني يتم عبر الترسيب الكهروكيميائي باستخدام تيار مباشر.",
-      shortDesc: "عملية كهروكيميائية لإنتاج طبقات معدنية عالية الجودة."
-    },
-    tin: {
-      title: "طلاء بالقصدير",
-      description: "عملية اقتصادية توفر لحاماً ممتازاً ومقاومة جيدة للتآكل.",
-      shortDesc: "طلاء قصدير اقتصادي يوفر حماية فائقة ضد التآكل."
-    },
-    goldsilver: {
-      title: "طلاء بالذهب والفضة",
-      description: "ترسيب طبقة رقيقة مثالي للمجوهرات والإلكترونيات والديكور.",
-      shortDesc: "طلاء فاخر للمجوهرات والإلكترونيات والمنتجات الزخرفية."
-    }
-  }
-},
 
   hi: {
     translation: {
@@ -309,46 +338,60 @@ serviceSection: {
           engineer: "लीड इंजीनियर",
           designer: "क्रिएटिव डिज़ाइनर",
         },
+        short1:
+          "अल हदफ मेटल कोटिंग एल.एल.सी की स्थापना 11.09.2022 को हुई थी। हम उच्च गुणवत्ता और बजट-अनुकूल नवीनतम प्लेटिंग समाधान प्रदान करते हैं।",
+        short2:
+          "हमारे इंजीनियर नवीनतम रुझानों पर नज़र रखते हैं और ग्राहक संतुष्टि को प्राथमिकता देते हैं, जिससे हम विश्व स्तर पर एक विश्वसनीय नाम बन गए हैं।",
+        short3:
+          "ग्राहकों की रुचि हमेशा हमारी शीर्ष प्राथमिकता है, और हमें आशा है कि आप हमारे उत्पादों का उतना ही आनंद लेंगे जितना हम उन्हें उपलब्ध कराते हैं।",
+        experience: "धातु कोटिंग में 12+ वर्षों का अनुभव",
+      },
+
+      serviceSection: {
+        heading: "हमारी सेवाएं",
+        description: "उच्च गुणवत्ता वाली सेवाओं का अन्वेषण करें जो हम प्रदान करते हैं।",
+        viewMore: "और देखें",
+        items: {
+          powder: {
+            title: "पाउडर कोटिंग",
+            description: "सभी धातुओं के लिए उच्च गुणवत्ता वाली पाउडर कोटिंग।",
+            shortDesc: "टिकाऊ और दीर्घकालिक फिनिश।",
+          },
+          galvanizing: {
+            title: "गैल्वनाइजिंग",
+            description: "अपने धातु को जंग से बचाएँ।",
+            shortDesc: "दीर्घकालिक टिकाऊपन के लिए जिंक कोटिंग।",
+          },
+          electroplating: {
+            title: "इलेक्ट्रोप्लेटिंग",
+            description: "धातु की सतहों को चिकना फिनिश दें।",
+            shortDesc: "औद्योगिक और सजावटी उपयोग के लिए उपयुक्त।",
+          },
+          tin: {
+            title: "टिन प्लेटिंग",
+            description: "जंग-प्रतिरोधी टिन प्लेटिंग समाधान।",
+            shortDesc: "फूड-ग्रेड धातुओं के लिए सुरक्षित और स्वच्छ।",
+          },
+          goldsilver: {
+            title: "गोल्ड और सिल्वर प्लेटिंग",
+            description: "प्रीमियम उत्पादों के लिए लक्ज़री धातु प्लेटिंग।",
+            shortDesc: "उच्च गुणवत्ता वाला कीमती धातु फिनिश।",
+          },
+          metal: {
+            title: "मेटल प्लेटिंग",
+            description: "कस्टम धातु प्लेटिंग सेवाएं।",
+            shortDesc: "आपकी विशिष्ट परियोजना आवश्यकताओं के लिए तैयार।",
+          },
+          antique: {
+            title: "एंटीक फिनिश",
+            description: "धातुओं को कालातीत रूप दें।",
+            shortDesc: "सजावटी उद्देश्यों के लिए क्लासिक एंटीक स्टाइल।",
+          },
+        },
       },
     },
   },
-// inside hi.translation
-serviceSection: {
-  heading: "हमारी प्रीमियम सेवाएँ",
-  description:
-    "हमारी व्यापक मेटल कोटिंग सेवाओं को खोजें, जो अत्याधुनिक तकनीक और उच्च गुणवत्ता वाली फिनिश के साथ आती हैं।",
-  viewMore: "और देखें",
-  items: {
-    powder: {
-      title: "पाउडर कोटिंग",
-      description: "सूखा पाउडर जो इलेक्ट्रोस्टैटिक रूप से लगाया जाता है और गर्मी में पकाया जाता है।",
-      shortDesc: "इलेक्ट्रोस्टैटिक कोटिंग जिसे गर्मी से मजबूत फिनिश के लिए क्योर किया जाता है।"
-    },
-    galvanizing: {
-      title: "गैल्वनाइजिंग",
-      description: "हॉट-डिप प्रक्रिया जिसमें स्टील और लोहे पर जिंक की परत चढ़ाई जाती है।",
-      shortDesc: "जंग और क्षरण से बचाने के लिए जिंक कोटिंग।"
-    },
-    electroplating: {
-      title: "इलेक्ट्रोप्लेटिंग",
-      description: "प्रत्यक्ष धारा का उपयोग करके इलेक्ट्रोकेमिकल जमाव द्वारा धातु कोटिंग।",
-      shortDesc: "उच्च गुणवत्ता की धातु कोटिंग के लिए इलेक्ट्रोकेमिकल प्रक्रिया।"
-    },
-    tin: {
-      title: "टिन प्लेटिंग",
-      description: "कम लागत वाली प्रक्रिया जो उत्कृष्ट सोल्डरिंग क्षमता प्रदान करती है।",
-      shortDesc: "बेहतरीन जंग-रोधी सुरक्षा के साथ किफायती टिन कोटिंग।"
-    },
-    goldsilver: {
-      title: "सोने और चांदी की प्लेटिंग",
-      description: "पतली परत का जमाव, आभूषण, इलेक्ट्रॉनिक्स और सजावटी वस्तुओं के लिए उपयुक्त।",
-      shortDesc: "आभूषण, इलेक्ट्रॉनिक्स और सजावटी वस्तुओं के लिए प्रीमियम प्लेटिंग।"
-    }
-  }
-},
 };
-
-
 
 i18n.use(initReactI18next).init({
   resources,

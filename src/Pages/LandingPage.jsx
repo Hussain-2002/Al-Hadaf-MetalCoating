@@ -22,72 +22,49 @@ function LandingPage() {
 
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
-  // Services data with 5 random services from Al Hadaf Metal Coating
+  // Services data with translation keys
   const services = [
     {
-      title: "Powder Coating",
-      description: "Free-flowing dry powder applied electrostatically and cured under heat.",
-      shortDesc: "Electrostatically applied coating cured under heat for durable finish.",
+      key: "powder",
       image: "/assets/powder-coating.png",
-      slug: "powder-coating"
+      slug: "powder-coating",
     },
     {
-      title: "Galvanizing",
-      description: "Hot-dip galvanizing process applying zinc coating to steel and iron.",
-      shortDesc: "Zinc coating application to prevent rusting and offer protection.",
+      key: "galvanizing",
       image: "/assets/galvanizing.jpg",
-      slug: "galvanizing"
+      slug: "galvanizing",
     },
     {
-      title: "Electroplating",
-      description: "Metal coating through electrochemical deposition using direct current.",
-      shortDesc: "Electrochemical process for producing superior metal coatings.",
+      key: "electroplating",
       image: "/assets/electroplating.png",
-      slug: "electroplating"
+      slug: "electroplating",
     },
     {
-      title: "Tin Plating",
-      description: "Cost-effective tinning process offering excellent solderability.",
-      shortDesc: "Affordable tin coating with superior corrosion protection.",
+      key: "tin",
       image: "/assets/tin-plating.png",
-      slug: "tin-plating"
+      slug: "tin-plating",
     },
     {
-      title: "Gold & Silver Plating",
-      description: "Thin layer deposition ideal for jewelry, electronics and decoratives.",
-      shortDesc: "Premium metal plating for jewelry, electronics and decorative items.",
+      key: "goldsilver",
       image: "/assets/gold-silver-plating.png",
-      slug: "gold-silver-plating"
-    }
+      slug: "gold-silver-plating",
+    },
   ];
 
-// Slide navigation without jump/glitch
-const nextSlide = () => {
-  setCurrentSlide((prev) => {
-    if (prev < services.length - 1) {
-      return prev + 1;
+  // Slide navigation without jump/glitch
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev < services.length - 1 ? prev + 1 : prev));
+  };
+
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev > 0 ? prev - 1 : prev));
+  };
+
+  const goToSlide = (index) => {
+    if (index >= 0 && index < services.length) {
+      setCurrentSlide(index);
     }
-    return prev; // stay on last
-  });
-};
-
-const prevSlide = () => {
-  setCurrentSlide((prev) => {
-    if (prev > 0) {
-      return prev - 1;
-    }
-    return prev; // stay on first
-  });
-};
-
-const goToSlide = (index) => {
-  if (index >= 0 && index < services.length) {
-    setCurrentSlide(index);
-  }
-};
-
-
-
+  };
 
   return (
     <div className="relatgold-silver-platingive min-h-screen w-full bg-white">
@@ -96,7 +73,7 @@ const goToSlide = (index) => {
 
       {/* Add top padding so content does not hide behind header */}
       <main className="pt-32 md:pt-40">
-        {/* Hero Section - UNCHANGED */}
+        {/* Hero Section */}
         <section className="relative min-h-screen w-full flex flex-col md:flex-row overflow-hidden pb-1 md:pb-0">
           {/* Left: Video Block */}
           <div className="relative w-full md:w-1/2 h-64 md:h-full flex items-center justify-center">
@@ -123,9 +100,7 @@ const goToSlide = (index) => {
                 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold mb-4 leading-tight text-center md:text-left"
                 style={{ textShadow: "2px 2px 6px hsla(0, 100%, 50%, 0.30)" }}
               >
-                <span className="text-brand-red block mb-2">
-                  {t("welcome")}
-                </span>
+                <span className="text-brand-red block mb-2">{t("welcome")}</span>
               </h1>
 
               {/* Description */}
@@ -136,19 +111,19 @@ const goToSlide = (index) => {
               {/* Services Grid (2x3) */}
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-6">
                 {[
-                  "Powder Coating",
-                  "Galvanizing",
-                  "Electroplating",
-                  "Tin Plating",
-                  "Metal Plating",
-                  "Antique Finish",
-                ].map((service, index) => (
+                  "services.powder",
+                  "services.galvanizing",
+                  "services.electroplating",
+                  "services.tin",
+                  "services.metal",
+                  "services.antique",
+                ].map((key, index) => (
                   <div
                     key={index}
                     className="border border-gray-300 rounded-lg px-3 py-2 text-center hover:bg-gray-100 transition-all duration-300"
                   >
                     <span className="text-gray-800 font-medium text-xs sm:text-sm">
-                      {service}
+                      {t(key)}
                     </span>
                   </div>
                 ))}
@@ -173,45 +148,44 @@ const goToSlide = (index) => {
           </div>
         </section>
 
-        {/* SERVICES SECTION HEADING - SEPARATE WHITE SECTION */}
+        {/* Services Section Heading */}
         <section className="w-full py-1 bg-white">
           <div className="container mx-auto px-4">
             <div className="text-center">
               <h2 className="text-3xl md:text-4xl font-bold mb-3 text-black">
-                Our Premium Services
+                {t("serviceSection.heading")}
               </h2>
               <p className="text-base md:text-lg max-w-3xl mx-auto text-gray-600">
-                Discover our comprehensive metal coating solutions with
-                cutting-edge technology and superior quality finishes.
+                {t("serviceSection.description")}
               </p>
             </div>
           </div>
         </section>
 
-        {/* SERVICES CAROUSEL SECTION - DARK SECTION */}
+        {/* Services Carousel */}
         <section className="relative w-full py-8">
           <div className="relative w-full overflow-hidden">
             {/* Desktop Layout */}
             <div className="hidden md:block w-full px-12">
               <div className="relative h-[500px]">
                 <div
-  className="flex transition-transform duration-700 ease-in-out h-full"
-  style={{
-    width: `${services.length * 100}%`,
-    transform: `translateX(-${currentSlide * (100 / services.length)}%)`,
-  }}
->
+                  className="flex transition-transform duration-700 ease-in-out h-full"
+                  style={{
+                    width: `${services.length * 100}%`,
+                    transform: `translateX(-${currentSlide * (100 / services.length)}%)`,
+                  }}
+                >
                   {services.map((service, index) => (
                     <div key={index} className="flex-shrink-0 px-2" style={{ width: `${100 / services.length}%` }}>
                       <Card
                         className="relative h-full w-full rounded-2xl shadow-2xl overflow-hidden"
                         style={{ backgroundColor: "#111827" }}
                       >
-                        {/* Background Image - Full Cover */}
+                        {/* Background Image */}
                         <div className="absolute inset-0">
                           <img
                             src={service.image}
-                            alt={service.title}
+                            alt={t(`serviceSection.items.${service.key}.title`)}
                             className="w-full h-full object-cover"
                           />
                           <div className="absolute inset-0 bg-gradient-to-r from-gray-900/95 via-gray-900/70 to-transparent"></div>
@@ -220,23 +194,14 @@ const goToSlide = (index) => {
                         {/* Content */}
                         <div className="relative h-full w-1/2 p-10 flex flex-col justify-end items-start z-10">
                           <div className="space-y-3">
-                            <h3
-                              className="text-2xl font-bold"
-                              style={{ color: "#ffffff" }}
-                            >
-                              {service.title}
+                            <h3 className="text-2xl font-bold" style={{ color: "#ffffff" }}>
+                              {t(`serviceSection.items.${service.key}.title`)}
                             </h3>
-                            <p
-                              className="text-base leading-relaxed"
-                              style={{ color: "#d1d5db" }}
-                            >
-                              {service.description}
+                            <p className="text-base leading-relaxed" style={{ color: "#d1d5db" }}>
+                              {t(`serviceSection.items.${service.key}.description`)}
                             </p>
-                            <p
-                              className="text-base leading-relaxed"
-                              style={{ color: "#d1d5db" }}
-                            >
-                              {service.shortDesc}
+                            <p className="text-base leading-relaxed" style={{ color: "#d1d5db" }}>
+                              {t(`serviceSection.items.${service.key}.shortDesc`)}
                             </p>
                           </div>
                         </div>
@@ -251,7 +216,7 @@ const goToSlide = (index) => {
                               color: "#ffffff",
                             }}
                           >
-                            View More
+                            {t("serviceSection.viewMore")}
                           </Button>
                         </div>
                       </Card>
@@ -263,49 +228,32 @@ const goToSlide = (index) => {
 
             {/* Mobile Layout */}
             <div className="block md:hidden w-full">
-              <Card
-                className="relative mx-4 overflow-hidden rounded-2xl shadow-2xl"
-                style={{ backgroundColor: "#111827" }}
-              >
-                {/* Service Slide */}
+              <Card className="relative mx-4 overflow-hidden rounded-2xl shadow-2xl" style={{ backgroundColor: "#111827" }}>
                 <div className="flex flex-col">
                   <div className="h-48 relative overflow-hidden">
                     <img
                       src={services[currentSlide].image}
-                      alt={services[currentSlide].title}
+                      alt={t(`serviceSection.items.${services[currentSlide].key}.title`)}
                       className="w-full h-full object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-transparent"></div>
                   </div>
-                  <div
-                    className="p-6"
-                    style={{
-                      background: "linear-gradient(to bottom, #111827, #1f2937)",
-                    }}
-                  >
-                    <h3
-                      className="text-lg font-bold mb-2"
-                      style={{ color: "#ffffff" }}
-                    >
-                      {services[currentSlide].title}
+                  <div className="p-6" style={{ background: "linear-gradient(to bottom, #111827, #1f2937)" }}>
+                    <h3 className="text-lg font-bold mb-2" style={{ color: "#ffffff" }}>
+                      {t(`serviceSection.items.${services[currentSlide].key}.title`)}
                     </h3>
-                    <p
-                      className="text-sm leading-relaxed mb-4"
-                      style={{ color: "#d1d5db" }}
-                    >
-                      {services[currentSlide].shortDesc}
+                    <p className="text-sm leading-relaxed mb-4" style={{ color: "#d1d5db" }}>
+                      {t(`serviceSection.items.${services[currentSlide].key}.shortDesc`)}
                     </p>
                     <Button
-                      onClick={() =>
-                        (window.location.href = `/service/${services[currentSlide].slug}`)
-                      }
+                      onClick={() => (window.location.href = `/service/${services[currentSlide].slug}`)}
                       className="font-semibold px-5 py-2 rounded-lg transition-all duration-300 w-full cursor-pointer"
                       style={{
                         background: "linear-gradient(to right, #dc2626, #b91c1c)",
                         color: "#ffffff",
                       }}
                     >
-                      View More
+                      {t("serviceSection.viewMore")}
                     </Button>
                   </div>
                 </div>
@@ -317,10 +265,7 @@ const goToSlide = (index) => {
               <button
                 onClick={prevSlide}
                 className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white pointer-events-auto transition-all duration-300 hover:bg-white/10 rounded-full p-2"
-                style={{
-                  background: "rgba(0, 0, 0, 0.3)",
-                  border: "none",
-                }}
+                style={{ background: "rgba(0, 0, 0, 0.3)", border: "none" }}
               >
                 <ChevronLeft className="w-8 h-8" />
               </button>
@@ -328,10 +273,7 @@ const goToSlide = (index) => {
               <button
                 onClick={nextSlide}
                 className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white pointer-events-auto transition-all duration-300 hover:bg-white/10 rounded-full p-2"
-                style={{
-                  background: "rgba(0, 0, 0, 0.3)",
-                  border: "none",
-                }}
+                style={{ background: "rgba(0, 0, 0, 0.3)", border: "none" }}
               >
                 <ChevronRight className="w-8 h-8" />
               </button>
@@ -343,8 +285,9 @@ const goToSlide = (index) => {
                 <button
                   key={index}
                   onClick={() => goToSlide(index)}
-                  style={{ backgroundColor: "black" }}
-                  className="w-3 h-3 rounded-full transition-all duration-300"
+                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                    currentSlide === index ? "bg-red-600 scale-125" : "bg-gray-500 hover:bg-black"
+                  }`}
                 />
               ))}
             </div>
