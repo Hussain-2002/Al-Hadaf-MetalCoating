@@ -31,7 +31,7 @@ function Header() {
 
   const navItems = [
     { name: t("nav.home"), href: "/" },
-    { name: t("nav.services"), href: "#services" },
+    { name: t("nav.services"), href: "/services" },
     { name: t("nav.about"), href: "/about" },
     { name: t("nav.gallery"), href: "#gallery" },
     { name: t("nav.videos"), href: "#videos" },
