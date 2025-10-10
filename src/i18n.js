@@ -130,8 +130,38 @@ const resources = {
           },
         },
       },
+      // 🔹 Service Page (new)
+      servicePage: {
+        heading: "Surface Alchemy — Premium Finishes",
+        sub: "Choose a service to learn more about our capabilities.",
+        quoteBtn: "Get Quote",
+    },
+    // 🔹 Powder Coating Page (new)
+      powderPage: {
+        heading: "Powder Coating",
+        tagline: "Durable. Vibrant. Long-lasting — a coating revolution.",
+        tabs: {
+          gallery: "Gallery",
+          video: "Video",
+          comment: "Comment",
+        },
+        tooltips: {
+          gallery: "Work done by us",
+          video: "Experience the process with your own eyes",
+          comment: "Leave a comment or enquiry",
+        },
+        form: {
+          title: "Leave a Comment or Enquiry",
+          name: "Your Name",
+          contact: "Contact Details",
+          message: "Your Comment or Enquiry",
+          submit: "Send Message",
+          success: "Your message has been sent successfully!",
+        },
+      },
     },
   },
+  
 
   ar: {
     translation: {
@@ -259,6 +289,34 @@ const resources = {
           },
         },
       },
+      servicePage: {
+        heading: "سحر السطح — تشطيبات فاخرة",
+        sub: "اختر خدمة لمعرفة المزيد عن قدراتنا.",
+        quoteBtn: "احصل على عرض سعر",
+      },
+      powderPage: {
+        heading: "الطلاء بالمسحوق",
+        tagline: "متين. نابض بالحياة. طويل الأمد — ثورة في الطلاء.",
+        tabs: {
+          gallery: "المعرض",
+          video: "فيديو",
+          comment: "تعليق",
+        },
+        tooltips: {
+          gallery: "الأعمال التي قمنا بها",
+          video: "شاهد العملية بعينيك",
+          comment: "اترك تعليقًا أو استفسارًا",
+        },
+        form: {
+          title: "اترك تعليقًا أو استفسارًا",
+          name: "اسمك",
+          contact: "معلومات الاتصال",
+          message: "تعليقك أو استفسارك",
+          submit: "إرسال الرسالة",
+          success: "تم إرسال رسالتك بنجاح!",
+        },
+      },
+
     },
   },
 
@@ -387,6 +445,33 @@ const resources = {
             description: "धातुओं को कालातीत रूप दें।",
             shortDesc: "सजावटी उद्देश्यों के लिए क्लासिक एंटीक स्टाइल।",
           },
+        },
+      },
+      servicePage: {
+        heading: "सतह का जादू — प्रीमियम फिनिश",
+        sub: "हमारी क्षमताओं के बारे में अधिक जानने के लिए एक सेवा चुनें।",
+        quoteBtn: "कोटेशन प्राप्त करें",
+      },
+      powderPage: {
+        heading: "पाउडर कोटिंग",
+        tagline: "टिकाऊ। चमकदार। लंबे समय तक चलने वाला — एक कोटिंग क्रांति।",
+        tabs: {
+          gallery: "गैलरी",
+          video: "वीडियो",
+          comment: "टिप्पणी",
+        },
+        tooltips: {
+          gallery: "हमारे द्वारा किया गया कार्य",
+          video: "अपनी आँखों से प्रक्रिया का अनुभव करें",
+          comment: "टिप्पणी या पूछताछ छोड़ें",
+        },
+        form: {
+          title: "टिप्पणी या पूछताछ छोड़ें",
+          name: "आपका नाम",
+          contact: "संपर्क विवरण",
+          message: "आपकी टिप्पणी या पूछताछ",
+          submit: "संदेश भेजें",
+          success: "आपका संदेश सफलतापूर्वक भेजा गया!",
         },
       },
     },

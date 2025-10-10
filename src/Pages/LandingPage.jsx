@@ -209,7 +209,7 @@ function LandingPage() {
                         {/* Bottom Center Button */}
                         <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-20">
                           <Button
-                            onClick={() => (window.location.href = `/service/${service.slug}`)}
+                            onClick={() => (window.location.href = `/services/${service.slug}`)}
                             className="font-semibold px-6 py-2 rounded-lg transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer"
                             style={{
                               background: "linear-gradient(to right, #dc2626, #b91c1c)",
@@ -246,7 +246,7 @@ function LandingPage() {
                       {t(`serviceSection.items.${services[currentSlide].key}.shortDesc`)}
                     </p>
                     <Button
-                      onClick={() => (window.location.href = `/service/${services[currentSlide].slug}`)}
+                      onClick={() => (window.location.href = `/services/${services[currentSlide].slug}`)}
                       className="font-semibold px-5 py-2 rounded-lg transition-all duration-300 w-full cursor-pointer"
                       style={{
                         background: "linear-gradient(to right, #dc2626, #b91c1c)",

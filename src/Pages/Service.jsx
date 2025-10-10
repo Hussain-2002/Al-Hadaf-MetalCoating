@@ -1,4 +1,4 @@
-// src/pages/Service.jsx
+// ✅ src/pages/Service.jsx
 import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
@@ -20,24 +20,14 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 
-// alias Trans to T for translation components
-const T = Trans;
+const T = Trans; // alias for readability
 
-/**
- * SERVICE PAGE
- * ------------------------------------------------------------------
- * Single-file logic, UI, and functionality.
- * Features:
- * ✅ Left-side vertical pill bar with animated highlight
- * ✅ Tooltip + icon animations (professional icons)
- * ✅ Slug-based dynamic selection
- * ✅ i18n-based content loading (frontend only)
- * ✅ Shadcn + Tailwind + React + Lucide only
- */
+// ──────────────────────────────────────────────
+// SERVICE PAGE (Frontend Dynamic Slug Logic)
+// ──────────────────────────────────────────────
+const ITEM_H = 64; // Tailwind h-16 = 64px
 
-const ITEM_H = 64; // 1 Tailwind h-16 = 64px
-
-// Service meta with professional Lucide icons
+// ✅ All 6 services with professional Lucide icons
 const SERVICE_META = [
   { key: "powder", slug: "powder-coating", icon: Brush, label: "Powder Coating" },
   { key: "galvanizing", slug: "galvanizing", icon: ShieldCheck, label: "Galvanizing" },
@@ -51,7 +41,7 @@ export default function ServicePage() {
   const { t } = useTranslation();
   const [selected, setSelected] = useState(0);
 
-  // 🔹 Detect slug from URL path
+  // 🔹 Detect slug dynamically from URL path (frontend only)
   useEffect(() => {
     if (typeof window === "undefined") return;
     const slug = window.location.pathname.split("/").pop();
@@ -59,12 +49,12 @@ export default function ServicePage() {
     if (index >= 0) setSelected(index);
   }, []);
 
-  // Translation helpers
+  // 🔹 Translation helpers for i18n
   const titleFor = (key) => t(`serviceSection.items.${key}.title`);
   const descFor = (key) => t(`serviceSection.items.${key}.description`);
   const shortFor = (key) => t(`serviceSection.items.${key}.shortDesc`);
 
-  // 🔹 Define inline small service components
+  // 🔹 Define mini-preview components for each service
   const ServiceComponents = {
     powder: () => (
       <ServiceDetail
@@ -72,6 +62,7 @@ export default function ServicePage() {
         desc={descFor("powder")}
         short={shortFor("powder")}
         color="linear-gradient(to right,#dc2626,#b91c1c)"
+        route="/services/powder-coating"
       />
     ),
     galvanizing: () => (
@@ -80,6 +71,7 @@ export default function ServicePage() {
         desc={descFor("galvanizing")}
         short={shortFor("galvanizing")}
         color="linear-gradient(to right,#0ea5a4,#0284c7)"
+        route="/services/galvanizing"
       />
     ),
     electroplating: () => (
@@ -88,6 +80,7 @@ export default function ServicePage() {
         desc={descFor("electroplating")}
         short={shortFor("electroplating")}
         color="linear-gradient(to right,#7c3aed,#6d28d9)"
+        route="/services/electroplating"
       />
     ),
     tin: () => (
@@ -96,6 +89,7 @@ export default function ServicePage() {
         desc={descFor("tin")}
         short={shortFor("tin")}
         color="linear-gradient(to right,#f59e0b,#d97706)"
+        route="/services/tin-plating"
       />
     ),
     metal: () => (
@@ -104,6 +98,7 @@ export default function ServicePage() {
         desc={descFor("metal")}
         short={shortFor("metal")}
         color="linear-gradient(to right,#10b981,#047857)"
+        route="/services/metal-plating"
       />
     ),
     antique: () => (
@@ -112,21 +107,25 @@ export default function ServicePage() {
         desc={descFor("antique")}
         short={shortFor("antique")}
         color="linear-gradient(to right,#92400e,#6b21a8)"
+        route="/services/antique-finish"
       />
     ),
   };
 
   const Comp = ServiceComponents[SERVICE_META[selected].key];
 
+  // ──────────────────────────────────────────────
+  // UI Layout Section
+  // ──────────────────────────────────────────────
   return (
     <div className="min-h-screen w-full bg-white text-black">
       {/* HEADER */}
       <Header />
 
-      {/* MAIN */}
+      {/* MAIN CONTENT */}
       <main className="pt-36 pb-20">
         <div className="max-w-[1200px] mx-auto px-4">
-          {/* Heading */}
+          {/* Page Heading */}
           <div className="mb-10 text-left">
             <h1 className="text-3xl md:text-4xl font-extrabold mb-2 text-gray-900">
               <T i18nKey="servicePage.heading">
@@ -140,9 +139,9 @@ export default function ServicePage() {
             </p>
           </div>
 
-          {/* Layout */}
+          {/* Layout Split: Sidebar + Content */}
           <div className="flex gap-8">
-            {/* LEFT: vertical service selector */}
+            {/* LEFT SIDEBAR - Vertical Icon Tabs */}
             <TooltipProvider>
               <div className="relative">
                 <div
@@ -150,7 +149,7 @@ export default function ServicePage() {
                   role="tablist"
                   aria-orientation="vertical"
                 >
-                  {/* Highlight background */}
+                  {/* Highlight Cylinder */}
                   <div
                     className="absolute left-0 w-full rounded-l-full"
                     style={{
@@ -163,7 +162,7 @@ export default function ServicePage() {
                     }}
                   />
 
-                  {/* Icons */}
+                  {/* Icon Buttons */}
                   {SERVICE_META.map((s, idx) => {
                     const Icon = s.icon;
                     return (
@@ -194,7 +193,7 @@ export default function ServicePage() {
               </div>
             </TooltipProvider>
 
-            {/* RIGHT: main service content */}
+            {/* RIGHT PANEL - Dynamic Service Content */}
             <div className="flex-1">
               <Card
                 className="w-full min-h-[420px] rounded-2xl overflow-hidden relative shadow-lg"
@@ -202,6 +201,7 @@ export default function ServicePage() {
                   background: "linear-gradient(180deg,#0b1220 0%, #111827 70%)",
                 }}
               >
+                {/* Background Accent */}
                 <div
                   style={{
                     position: "absolute",
@@ -216,18 +216,19 @@ export default function ServicePage() {
                   }}
                 />
                 <div className="relative z-10 px-8 py-12 md:py-20 text-white">
+                  {/* Small Tag Label */}
                   <span className="inline-block mb-4 px-3 py-1 rounded-full text-sm text-gray-300 bg-white/10">
-                    {t(
-                      `serviceSection.items.${SERVICE_META[selected].key}.title`
-                    )}
+                    {t(`serviceSection.items.${SERVICE_META[selected].key}.title`)}
                   </span>
+
+                  {/* Render Service Component */}
                   {Comp && <Comp />}
                 </div>
               </Card>
             </div>
           </div>
 
-          {/* Footer permalink */}
+          {/* Permalink info */}
           <div className="mt-6 text-sm text-gray-500">
             <span>Permalink: </span>
             <code className="bg-gray-100/20 px-2 py-1 rounded text-xs">
@@ -246,8 +247,10 @@ export default function ServicePage() {
   );
 }
 
-/* 🔹 Reusable detail block for each service */
-function ServiceDetail({ title, desc, short, color }) {
+// ──────────────────────────────────────────────
+// 🔹 Reusable Service Detail Component
+// ──────────────────────────────────────────────
+function ServiceDetail({ title, desc, short, color, route }) {
   return (
     <div className="max-w-3xl mx-auto text-left">
       <h2 className="text-4xl md:text-5xl font-extrabold mb-4">{title}</h2>
@@ -255,21 +258,23 @@ function ServiceDetail({ title, desc, short, color }) {
       <p className="text-gray-300 mb-6">{short}</p>
 
       <div className="flex gap-3">
+        {/* View More → navigates to full component like PowderCoating.jsx */}
         <Button
-          onClick={() => (window.location.href = "/contact")}
+          onClick={() => (window.location.href = route)}
           className="px-5 py-2 transition-all hover:scale-105"
           style={{ background: color, color: "#fff" }}
         >
           <T i18nKey="serviceSection.viewMore">View More</T>
         </Button>
-        <Button
-  onClick={() => (window.location.href = "/contact")}
-  className="px-5 py-2 border border-gray-500 transition-all hover:scale-105"
-  style={{ background: "transparent", color: "#fff" }}
->
-  <T i18nKey="servicePage.quoteBtn">Get Quote</T>
-</Button>
 
+        {/* Get Quote → always goes to /contact */}
+        <Button
+          onClick={() => (window.location.href = "/contact")}
+          className="px-5 py-2 border border-gray-500 transition-all hover:scale-105"
+          style={{ background: "transparent", color: "#fff" }}
+        >
+          <T i18nKey="servicePage.quoteBtn">Get Quote</T>
+        </Button>
       </div>
     </div>
   );

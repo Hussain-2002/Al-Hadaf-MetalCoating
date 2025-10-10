@@ -41,7 +41,7 @@ function Header() {
 
   return (
     <header className="fixed top-0 left-0 w-full z-50">
-      {/* 🔔 Announcement Bar */}
+      {/* 📢 Announcement Bar */}
       <div
         className={`relative w-full transition-all duration-400 
           ${isScrolled ? "bg-yellow-200 text-black" : "bg-white/70 text-black"}`}
@@ -121,10 +121,10 @@ function Header() {
         {/* Desktop Layout */}
         <div className="hidden md:flex items-center justify-between px-8 py-4">
           {/* Left Logo */}
-          <div className="flex items-center cursor-pointer" onClick={() => window.location.reload()}>
+          <div className="flex items-center cursor-pointer" onClick={() => window.location.href = "/"}>
             <img
-              src="assets/logo.png"
-              alt="Logo"
+              src="/assets/logo.png"
+              alt="Al-Hadaf Metal Coating LLC Logo"
               className="h-20 w-auto"
             />
           </div>
@@ -167,8 +167,12 @@ function Header() {
 
         {/* Mobile Layout */}
         <div className="flex md:hidden justify-between items-center px-4 py-3">
-          <div className="flex items-center cursor-pointer" onClick={() => window.location.reload()}>
-            <img src="/assets/logo.png" alt="Logo" className="h-12 w-auto" />
+          <div className="flex items-center cursor-pointer" onClick={() => window.location.href = "/"}>
+            <img
+              src="/assets/logo.png"
+              alt="Al-Hadaf Metal Coating LLC Logo"
+              className="h-12 w-auto"
+            />
           </div>
 
           <Drawer>
