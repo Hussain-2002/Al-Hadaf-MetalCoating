@@ -16,6 +16,7 @@ import Electroplating from "./pages/Electroplating.jsx";
 import TinPlating from "./pages/TinPlating.jsx";
 import MetalPlating from "./pages/MetalPlating.jsx";
 import AntiqueFinish from "./pages/AntiqueFinish.jsx";
+import TestimonialPage from "./pages/TestimonialPage";
 
 function App() {
   return (
@@ -35,6 +36,8 @@ function App() {
           <Route path="/services/tin-plating" element={<TinPlating />} />
           <Route path="/services/metal-plating" element={<MetalPlating />} />
           <Route path="/services/antique-finish" element={<AntiqueFinish />} />
+
+          <Route path="/testimonial" element={<TestimonialPage />} />
         </Routes>
       </Router>
     </I18nextProvider>
