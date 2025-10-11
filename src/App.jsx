@@ -37,7 +37,7 @@ function App() {
           <Route path="/services/metal-plating" element={<MetalPlating />} />
           <Route path="/services/antique-finish" element={<AntiqueFinish />} />
 
-          <Route path="/testimonial" element={<TestimonialPage />} />
+          <Route path="/testimonials" element={<TestimonialPage />} />
         </Routes>
       </Router>
     </I18nextProvider>
