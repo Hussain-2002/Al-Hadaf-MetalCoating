@@ -34,14 +34,14 @@ export default function PowderCoating() {
       alert("⚠️ Failed to send. Check connection or script URL.");
     }
   };
-  useEffect(() => {
-    const logos = document.querySelectorAll('header img, nav img');
-    logos.forEach((img) => {
-      if (img && img.src && img.src.includes("logo")) {
-        img.src = "/logo.png";
-      }
-    });
-  }, []);
+  // useEffect(() => {
+  //   const logos = document.querySelectorAll('header img, nav img');
+  //   logos.forEach((img) => {
+  //     if (img && img.src && img.src.includes("logo")) {
+  //       img.src = "/logo.png";
+  //     }
+  //   });
+  // }, []);
   return (
     <div className="min-h-screen bg-[#ffffff] text-white overflow-x-hidden">
 

@@ -133,13 +133,13 @@ function LandingPage() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
                 <button
                   className="px-6 py-3 bg-brand-red text-brand-white font-bold text-sm sm:text-base lg:text-lg rounded-lg hover:bg-brand-blue transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
-                  onClick={() => (window.location.href = "#aboutus")}
+                  onClick={() => (window.location.href = "/about")}
                 >
                   {t("readMore")}
                 </button>
                 <button
                   className="px-6 py-3 bg-transparent border-2 border-gray-800 text-gray-800 font-bold text-sm sm:text-base lg:text-lg rounded-lg hover:bg-gray-800 hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105"
-                  onClick={() => (window.location.href = "#gallery")}
+                  onClick={() => (window.location.href = "/services")}
                 >
                   {t("viewWork")}
                 </button>
