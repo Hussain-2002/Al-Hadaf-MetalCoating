@@ -58,8 +58,10 @@ export default function TestimonialPage() {
   const SHEET_URL = `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json`;
 
   // ✅ App Script (write)
-  const FORM_SUBMIT_URL =
-    "https://script.google.com/macros/s/AKfycbxq2DqVlJqfPivRkD1Hvif-q9_rP3TKxROErjOM-Mg3YRST9duZZND2CMZNik56re4wVA/exec";
+  // ✅ Replace this line in TestimonialPage.jsx
+const FORM_SUBMIT_URL =
+  "https://script.google.com/macros/s/AKfycbzaanj22pm4YmMEQaKlMrU1bf6aaG5c5XmqQrsx0QczwqD-VB6MHW_wDI9i_xdb2LilNg/exec";
+
 
   // ✅ Fetch Testimonials
   useEffect(() => {

@@ -7,6 +7,7 @@ import { Card } from "@/components/ui/card";
 import { Trans as T } from "react-i18next";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { motion, AnimatePresence } from "framer-motion"; // reactbits-style animation
+import { submitComment } from "@/utils/submitComment";
 
 export default function PowderCoating() {
   const [activeTab, setActiveTab] = useState("gallery");
@@ -22,18 +23,28 @@ export default function PowderCoating() {
 
   // Handles form submit to Google Script (frontend only)
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      await fetch("YOUR_GOOGLE_SCRIPT_URL", {
-        method: "POST",
-        body: JSON.stringify(form),
-      });
-      setSent(true);
-      setForm({ name: "", contact: "", message: "" });
-    } catch (err) {
-      alert("⚠️ Failed to send. Check connection or script URL.");
-    }
-  };
+  e.preventDefault();
+  try {
+    await submitComment(form, "Powder Coating");
+    setSent(true);
+    setForm({ name: "", contact: "", message: "" });
+  } catch {
+    alert("⚠️ Failed to send. Check connection or script URL.");
+  }
+};
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   try {
+  //     await fetch("YOUR_GOOGLE_SCRIPT_URL", {
+  //       method: "POST",
+  //       body: JSON.stringify(form),
+  //     });
+  //     setSent(true);
+  //     setForm({ name: "", contact: "", message: "" });
+  //   } catch (err) {
+  //     alert("⚠️ Failed to send. Check connection or script URL.");
+  //   }
+  // };
   // useEffect(() => {
   //   const logos = document.querySelectorAll('header img, nav img');
   //   logos.forEach((img) => {

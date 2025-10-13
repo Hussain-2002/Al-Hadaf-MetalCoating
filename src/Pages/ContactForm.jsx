@@ -15,45 +15,64 @@ import { useState } from "react";
 import Header from "@/Components/Header";
 import Footer from "@/Components/Footer";
 import { useTranslation } from "react-i18next";
+import { ToastProvider, Toast, ToastTitle } from "@radix-ui/react-toast";
+
+function useToast() {
+  const [open, setOpen] = useState(false);
+  const [message, setMessage] = useState("");
+  return {
+    toast: (msg) => {
+      setMessage(msg);
+      setOpen(true);
+      setTimeout(() => setOpen(false), 3000);
+    },
+    ToastUI: (
+      <ToastProvider swipeDirection="right">
+        <Toast
+          open={open}
+          onOpenChange={setOpen}
+          className="fixed bottom-4 right-4 bg-white border border-gray-200 rounded-lg shadow-lg p-4 z-[100]"
+        >
+          <ToastTitle className="text-gray-900 font-semibold">{message}</ToastTitle>
+        </Toast>
+      </ToastProvider>
+    ),
+  };
+}
 
 function ContactForm() {
   const form = useForm();
   const [loading, setLoading] = useState(false);
-  const [success, setSuccess] = useState(null);
   const { t } = useTranslation();
+  const { toast, ToastUI } = useToast();
+
+  const scriptURL = "https://script.google.com/macros/s/AKfycbxWmoX0X6q1yPRv4_0coXAPELkXAdOAzcGquW9sXKT57u1-MOuU4m7YMTHFhkORIUnw/exec";
 
   const onSubmit = async (data) => {
     setLoading(true);
-    setSuccess(null);
     try {
-      const response = await fetch("YOUR_GOOGLE_APPS_SCRIPT_URL_HERE", {
+      const response = await fetch(scriptURL, {
         method: "POST",
-        body: JSON.stringify(data),
+        mode: "no-cors", // 👈 bypasses CORS locally and in production
         headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
       });
 
-      const result = await response.json();
-      if (result.status === "success") {
-        setSuccess(t("contact.success"));
-        form.reset();
-      } else {
-        setSuccess(t("contact.error"));
-      }
+      toast("✅ Enquiry sent successfully! We'll reach out soon.");
+      form.reset();
     } catch (error) {
       console.error(error);
-      setSuccess(t("contact.failed"));
+      toast("⚠️ Network error. Please check your connection.");
     }
     setLoading(false);
   };
 
   return (
     <div className="min-h-screen flex flex-col">
-      {/* Header */}
       <Header />
 
       {/* Hero Section */}
       <section className="relative h-[250px] md:h-[400px] w-screen overflow-hidden">
-        {/* Desktop Video with Fallback Poster */}
         <video
           className="hidden md:block absolute inset-0 w-full h-full object-cover opacity-70"
           autoPlay
@@ -63,15 +82,9 @@ function ContactForm() {
           poster="assets/hero-desktop.png"
         >
           <source src="assets/Contact-us.mp4" type="video/mp4" />
-          {/* Fallback Image if video tag not supported */}
-          <img
-            src="assets/hero-desktop.png"
-            alt="Contact Background"
-            className="w-full h-full object-cover"
-          />
+          <img src="assets/hero-desktop.png" alt="Contact Background" />
         </video>
 
-        {/* Mobile Video with Fallback Poster */}
         <video
           className="block md:hidden absolute inset-0 w-full h-full object-cover opacity-70"
           autoPlay
@@ -81,15 +94,9 @@ function ContactForm() {
           poster="assets/hero-mobile.png"
         >
           <source src="assets/mobile-view-contact.mp4" type="video/mp4" />
-          {/* Fallback Image if video tag not supported */}
-          <img
-            src="assets/hero-mobile.png"
-            alt="Contact Background"
-            className="w-full h-full object-cover"
-          />
+          <img src="assets/hero-mobile.png" alt="Contact Background" />
         </video>
 
-        {/* Overlay with Title */}
         <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
           <h1 className="text-white text-3xl md:text-5xl font-bold">
             {t("contact.title")}
@@ -105,7 +112,6 @@ function ContactForm() {
           </h2>
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-              {/* Name */}
               <FormField
                 control={form.control}
                 name="name"
@@ -113,17 +119,13 @@ function ContactForm() {
                   <FormItem>
                     <FormLabel>{t("contact.name")}</FormLabel>
                     <FormControl>
-                      <Input
-                        placeholder={t("contact.namePlaceholder")}
-                        {...field}
-                      />
+                      <Input placeholder={t("contact.namePlaceholder")} {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
               />
 
-              {/* Email */}
               <FormField
                 control={form.control}
                 name="email"
@@ -131,18 +133,13 @@ function ContactForm() {
                   <FormItem>
                     <FormLabel>{t("contact.email")}</FormLabel>
                     <FormControl>
-                      <Input
-                        type="email"
-                        placeholder={t("contact.emailPlaceholder")}
-                        {...field}
-                      />
+                      <Input type="email" placeholder={t("contact.emailPlaceholder")} {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
               />
 
-              {/* Contact */}
               <FormField
                 control={form.control}
                 name="contact"
@@ -150,17 +147,13 @@ function ContactForm() {
                   <FormItem>
                     <FormLabel>{t("contact.phone")}</FormLabel>
                     <FormControl>
-                      <Input
-                        placeholder={t("contact.phonePlaceholder")}
-                        {...field}
-                      />
+                      <Input placeholder={t("contact.phonePlaceholder")} {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
               />
 
-              {/* Requirements */}
               <FormField
                 control={form.control}
                 name="requirements"
@@ -168,26 +161,22 @@ function ContactForm() {
                   <FormItem>
                     <FormLabel>{t("contact.requirements")}</FormLabel>
                     <FormControl>
-                      <Textarea
-                        placeholder={t("contact.requirementsPlaceholder")}
-                        {...field}
-                      />
+                      <Textarea placeholder={t("contact.requirementsPlaceholder")} {...field} />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
                 )}
               />
 
-              {/* Submit Button */}
               <Button type="submit" disabled={loading} className="w-full">
                 {loading ? t("contact.sending") : t("contact.submit")}
               </Button>
             </form>
           </Form>
-          {success && <p className="mt-4 text-center text-sm">{success}</p>}
         </div>
       </div>
 
+      {ToastUI}
       <Footer />
     </div>
   );
