@@ -52,6 +52,7 @@ function Footer() {
             <li><a href="/" className="hover:text-blue-900">{t("nav.home")}</a></li>
             <li><a href="/about" className="hover:text-blue-900">{t("nav.about")}</a></li>
             <li><a href="/contact" className="hover:text-blue-900">{t("nav.contact")}</a></li>
+            <li><a href="/ralchart" className="hover:text-blue-900">{t("nav.ralchart")}</a></li>
           </ul>
         </div>
 

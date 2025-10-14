@@ -8,6 +8,7 @@ import LandingPage from "./pages/LandingPage.jsx";
 import ContactForm from "./pages/ContactForm.jsx";
 import AboutUs from "./pages/AboutUs.jsx";
 import ServicePage from "./pages/Service.jsx";
+import RAL3DCube from "./Components/RalChart.jsx";
 
 // Service detail components
 import PowderCoating from "./pages/PowderCoating.jsx";
@@ -28,6 +29,7 @@ function App() {
           <Route path="/about" element={<AboutUs />} />
           <Route path="/contact" element={<ContactForm />} />
           <Route path="/services" element={<ServicePage />} />
+          <Route path="/ralchart" element={<RAL3DCube />} />
 
           {/* 🔹 Individual service detail pages */}
           <Route path="/services/powder-coating" element={<PowderCoating />} />
