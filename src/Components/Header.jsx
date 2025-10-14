@@ -71,11 +71,8 @@ function Header() {
             <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-yellow-300 transition">
               <FaFacebookF />
             </a>
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-yellow-300 transition">
+            <a href="https://www.instagram.com/alhadafmetalcoating/" target="_blank" rel="noopener noreferrer" className="hover:text-yellow-300 transition">
               <FaInstagram />
-            </a>
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-yellow-300 transition">
-              <FaTwitter />
             </a>
           </div>
         </div>
@@ -102,11 +99,8 @@ function Header() {
             <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-yellow-300 transition">
               <FaFacebookF />
             </a>
-            <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-yellow-300 transition">
+            <a href="https://www.instagram.com/alhadafmetalcoating/" target="_blank" rel="noopener noreferrer" className="hover:text-yellow-300 transition">
               <FaInstagram />
-            </a>
-            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-yellow-300 transition">
-              <FaTwitter />
             </a>
           </div>
         </div>

@@ -40,10 +40,8 @@ function Footer() {
         <div>
           <h4 className="text-sm font-semibold mb-2">{t("footer.usefulLinks")}</h4>
           <ul className="space-y-1 text-sm text-gray-600">
-            <li><a href="#privacy" className="hover:text-blue-900">{t("footer.privacy")}</a></li>
-            <li><a href="#services" className="hover:text-blue-900">{t("nav.services")}</a></li>
-            <li><a href="#gallery" className="hover:text-blue-900">{t("nav.gallery")}</a></li>
-            <li><a href="#testimonials" className="hover:text-blue-900">{t("nav.testimonials")}</a></li>
+            <li><a href="/services" className="hover:text-blue-900">{t("nav.services")}</a></li>
+            <li><a href="/testimonials" className="hover:text-blue-900">{t("nav.testimonials")}</a></li>
           </ul>
         </div>
 
@@ -51,10 +49,9 @@ function Footer() {
         <div>
           <h4 className="text-sm font-semibold mb-2">{t("footer.more")}</h4>
           <ul className="space-y-1 text-sm text-gray-600">
-            <li><a href="#home" className="hover:text-blue-900">{t("nav.home")}</a></li>
-            <li><a href="#aboutus" className="hover:text-blue-900">{t("nav.about")}</a></li>
-            <li><a href="#videos" className="hover:text-blue-900">{t("nav.videos")}</a></li>
-            <li><a href="#contactus" className="hover:text-blue-900">{t("nav.contact")}</a></li>
+            <li><a href="/" className="hover:text-blue-900">{t("nav.home")}</a></li>
+            <li><a href="/about" className="hover:text-blue-900">{t("nav.about")}</a></li>
+            <li><a href="/contact" className="hover:text-blue-900">{t("nav.contact")}</a></li>
           </ul>
         </div>
 
@@ -77,21 +74,18 @@ function Footer() {
             <a href="https://wa.me/971585328151" className="hover:text-green-600">{t("footer.whatsapp")}</a>
           </p>
           <p className="text-sm text-gray-600">alhadafmetalcoating@gmail.com</p>
-          <p className="text-sm text-gray-600">info@alhadafmetalcoating.com</p>
+          <p className="text-sm text-gray-600">info.alhadafmetalcoating@gmail.com</p>
         </div>
 
         {/* Col 4 */}
         <div>
           <h4 className="text-sm font-semibold mb-2">{t("footer.connect")}</h4>
           <div className="flex space-x-4 mb-4">
-            <a href="https://instagram.com" target="_blank" rel="noreferrer">
+            <a href="https://www.instagram.com/alhadafmetalcoating/" target="_blank" rel="noreferrer">
               <FaInstagram className="w-6 h-6 text-pink-600 hover:opacity-80" />
             </a>
             <a href="https://linkedin.com" target="_blank" rel="noreferrer">
               <FaLinkedinIn className="w-6 h-6 text-blue-700 hover:opacity-80" />
-            </a>
-            <a href="https://twitter.com" target="_blank" rel="noreferrer">
-              <FaTwitter className="w-6 h-6 text-cyan-500 hover:opacity-80" />
             </a>
             <a href="https://wa.me/971585328151" target="_blank" rel="noreferrer">
               <FaWhatsapp className="w-6 h-6 text-green-600 hover:opacity-80" />
@@ -117,20 +111,19 @@ function Footer() {
         <div>
           <h4 className="text-sm font-semibold mb-2">{t("footer.usefulLinks")}</h4>
           <ul className="space-y-1 text-sm text-gray-600">
-            <li><a href="#privacy" className="hover:text-blue-900">{t("footer.privacy")}</a></li>
-            <li><a href="#services" className="hover:text-blue-900">{t("nav.services")}</a></li>
-            <li><a href="#gallery" className="hover:text-blue-900">{t("nav.gallery")}</a></li>
-            <li><a href="#testimonials" className="hover:text-blue-900">{t("nav.testimonials")}</a></li>
+            <li><a href="/services" className="hover:text-blue-900">{t("nav.services")}</a></li>
+            <li><a href="/gallery" className="hover:text-blue-900">{t("nav.gallery")}</a></li>
+            <li><a href="/testimonials" className="hover:text-blue-900">{t("nav.testimonials")}</a></li>
           </ul>
         </div>
 
         <div>
           <h4 className="text-sm font-semibold mb-2">{t("footer.more")}</h4>
           <ul className="space-y-1 text-sm text-gray-600">
-            <li><a href="#home" className="hover:text-blue-900">{t("nav.home")}</a></li>
-            <li><a href="#aboutus" className="hover:text-blue-900">{t("nav.about")}</a></li>
-            <li><a href="#videos" className="hover:text-blue-900">{t("nav.videos")}</a></li>
-            <li><a href="#contactus" className="hover:text-blue-900">{t("nav.contact")}</a></li>
+            <li><a href="/" className="hover:text-blue-900">{t("nav.home")}</a></li>
+            <li><a href="/about" className="hover:text-blue-900">{t("nav.about")}</a></li>
+            <li><a href="/videos" className="hover:text-blue-900">{t("nav.videos")}</a></li>
+            <li><a href="/contact" className="hover:text-blue-900">{t("nav.contact")}</a></li>
           </ul>
         </div>
 
@@ -158,15 +151,13 @@ function Footer() {
         <div>
           <h4 className="text-sm font-semibold mb-2">{t("footer.connect")}</h4>
           <div className="flex space-x-4 mb-4">
-            <a href="https://instagram.com" target="_blank" rel="noreferrer">
+            <a href="https://www.instagram.com/alhadafmetalcoating/" target="_blank" rel="noreferrer">
               <FaInstagram className="w-6 h-6 text-pink-600 hover:opacity-80" />
             </a>
             <a href="https://linkedin.com" target="_blank" rel="noreferrer">
               <FaLinkedinIn className="w-6 h-6 text-blue-700 hover:opacity-80" />
             </a>
-            <a href="https://twitter.com" target="_blank" rel="noreferrer">
-              <FaTwitter className="w-6 h-6 text-cyan-500 hover:opacity-80" />
-            </a>
+        
             <a href="https://wa.me/971585328151" target="_blank" rel="noreferrer">
               <FaWhatsapp className="w-6 h-6 text-green-600 hover:opacity-80" />
             </a>

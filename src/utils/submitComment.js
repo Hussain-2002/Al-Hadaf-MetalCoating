@@ -1,26 +1,29 @@
-// ✅ src/utils/submitComment.js
-export const submitComment = async (formData, serviceName) => {
+// src/utils/submitComment.js
+export async function submitComment(formData, serviceName) {
+  const url = "https://script.google.com/macros/s/AKfycbzcEoE1lcUx77df3_zl9nejh8J2jvruBd10zp80SckW8qoDVDN6WBWhgGHiY4N3GR8R0Q/exec";
+
+  const payload = {
+    name: formData.name,
+    contact: formData.contact,
+    message: formData.message,
+    service_name: serviceName, // 🎯 This will populate "Service Chosen" column
+  };
+
   try {
-    const payload = {
-      ...formData,
-      service_name: serviceName,
-    };
+    const response = await fetch(url, {
+      method: "POST",
+      mode: "no-cors", // ✅ prevents CORS blocking
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(payload),
+    });
 
-    const response = await fetch(
-  "https://script.google.com/macros/s/AKfycbyZFFgbYcmE2e_jScvadmkDdeR4C3myKjkDreRbdIAAzUGYzIbdZYvV1Nlj1QqZNr0V/exec",
-  {
-    method: "POST",
-    mode: "cors",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload),
-  }
-);
-
-
-    const result = await response.json();
-    return result;
+    // Since mode:no-cors returns opaque response
+    console.log("✅ Form submitted successfully (no-cors mode)");
+    return true;
   } catch (error) {
     console.error("❌ Error submitting comment:", error);
     throw error;
   }
-};
+}

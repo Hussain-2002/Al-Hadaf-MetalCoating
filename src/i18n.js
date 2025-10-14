@@ -86,6 +86,34 @@ const resources = {
         short3:
           "The interests of our customers are always top priority, and we hope you enjoy our products as much as we enjoy providing them.",
         experience: "12+ Years of Experience in Metal Coating",
+        heroTitle: "About Al-Hadaf Metal Coating LLC",
+        heroDescription: "Delivering excellence in surface finishing and metal coating solutions since our establishment in 2022 — backed by over 15 years of hands-on experience in the industry.",
+        whoWeAreTitle: "Who We Are",
+        whoWeAreDescription: "Established in 2022, Al-Hadaf Metal Coating LLC has quickly become one of the leading providers of surface finishing and metal coating services in the UAE. With over 15 years of experience in the metal coating industry, we pride ourselves on precision, durability, and top-quality craftsmanship.",
+        whoWeAreDescription2: "Our team specializes in a wide range of coating technologies, ensuring that every project — from industrial applications to architectural finishes — meets the highest international standards. We believe in combining innovation, sustainability, and customer satisfaction to deliver results that stand the test of time.",
+        founderMessageTitle: "A Message from Our Founder",
+        founderMessage: "At Al-Hadaf Metal Coating, our mission is simple — to redefine surface perfection through technology and craftsmanship. Every coating we apply reflects our dedication to quality, sustainability, and long-term partnerships with our clients.",
+        founderMessage2: "With over 15 years of experience in this field, I take pride in leading a team that shares the same passion for excellence and innovation. Our journey is built on trust, precision, and commitment to deliver unmatched results.",
+        founderSignature: "— Al-Hadaf, Founder & CEO",
+        meetTeamTitle: "Meet Our Team",
+        teamMembers: {
+          hussain: {
+            name: "Hussain",
+            role: "Founder & CEO",
+          },
+          mannan: {
+            name: "Mannan Moiyedi",
+            role: "Operations Manager",
+          },
+          saleh: {
+            name: "Mohammed Saleh",
+            role: "Production Engineer",
+          },
+          aisha: {
+            name: "Aisha Kareem",
+            role: "Quality Supervisor",
+          },
+        },
       },
 
       serviceSection: {
@@ -130,13 +158,13 @@ const resources = {
           },
         },
       },
-      // 🔹 Service Page (new)
+
       servicePage: {
         heading: "Surface Alchemy — Premium Finishes",
         sub: "Choose a service to learn more about our capabilities.",
         quoteBtn: "Get Quote",
-    },
-    // 🔹 Powder Coating Page (new)
+      },
+
       powderPage: {
         heading: "Powder Coating",
         tagline: "Durable. Vibrant. Long-lasting — a coating revolution.",
@@ -161,7 +189,6 @@ const resources = {
       },
     },
   },
-  
 
   ar: {
     translation: {
@@ -245,6 +272,34 @@ const resources = {
         short3:
           "مصالح عملائنا دائمًا أولوية قصوى، ونأمل أن تستمتعوا بمنتجاتنا كما نستمتع بتقديمها لكم.",
         experience: "أكثر من 12 عامًا من الخبرة في طلاء المعادن",
+        heroTitle: "حول الهدف لطلاء المعادن ذ.م.م",
+        heroDescription: "تقديم التميز في حلول التشطيب السطحي وطلاء المعادن منذ تأسيسنا في عام 2022 — مدعومًا بأكثر من 15 عامًا من الخبرة العملية في الصناعة.",
+        whoWeAreTitle: "من نحن",
+        whoWeAreDescription: "تأسست شركة الهدف لطلاء المعادن ذ.م.م في عام 2022، وسرعان ما أصبحت واحدة من كبار مقدمي خدمات التشطيب السطحي وطلاء المعادن في الإمارات. مع أكثر من 15 عامًا من الخبرة في صناعة طلاء المعادن، نفخر بالدقة والمتانة والحرفية عالية الجودة.",
+        whoWeAreDescription2: "يتخصص فريقنا في مجموعة واسعة من تقنيات الطلاء، مما يضمن أن كل مشروع — من التطبيقات الصناعية إلى التشطيبات المعمارية — يلبي أعلى المعايير الدولية. نحن نؤمن بالجمع بين الابتكار والاستدامة ورضا العملاء لتقديم نتائج تصمد أمام اختبار الزمن.",
+        founderMessageTitle: "رسالة من المؤسس",
+        founderMessage: "في الهدف لطلاء المعادن، مهمتنا بسيطة — إعادة تعريف الكمال السطحي من خلال التكنولوجيا والحرفية. كل طلاء نطبقه يعكس تفانينا في الجودة والاستدامة والشراكات طويلة الأجل مع عملائنا.",
+        founderMessage2: "مع أكثر من 15 عامًا من الخبرة في هذا المجال، أفخر بقيادة فريق يشاركني نفس الشغف بالتميز والابتكار. رحلتنا مبنية على الثقة والدقة والالتزام بتقديم نتائج لا مثيل لها.",
+        founderSignature: "— المؤسس والرئيس التنفيذي",
+        meetTeamTitle: "تعرف على فريقنا",
+        teamMembers: {
+          hussain: {
+            name: "حسين",
+            role: "المؤسس والرئيس التنفيذي",
+          },
+          mannan: {
+            name: "منان مؤيدي",
+            role: "مدير العمليات",
+          },
+          saleh: {
+            name: "محمد صالح",
+            role: "مهندس الإنتاج",
+          },
+          aisha: {
+            name: "عائشة كريم",
+            role: "مشرفة الجودة",
+          },
+        },
       },
 
       serviceSection: {
@@ -289,11 +344,13 @@ const resources = {
           },
         },
       },
+
       servicePage: {
         heading: "سحر السطح — تشطيبات فاخرة",
         sub: "اختر خدمة لمعرفة المزيد عن قدراتنا.",
         quoteBtn: "احصل على عرض سعر",
       },
+
       powderPage: {
         heading: "الطلاء بالمسحوق",
         tagline: "متين. نابض بالحياة. طويل الأمد — ثورة في الطلاء.",
@@ -316,7 +373,6 @@ const resources = {
           success: "تم إرسال رسالتك بنجاح!",
         },
       },
-
     },
   },
 
@@ -403,6 +459,34 @@ const resources = {
         short3:
           "ग्राहकों की रुचि हमेशा हमारी शीर्ष प्राथमिकता है, और हमें आशा है कि आप हमारे उत्पादों का उतना ही आनंद लेंगे जितना हम उन्हें उपलब्ध कराते हैं।",
         experience: "धातु कोटिंग में 12+ वर्षों का अनुभव",
+        heroTitle: "अल-हदफ मेटल कोटिंग एलएलसी के बारे में",
+        heroDescription: "2022 में हमारी स्थापना के बाद से सतह फिनिशिंग और धातु कोटिंग समाधान में उत्कृष्टता प्रदान करना — उद्योग में 15 से अधिक वर्षों के व्यावहारिक अनुभव द्वारा समर्थित।",
+        whoWeAreTitle: "हम कौन हैं",
+        whoWeAreDescription: "2022 में स्थापित, अल-हदफ मेटल कोटिंग एलएलसी यूएई में सतह फिनिशिंग और धातु कोटिंग सेवाओं के अग्रणी प्रदाताओं में से एक बन गया है। धातु कोटिंग उद्योग में 15 से अधिक वर्षों के अनुभव के साथ, हम सटीकता, स्थायित्व और शीर्ष-गुणवत्ता शिल्प कौशल पर गर्व करते हैं।",
+        whoWeAreDescription2: "हमारी टीम कोटिंग प्रौद्योगिकियों की एक विस्तृत श्रृंखला में विशेषज्ञता रखती है, यह सुनिश्चित करते हुए कि प्रत्येक परियोजना — औद्योगिक अनुप्रयोगों से लेकर वास्तुशिल्प फिनिश तक — उच्चतम अंतर्राष्ट्रीय मानकों को पूरा करती है। हम समय की कसौटी पर खरे उतरने वाले परिणाम देने के लिए नवाचार, स्थिरता और ग्राहक संतुष्टि को मिलाने में विश्वास करते हैं।",
+        founderMessageTitle: "हमारे संस्थापक का संदेश",
+        founderMessage: "अल-हदफ मेटल कोटिंग में, हमारा मिशन सरल है — प्रौद्योगिकी और शिल्प कौशल के माध्यम से सतह की पूर्णता को फिर से परिभाषित करना। हम जो भी कोटिंग लगाते हैं वह गुणवत्ता, स्थिरता और हमारे ग्राहकों के साथ दीर्घकालिक साझेदारी के प्रति हमारे समर्पण को दर्शाती है।",
+        founderMessage2: "इस क्षेत्र में 15 से अधिक वर्षों के अनुभव के साथ, मुझे एक ऐसी टीम का नेतृत्व करने पर गर्व है जो उत्कृष्टता और नवाचार के लिए समान जुनून साझा करती है। हमारी यात्रा विश्वास, सटीकता और बेजोड़ परिणाम देने की प्रतिबद्धता पर बनी है।",
+        founderSignature: "— हुसैन अल-हदफ, संस्थापक और सीईओ",
+        meetTeamTitle: "हमारी टीम से मिलें",
+        teamMembers: {
+          hussain: {
+            name: "हुसैन",
+            role: "संस्थापक और सीईओ",
+          },
+          mannan: {
+            name: "मन्नान मोइयेदी",
+            role: "ऑपरेशन्स मैनेजर",
+          },
+          saleh: {
+            name: "मोहम्मद सालेह",
+            role: "प्रोडक्शन इंजीनियर",
+          },
+          aisha: {
+            name: "आइशा करीम",
+            role: "गुणवत्ता पर्यवेक्षक",
+          },
+        },
       },
 
       serviceSection: {
@@ -447,11 +531,13 @@ const resources = {
           },
         },
       },
+
       servicePage: {
         heading: "सतह का जादू — प्रीमियम फिनिश",
         sub: "हमारी क्षमताओं के बारे में अधिक जानने के लिए एक सेवा चुनें।",
         quoteBtn: "कोटेशन प्राप्त करें",
       },
+
       powderPage: {
         heading: "पाउडर कोटिंग",
         tagline: "टिकाऊ। चमकदार। लंबे समय तक चलने वाला — एक कोटिंग क्रांति।",
@@ -480,7 +566,7 @@ const resources = {
 
 i18n.use(initReactI18next).init({
   resources,
-  lng: "en", // default language
+  lng: "en",
   fallbackLng: "en",
   interpolation: {
     escapeValue: false,

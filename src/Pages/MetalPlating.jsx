@@ -20,17 +20,17 @@ export default function MetalPlating() {
   const images = Array.from({ length: 12 }).map((_, i) => `/assets/gallery/metal-${i + 1}.jpg`);
   const videos = Array.from({ length: 6 }).map((_, i) => `/assets/videos/metal-${i + 1}.mp4`);
 
-  // Handles form submit to Google Script (frontend only)
+  // ✅ Unified form submit handler
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await fetch("YOUR_GOOGLE_SCRIPT_URL", {
-        method: "POST",
-        body: JSON.stringify(form),
-      });
+      await submitComment(form, "Metal Plating"); // 🎯 Service name sent here
       setSent(true);
       setForm({ name: "", contact: "", message: "" });
-    } catch (err) {
+      
+      // Auto-hide success message after 5 seconds
+      setTimeout(() => setSent(false), 5000);
+    } catch {
       alert("⚠️ Failed to send. Check connection or script URL.");
     }
   };

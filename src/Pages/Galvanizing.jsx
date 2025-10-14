@@ -24,17 +24,17 @@ export default function Galvanizing() {
     (_, i) => `/assets/videos/galvanizing-${i + 1}.mp4`
   );
 
-  // Handles form submit to Google Script (frontend only)
+  // ✅ Unified form submit handler
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await fetch("YOUR_GOOGLE_SCRIPT_URL", {
-        method: "POST",
-        body: JSON.stringify(form),
-      });
+      await submitComment(form, "Galvanizing"); // 🎯 Service name sent here
       setSent(true);
       setForm({ name: "", contact: "", message: "" });
-    } catch (err) {
+      
+      // Auto-hide success message after 5 seconds
+      setTimeout(() => setSent(false), 5000);
+    } catch {
       alert("⚠️ Failed to send. Check connection or script URL.");
     }
   };
