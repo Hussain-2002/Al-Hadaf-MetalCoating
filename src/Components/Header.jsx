@@ -53,7 +53,7 @@ function Header() {
             href="https://maps.app.goo.gl/LCmcG25VxgHods9c9"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-1 hover:text-yellow-300 transition"
+            className="flex items-center gap-1 hover:text-yellow-300 transition hover:!text-[#646cff]"
           >
             <FaMapMarkerAlt className="text-lg" />
             <span>{t("header.location")}</span>
@@ -66,16 +66,28 @@ function Header() {
             </div>
           </div>
 
+          
+          
           {/* Right: Social Icons */}
           <div className="flex gap-4">
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-yellow-300 transition">
-              <FaFacebookF />
-            </a>
-            <a href="https://www.instagram.com/alhadafmetalcoating/" target="_blank" rel="noopener noreferrer" className="hover:text-yellow-300 transition">
-              <FaInstagram />
-            </a>
-          </div>
+          <a
+            href="https://facebook.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="transition hover:!text-[#646cff]"
+          >
+            <FaFacebookF />
+          </a>
+          <a
+            href="https://www.instagram.com/alhadafmetalcoating/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="transition hover:!text-[#646cff]"
+          >
+            <FaInstagram />
+          </a>
         </div>
+      </div>
 
         {/* ✅ Mobile Layout */}
         <div className="flex md:hidden flex-col items-center gap-2 px-4 py-2 text-xs">

@@ -25,6 +25,7 @@ const resources = {
         services: "Services",
         about: "About Us",
         ralchart: "RAL Color Chart",
+        blog : "Blogs And Project",
         videos: "Videos",
         testimonials: "Testimonials",
         contact: "Contact Us",
@@ -80,7 +81,7 @@ const resources = {
           designer: "Creative Designer",
         },
         short1:
-          "Al Hadaf Metal Coating L.L.C was established on 11.09.2022. We offer a variety of the latest plating solutions with high-quality and budget-friendly options.",
+          "Al Hadaf Metal Coating L.L.C was established on 2022. We offer a variety of the latest plating solutions with high-quality and budget-friendly options.",
         short2:
           "Our engineers always keep an eye on the latest trends and prioritize customer satisfaction, making us a trusted name worldwide.",
         short3:
@@ -212,6 +213,7 @@ const resources = {
         services: "الخدمات",
         about: "معلومات عنا",
         ralchart: "مخطط ألوان رال",
+        blog : "المدونات والمشاريع",
         videos: "مقاطع الفيديو",
         testimonials: "آراء العملاء",
         contact: "اتصل بنا",
@@ -266,7 +268,7 @@ const resources = {
           designer: "المصمم الإبداعي",
         },
         short1:
-          "تأسست شركة الهدف لطلاء المعادن ذ.م.م في 11.09.2022. نحن نقدم مجموعة متنوعة من أحدث حلول الطلاء بجودة عالية وأسعار مناسبة.",
+          "تأسست شركة الهدف لطلاء المعادن ذ.م.م في 2022 نحن نقدم مجموعة متنوعة من أحدث حلول الطلاء بجودة عالية وأسعار مناسبة.",
         short2:
           "مهندسونا يواكبون دائمًا أحدث الاتجاهات ويضعون رضا العملاء أولاً، مما يجعلنا اسمًا موثوقًا به عالميًا.",
         short3:
@@ -398,6 +400,7 @@ const resources = {
         services: "सेवाएं",
         about: "हमारे बारे में",
         ralchart: "आरएएल रंग चार्ट",
+        blog : "ब्लॉग्स और परियोजनाएँ",
         videos: "वीडियो",
         testimonials: "प्रशंसापत्र",
         contact: "संपर्क करें",
@@ -453,7 +456,7 @@ const resources = {
           designer: "क्रिएटिव डिज़ाइनर",
         },
         short1:
-          "अल हदफ मेटल कोटिंग एल.एल.सी की स्थापना 11.09.2022 को हुई थी। हम उच्च गुणवत्ता और बजट-अनुकूल नवीनतम प्लेटिंग समाधान प्रदान करते हैं।",
+          "अल हदफ मेटल कोटिंग एल.एल.सी की स्थापना 2022 को हुई थी। हम उच्च गुणवत्ता और बजट-अनुकूल नवीनतम प्लेटिंग समाधान प्रदान करते हैं।",
         short2:
           "हमारे इंजीनियर नवीनतम रुझानों पर नज़र रखते हैं और ग्राहक संतुष्टि को प्राथमिकता देते हैं, जिससे हम विश्व स्तर पर एक विश्वसनीय नाम बन गए हैं।",
         short3:
@@ -586,6 +589,7 @@ const resources = {
         about: "ഞങ്ങളെക്കുറിച്ച്",
         ralchart: "ആർ.എ.എൽ കളർ ചാർട്ട്",
         videos: "വീഡിയോകൾ",
+        blog : "ബ്ലോഗുകളും പദ്ധതികളും",
         testimonials: "അഭിപ്രായങ്ങൾ",
         contact: "ബന്ധപ്പെടുക",
       },
@@ -640,7 +644,7 @@ const resources = {
           designer: "ക്രിയേറ്റീവ് ഡിസൈനർ",
         },
         short1:
-          "അൽ ഹദഫ് മെറ്റൽ കോട്ടിംഗ് എൽ.എൽ.സി 11.09.2022-ൽ സ്ഥാപിതമായി. ഉയർന്ന നിലവാരവും ബജറ്റ് സൗഹൃദവുമായ ഏറ്റവും പുതിയ പ്ലേറ്റിംഗ് സൊല്യൂഷനുകൾ ഞങ്ങൾ വാഗ്ദാനം ചെയ്യുന്നു.",
+          "അൽ ഹദഫ് മെറ്റൽ കോട്ടിംഗ് എൽ.എൽ.സി 2022-ൽ സ്ഥാപിതമായി. ഉയർന്ന നിലവാരവും ബജറ്റ് സൗഹൃദവുമായ ഏറ്റവും പുതിയ പ്ലേറ്റിംഗ് സൊല്യൂഷനുകൾ ഞങ്ങൾ വാഗ്ദാനം ചെയ്യുന്നു.",
         short2:
           "ഞങ്ങളുടെ എഞ്ചിനീയർമാർ എപ്പോഴും ഏറ്റവും പുതിയ പ്രവണതകൾ നിരീക്ഷിക്കുകയും ഉപഭോക്തൃ സംതൃപ്തിക്ക് മുൻഗണന നൽകുകയും ചെയ്യുന്നു, ഇത് ഞങ്ങളെ ലോകമെമ്പാടും വിശ്വസ്തമായ ഒരു പേരാക്കി മാറ്റുന്നു.",
         short3:

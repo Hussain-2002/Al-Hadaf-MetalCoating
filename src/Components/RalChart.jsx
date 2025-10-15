@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Download, Grid3X3, Box, X } from "lucide-react";
+import { Download, Grid3X3, Box, X, FileDown } from "lucide-react";
 import Header from "@/Components/Header";
 import Footer from "@/Components/Footer";
 
@@ -288,14 +288,67 @@ export default function RALChart() {
   };
 
   const handleExportChart = async () => {
+  try {
     const el = chartRef.current;
     if (!el) return;
+
+    // ✅ Step 1: temporarily sanitize all OKLCH / unsupported colors
+    const allEls = el.querySelectorAll("*");
+    allEls.forEach((node) => {
+      const computed = window.getComputedStyle(node);
+      const bg = computed.backgroundColor;
+      if (bg && (bg.includes("oklch") || bg.includes("color("))) {
+        node.dataset.prevBg = node.style.backgroundColor;
+        node.style.backgroundColor = "#ffffff";
+      }
+      const color = computed.color;
+      if (color && (color.includes("oklch") || color.includes("color("))) {
+        node.dataset.prevColor = node.style.color;
+        node.style.color = "#000000";
+      }
+    });
+
+    // ✅ Step 2: use html2canvas safely
     const html2canvas = (await import("html2canvas")).default;
-    const canvas = await html2canvas(el, { backgroundColor: "#ffffff", scale: 2 });
+    const canvas = await html2canvas(el, {
+      backgroundColor: "#ffffff",
+      scale: 2,
+      useCORS: true,
+    });
+
+    // ✅ Step 3: restore all previous styles
+    allEls.forEach((node) => {
+      if (node.dataset.prevBg) {
+        node.style.backgroundColor = node.dataset.prevBg;
+        delete node.dataset.prevBg;
+      }
+      if (node.dataset.prevColor) {
+        node.style.color = node.dataset.prevColor;
+        delete node.dataset.prevColor;
+      }
+    });
+
+    // ✅ Step 4: download the result
     const link = document.createElement("a");
     link.download = `RAL_Color_Chart_Complete.png`;
     link.href = canvas.toDataURL("image/png");
     link.click();
+  } catch (err) {
+    console.error("Export failed:", err);
+    alert("Error exporting chart. Please refresh or retry.");
+  }
+};
+
+
+  // Download brochure from public/assets folder (public/assets/brochure.pdf)
+  const handleDownloadBrochure = () => {
+    const brochurePath = "/assets/brochure.pdf"; // adjust filename if different
+    const link = document.createElement("a");
+    link.href = brochurePath;
+    link.download = "Al_Hadaf_Brochure.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
   const handleRalChange = (e) => {
@@ -542,12 +595,19 @@ export default function RALChart() {
                 <p className="text-sm text-gray-600 mt-1">{RAL_PALETTE.length} Professional Colors</p>
               </div>
               <div className="flex gap-3">
-                <button
+                {/* <button
                   onClick={handleExportChart}
                   className="bg-gradient-to-r from-green-600 to-green-700 text-white px-4 py-2 rounded-lg hover:from-green-700 hover:to-green-800 transition font-medium shadow-lg flex items-center gap-2"
                 >
                   <Download className="w-4 h-4" />
                   Download Chart
+                </button> */}
+                <button
+                  onClick={handleDownloadBrochure}
+                  className="bg-gradient-to-r from-green-600 to-green-700 text-white px-4 py-2 rounded-lg hover:from-green-700 hover:to-green-800 transition font-medium shadow-lg flex items-center gap-2"
+                >
+                  <FileDown className="w-4 h-4" />
+                  Download Brochure
                 </button>
                 <button
                   onClick={() => setShowChart(false)}

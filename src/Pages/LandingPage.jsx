@@ -8,17 +8,19 @@ import Footer from "../components/Footer";
 import { useTranslation } from "react-i18next";
 import AboutShort from "@/Components/AboutShort";
 import Certificates from "../Components/Certificates";
+import SpinWheel from "../components/SpinWheel"; // ✅ NEW: Import SpinWheel
 
 // ============================================
 // 🔧 CONFIGURATION - PASTE YOUR APPS SCRIPT URL
 // ============================================
-const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx0tO-WtDoYrojLZtAwcgxVBcc2DChXfLvrU0aTZ8NrFsBkp9UYmZtejrArvtXa2bXUbA/exec"; // 👈 Same URL from BlogDisplay.jsx
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx0tO-WtDoYrojLZtAwcgxVBcc2DChXfLvrU0aTZ8NrFsBkp9UYmZtejrArvtXa2bXUbA/exec";
 
 function LandingPage() {
   const [showScroll, setShowScroll] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
   const [projectsData, setProjectsData] = useState([]);
   const [loadingProjects, setLoadingProjects] = useState(true);
+  const [isSpinWheelOpen, setIsSpinWheelOpen] = useState(false); // ✅ NEW: Spin wheel modal state
   const { t } = useTranslation();
 
   // ============================================
@@ -33,7 +35,7 @@ function LandingPage() {
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
 
   // ============================================
-  // 📥 FETCH PROJECTS FROM GOOGLE SHEET
+  // 🔥 FETCH PROJECTS FROM GOOGLE SHEET
   // ============================================
   useEffect(() => {
     fetchProjects();
@@ -506,7 +508,7 @@ function LandingPage() {
         <Footer />
       </main>
 
-      {/* Scroll to Top */}
+      {/* Scroll to Top Button */}
       {showScroll && (
         <Button
           size="icon"
@@ -516,6 +518,31 @@ function LandingPage() {
           <ArrowUp className="h-5 w-5" />
         </Button>
       )}
+
+      {/* ============================================ */}
+      {/* 🎡 SPIN WHEEL FLOATING BUTTON - NEW! */}
+      {/* ============================================ */}
+      <button
+        onClick={() => setIsSpinWheelOpen(true)}
+        className="fixed bottom-6 right-6 w-16 h-16 bg-gradient-to-br from-red-500 via-red-600 to-red-700 text-white rounded-full shadow-2xl hover:shadow-red-500/50 hover:scale-110 transition-all duration-300 z-50 flex items-center justify-center group animate-pulse hover:animate-none"
+        aria-label="Open Spin Wheel"
+      >
+        <div className="text-3xl transform group-hover:rotate-180 transition-transform duration-500">
+          🎡
+        </div>
+        {/* Tooltip */}
+        <div className="absolute bottom-full right-0 mb-2 px-3 py-1 bg-gray-900 text-white text-xs rounded-lg whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+          Spin & Win! 🎁
+        </div>
+      </button>
+
+      {/* ============================================ */}
+      {/* 🎡 SPIN WHEEL MODAL - NEW! */}
+      {/* ============================================ */}
+      <SpinWheel 
+        isOpen={isSpinWheelOpen} 
+        onClose={() => setIsSpinWheelOpen(false)} 
+      />
 
       {/* ============================================ */}
       {/* 🎨 MARQUEE ANIMATION CSS - DESKTOP ONLY */}

@@ -40,8 +40,17 @@ function Footer() {
         <div>
           <h4 className="text-sm font-semibold mb-2">{t("footer.usefulLinks")}</h4>
           <ul className="space-y-1 text-sm text-gray-600">
-            <li><a href="/services" className="hover:text-blue-900">{t("nav.services")}</a></li>
-            <li><a href="/testimonials" className="hover:text-blue-900">{t("nav.testimonials")}</a></li>
+            <li>
+  <a href="/services" className="transition hover:!text-[#646cff]">
+    {t("nav.services")}
+  </a>
+</li>
+<li>
+  <a href="/testimonials" className="transition hover:!text-[#646cff]">
+    {t("nav.testimonials")}
+  </a>
+</li>
+
           </ul>
         </div>
 
@@ -49,35 +58,67 @@ function Footer() {
         <div>
           <h4 className="text-sm font-semibold mb-2">{t("footer.more")}</h4>
           <ul className="space-y-1 text-sm text-gray-600">
-            <li><a href="/" className="hover:text-blue-900">{t("nav.home")}</a></li>
-            <li><a href="/about" className="hover:text-blue-900">{t("nav.about")}</a></li>
-            <li><a href="/contact" className="hover:text-blue-900">{t("nav.contact")}</a></li>
-            <li><a href="/ralchart" className="hover:text-blue-900">{t("nav.ralchart")}</a></li>
-            <li><a href="/blog" className="hover:text-blue-900">{t("nav.blog")}</a></li>
+            <li>
+  <a href="/" className="transition hover:!text-[#646cff]">
+    {t("nav.home")}
+  </a>
+</li>
+<li>
+  <a href="/about" className="transition hover:!text-[#646cff]">
+    {t("nav.about")}
+  </a>
+</li>
+<li>
+  <a href="/contact" className="transition hover:!text-[#646cff]">
+    {t("nav.contact")}
+  </a>
+</li>
+<li>
+  <a href="/ralchart" className="transition hover:!text-[#646cff]">
+    {t("nav.ralchart")}
+  </a>
+</li>
+<li>
+  <a href="/blog" className="transition hover:!text-[#646cff]">
+    {t("nav.blog")}
+  </a>
+</li>
+
           </ul>
         </div>
 
         {/* Col 3 */}
-        <div>
-          <h4 className="text-sm font-semibold mb-2">{t("footer.contact")}</h4>
-          <p className="text-sm text-gray-600">
-            <a
-              href="https://maps.app.goo.gl/3CcCH556HBTSRaUz6"
-              target="_blank"
-              rel="noreferrer"
-              className="hover:text-blue-900"
-            >
-              {t("footer.address")}
-            </a>
-          </p>
-          <p className="text-sm text-gray-600">
-            <a href="tel:+971585328151" className="hover:text-blue-900">+971 585 328 151</a>
-            {" · "}
-            <a href="https://wa.me/971585328151" className="hover:text-green-600">{t("footer.whatsapp")}</a>
-          </p>
-          <p className="text-sm text-gray-600">alhadafmetalcoating@gmail.com</p>
-          <p className="text-sm text-gray-600">info.alhadafmetalcoating@gmail.com</p>
-        </div>
+ <div>
+  <h4 className="text-sm font-semibold mb-2">{t("footer.contact")}</h4>
+
+  <p className="text-sm text-gray-600">
+    <a
+      href="https://maps.app.goo.gl/3CcCH556HBTSRaUz6"
+      target="_blank"
+      rel="noreferrer"
+      className="transition hover:!text-[#646cff]"
+    >
+      {t("footer.address")}
+    </a>
+  </p>
+
+  <p className="text-sm text-gray-600">
+    <a href="tel:+971585328151" className="transition hover:!text-[#646cff]">
+      +971 585 328 151
+    </a>
+    {" · "}
+    <a
+      href="https://wa.me/971585328151"
+      className="transition hover:!text-[#25D366]"  
+    >
+      {t("footer.whatsapp")}
+    </a>
+  </p>
+
+  <p className="text-sm text-gray-600">alhadafmetalcoating@gmail.com</p>
+  <p className="text-sm text-gray-600">info.alhadafmetalcoating@gmail.com</p>
+</div>
+
 
         {/* Col 4 */}
         <div>
@@ -94,17 +135,45 @@ function Footer() {
             </a>
           </div>
           <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="outline" className="w-full justify-between">
-                {t("footer.changeLang")}
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent>
-              <DropdownMenuItem onClick={() => changeLanguage("en")}>English</DropdownMenuItem>
-              <DropdownMenuItem onClick={() => changeLanguage("ar")}>العربية</DropdownMenuItem>
-              <DropdownMenuItem onClick={() => changeLanguage("hi")}>हिन्दी</DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+  <DropdownMenuTrigger asChild>
+    <Button variant="outline" className="w-full justify-between">
+      {t("footer.changeLang")}
+    </Button>
+  </DropdownMenuTrigger>
+
+  <DropdownMenuContent
+    className="bg-white text-black border border-gray-200 shadow-lg"
+  >
+    <DropdownMenuItem
+      onClick={() => changeLanguage("en")}
+      className="hover:!bg-gray-100 hover:!text-[#646cff]"
+    >
+      English
+    </DropdownMenuItem>
+
+    <DropdownMenuItem
+      onClick={() => changeLanguage("ar")}
+      className="hover:!bg-gray-100 hover:!text-[#646cff]"
+    >
+      العربية
+    </DropdownMenuItem>
+
+    <DropdownMenuItem
+      onClick={() => changeLanguage("hi")}
+      className="hover:!bg-gray-100 hover:!text-[#646cff]"
+    >
+      हिन्दी
+    </DropdownMenuItem>
+
+    <DropdownMenuItem
+      onClick={() => changeLanguage("ml")}
+      className="hover:!bg-gray-100 hover:!text-[#646cff]"
+    >
+      മലയാളം
+    </DropdownMenuItem>
+  </DropdownMenuContent>
+</DropdownMenu>
+
         </div>
       </div>
 
@@ -185,8 +254,21 @@ function Footer() {
 
       <Separator />
       <div className="text-center text-sm text-gray-600 py-4">
-        © {new Date().getFullYear()} {t("footer.company")}. {t("footer.rights")}
-      </div>
+  © {new Date().getFullYear()} {t("footer.company")}. {t("footer.rights")}
+  <br />
+  <span className="text-xs">
+    Project designed and developed by{" "}
+    <a
+      href="https://husainitservices.com"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="transition hover:!text-[#646cff] font-medium"
+    >
+      Husaini IT Services
+    </a>
+  </span>
+</div>
+
     </footer>
   )
 }
