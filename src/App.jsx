@@ -18,6 +18,9 @@ import TinPlating from "./pages/TinPlating.jsx";
 import MetalPlating from "./pages/MetalPlating.jsx";
 import AntiqueFinish from "./pages/AntiqueFinish.jsx";
 import TestimonialPage from "./pages/TestimonialPage";
+import BlogDisplay from './pages/BlogDisplay';
+import BlogCreate from './pages/BlogCreate';
+import ProjectDetails from './pages/ProjectDetails';
 
 function App() {
   return (
@@ -40,6 +43,10 @@ function App() {
           <Route path="/services/antique-finish" element={<AntiqueFinish />} />
 
           <Route path="/testimonials" element={<TestimonialPage />} />
+
+          <Route path="/blog" element={<BlogDisplay />} />
+          <Route path="/blog/create" element={<BlogCreate />} />
+          <Route path="/blog/project-details" element={<ProjectDetails />} />
         </Routes>
       </Router>
     </I18nextProvider>

@@ -7,13 +7,23 @@ import { useEffect, useState } from "react";
 import Footer from "../components/Footer";
 import { useTranslation } from "react-i18next";
 import AboutShort from "@/Components/AboutShort";
+import Certificates from "../Components/Certificates";
+
+// ============================================
+// 🔧 CONFIGURATION - PASTE YOUR APPS SCRIPT URL
+// ============================================
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx0tO-WtDoYrojLZtAwcgxVBcc2DChXfLvrU0aTZ8NrFsBkp9UYmZtejrArvtXa2bXUbA/exec"; // 👈 Same URL from BlogDisplay.jsx
 
 function LandingPage() {
   const [showScroll, setShowScroll] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [projectsData, setProjectsData] = useState([]);
+  const [loadingProjects, setLoadingProjects] = useState(true);
   const { t } = useTranslation();
 
-  // Scroll-to-top button visibility
+  // ============================================
+  // 🎯 SCROLL TO TOP FUNCTIONALITY
+  // ============================================
   useEffect(() => {
     const handleScroll = () => setShowScroll(window.scrollY > 200);
     window.addEventListener("scroll", handleScroll);
@@ -21,6 +31,48 @@ function LandingPage() {
   }, []);
 
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
+
+  // ============================================
+  // 📥 FETCH PROJECTS FROM GOOGLE SHEET
+  // ============================================
+  useEffect(() => {
+    fetchProjects();
+  }, []);
+
+  const fetchProjects = async () => {
+    try {
+      const response = await fetch(APPS_SCRIPT_URL);
+      const result = await response.json();
+      
+      if (result.result === "success") {
+        // Filter only projects (not blogs)
+        const projects = result.data.filter(item => item.Type === "project");
+        // Sort by timestamp (newest first)
+        projects.sort((a, b) => new Date(b.Timestamp) - new Date(a.Timestamp));
+        setProjectsData(projects);
+      }
+    } catch (err) {
+      console.error("Failed to fetch projects:", err);
+    } finally {
+      setLoadingProjects(false);
+    }
+  };
+
+  // ============================================
+  // 🎨 HANDLE PROJECT CLICK
+  // ============================================
+  const handleProjectClick = (project) => {
+    // Encode project data in URL params
+    const params = new URLSearchParams({
+      title: project.Title,
+      lead: project["Author/Lead"],
+      company: project.Company,
+      content: project.Content,
+      images: project.ImageURLs || "",
+      timestamp: project.Timestamp
+    });
+    window.location.href = `/blog/project-details?${params.toString()}`;
+  };
 
   // Services data with translation keys
   const services = [
@@ -67,7 +119,7 @@ function LandingPage() {
   };
 
   return (
-    <div className="relatgold-silver-platingive min-h-screen w-full bg-white">
+    <div className="relative min-h-screen w-full bg-white">
       {/* Header */}
       <Header />
 
@@ -294,7 +346,161 @@ function LandingPage() {
           </div>
         </section>
 
+        {/* ============================================ */}
+        {/* 🎯 PROJECT MARQUEE SECTION - MOBILE RESPONSIVE */}
+        {/* ============================================ */}
+        <section className="w-full py-16 bg-gradient-to-b from-white to-gray-50">
+          <div className="container mx-auto px-4">
+            {/* Section Heading */}
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold mb-3 text-gray-900">
+                Our <span className="text-red-600">Completed Projects</span>
+              </h2>
+              <p className="text-base md:text-lg max-w-3xl mx-auto text-gray-600">
+                Explore our successful project deliveries across various industries
+              </p>
+            </div>
+
+            {/* Loading State */}
+            {loadingProjects && (
+              <div className="text-center py-12">
+                <div className="inline-block w-12 h-12 border-4 border-red-600 border-t-transparent rounded-full animate-spin"></div>
+                <p className="mt-4 text-gray-600">Loading projects...</p>
+              </div>
+            )}
+
+            {/* No Projects State */}
+            {!loadingProjects && projectsData.length === 0 && (
+              <div className="text-center py-12">
+                <p className="text-gray-600 text-lg">No projects available yet.</p>
+              </div>
+            )}
+
+            {/* Project Marquee - DESKTOP ONLY */}
+            {!loadingProjects && projectsData.length > 0 && (
+              <>
+                {/* Desktop Marquee */}
+              <div className="hidden md:block relative overflow-hidden py-8">
+                <div className="flex animate-marquee hover:pause-animation py-4">                    {/* Duplicate projects for seamless loop */}
+                    {[...projectsData, ...projectsData].map((project, index) => {
+                      const imageURLs = project.ImageURLs 
+                        ? project.ImageURLs.split(",").map(url => url.trim()) 
+                        : [];
+                      const mainImage = imageURLs[0] || "/assets/default-project.jpg";
+
+                      return (
+                        <div
+                          key={`${project.Timestamp}-${index}`}
+                          className="flex-shrink-0 mx-6 my-4 w-80 cursor-pointer group"
+                          onClick={() => handleProjectClick(project)}
+                        >
+                        <Card className="relative overflow-hidden rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-3">                            {/* Fixed Aspect Ratio Image Container (16:9) */}
+                            <div className="relative w-full pb-[56.25%] bg-gray-200 overflow-hidden">
+                              <img
+                                src={mainImage}
+                                alt={project.Title}
+                                className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                                onError={(e) => {
+                                  e.target.src = "/assets/default-project.jpg";
+                                }}
+                              />
+                              {/* Gradient Overlay */}
+                              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                            </div>
+
+                            {/* Project Info */}
+                            <div className="p-4 bg-white">
+                              <h3 className="text-lg font-bold text-gray-900 mb-2 line-clamp-2 group-hover:text-red-600 transition-colors">
+                                {project.Title}
+                              </h3>
+                              <p className="text-sm text-gray-600 mb-1">
+                                <span className="font-semibold">Client:</span> {project.Company}
+                              </p>
+                              <p className="text-xs text-gray-500">
+                                Led by: {project["Author/Lead"]}
+                              </p>
+                            </div>
+
+                            {/* Hover Badge */}
+                            <div className="absolute top-3 right-3 bg-red-600 text-white text-xs font-bold px-3 py-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                              View Details
+                            </div>
+                          </Card>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* Mobile Grid - NO MARQUEE */}
+                <div className="block md:hidden">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 px-2">
+                    {projectsData.map((project, index) => {
+                      const imageURLs = project.ImageURLs 
+                        ? project.ImageURLs.split(",").map(url => url.trim()) 
+                        : [];
+                      const mainImage = imageURLs[0] || "/assets/default-project.jpg";
+
+                      return (
+                        <div
+                          key={`${project.Timestamp}-${index}`}
+                          className="cursor-pointer"
+                          onClick={() => handleProjectClick(project)}
+                        >
+                          <Card className="relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+                            {/* Fixed Aspect Ratio Image Container (16:9) */}
+                            <div className="relative w-full pb-[56.25%] bg-gray-200 overflow-hidden">
+                              <img
+                                src={mainImage}
+                                alt={project.Title}
+                                className="absolute inset-0 w-full h-full object-cover"
+                                onError={(e) => {
+                                  e.target.src = "/assets/default-project.jpg";
+                                }}
+                              />
+                            </div>
+
+                            {/* Project Info */}
+                            <div className="p-4 bg-white">
+                              <h3 className="text-base font-bold text-gray-900 mb-2 line-clamp-2">
+                                {project.Title}
+                              </h3>
+                              <p className="text-sm text-gray-600 mb-1">
+                                <span className="font-semibold">Client:</span> {project.Company}
+                              </p>
+                              <p className="text-xs text-gray-500">
+                                Led by: {project["Author/Lead"]}
+                              </p>
+                            </div>
+                          </Card>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
+              </>
+            )}
+
+            {/* View All Projects Button */}
+            {!loadingProjects && projectsData.length > 0 && (
+              <div className="text-center mt-12">
+                <Button
+                  onClick={() => window.location.href = "/blog"}
+                  className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-bold px-8 py-4 rounded-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
+                >
+                  View All Projects & Blogs
+                </Button>
+              </div>
+            )}
+          </div>
+        </section>
+
         <AboutShort />
+
+        {/* ============================================ */}
+        {/* 🎓 CERTIFICATE SECTION - NEW! */}
+        {/* ============================================ */}
+        <Certificates />
 
         {/* Footer */}
         <Footer />
@@ -305,11 +511,33 @@ function LandingPage() {
         <Button
           size="icon"
           onClick={scrollToTop}
-          className="fixed bottom-6 left-6 rounded-full bg-brand-red text-brand-white hover:bg-brand-blue shadow-lg"
+          className="fixed bottom-6 left-6 rounded-full bg-brand-red text-brand-white hover:bg-brand-blue shadow-lg z-50"
         >
           <ArrowUp className="h-5 w-5" />
         </Button>
       )}
+
+      {/* ============================================ */}
+      {/* 🎨 MARQUEE ANIMATION CSS - DESKTOP ONLY */}
+      {/* ============================================ */}
+      <style jsx>{`
+        @keyframes marquee {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+
+        .animate-marquee {
+          animation: marquee 40s linear infinite;
+        }
+
+        .animate-marquee:hover {
+          animation-play-state: paused;
+        }
+      `}</style>
     </div>
   );
 }

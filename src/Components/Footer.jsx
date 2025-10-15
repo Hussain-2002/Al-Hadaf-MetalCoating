@@ -53,6 +53,7 @@ function Footer() {
             <li><a href="/about" className="hover:text-blue-900">{t("nav.about")}</a></li>
             <li><a href="/contact" className="hover:text-blue-900">{t("nav.contact")}</a></li>
             <li><a href="/ralchart" className="hover:text-blue-900">{t("nav.ralchart")}</a></li>
+            <li><a href="/blog" className="hover:text-blue-900">{t("nav.blog")}</a></li>
           </ul>
         </div>
 
@@ -113,8 +114,9 @@ function Footer() {
           <h4 className="text-sm font-semibold mb-2">{t("footer.usefulLinks")}</h4>
           <ul className="space-y-1 text-sm text-gray-600">
             <li><a href="/services" className="hover:text-blue-900">{t("nav.services")}</a></li>
-            <li><a href="/gallery" className="hover:text-blue-900">{t("nav.gallery")}</a></li>
+            {/* <li><a href="/gallery" className="hover:text-blue-900">{t("nav.gallery")}</a></li> */}
             <li><a href="/testimonials" className="hover:text-blue-900">{t("nav.testimonials")}</a></li>
+            <li><a href="/blog" className="hover:text-blue-900">{t("nav.blog")}</a></li>
           </ul>
         </div>
 
@@ -123,8 +125,10 @@ function Footer() {
           <ul className="space-y-1 text-sm text-gray-600">
             <li><a href="/" className="hover:text-blue-900">{t("nav.home")}</a></li>
             <li><a href="/about" className="hover:text-blue-900">{t("nav.about")}</a></li>
-            <li><a href="/videos" className="hover:text-blue-900">{t("nav.videos")}</a></li>
+            {/* <li><a href="/videos" className="hover:text-blue-900">{t("nav.videos")}</a></li> */}
             <li><a href="/contact" className="hover:text-blue-900">{t("nav.contact")}</a></li>
+            <li><a href="/ralchart" className="hover:text-blue-900">{t("nav.ralchart")}</a></li>
+            
           </ul>
         </div>
 
@@ -173,6 +177,7 @@ function Footer() {
               <DropdownMenuItem onClick={() => changeLanguage("en")}>English</DropdownMenuItem>
               <DropdownMenuItem onClick={() => changeLanguage("ar")}>العربية</DropdownMenuItem>
               <DropdownMenuItem onClick={() => changeLanguage("hi")}>हिन्दी</DropdownMenuItem>
+              <DropdownMenuItem onClick={() => changeLanguage("ml")}>മലയാളം</DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
         </div>

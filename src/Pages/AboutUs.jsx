@@ -30,110 +30,117 @@ function AboutUs() {
   ];
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col overflow-x-hidden w-full">
       {/* Header */}
       <Header />
 
       {/* Hero Section */}
       <section
-        className="relative h-[60vh] md:h-[80vh] bg-fixed bg-center bg-cover flex items-center justify-center"
+        className="relative h-[50vh] sm:h-[60vh] md:h-[80vh] bg-center bg-cover flex items-center justify-center bg-scroll md:bg-fixed w-full"
         style={{ backgroundImage: "url('/assets/about-bg.jpg')" }}
       >
         <div className="absolute inset-0 bg-black/50" />
-        <div className="relative z-10 max-w-3xl text-center px-4">
-          <h1 className="text-white text-3xl md:text-6xl font-bold mb-4">
+        <div className="relative z-10 w-full max-w-3xl text-center px-4 sm:px-6">
+          <h1 className="text-white text-2xl sm:text-4xl md:text-6xl font-bold mb-3 sm:mb-4">
             {t("about.heroTitle")}
           </h1>
-          <p className="text-white text-base md:text-lg leading-relaxed">
+          <p className="text-white text-sm sm:text-base md:text-lg leading-relaxed">
             {t("about.heroDescription")}
           </p>
         </div>
       </section>
 
       {/* Company Overview */}
-      <section className="py-16 bg-white">
-        <div className="max-w-6xl mx-auto px-6 md:px-12 text-center">
+      <section className="py-12 sm:py-16 bg-white w-full">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 text-center w-full">
           <motion.h2
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-3xl md:text-4xl font-bold mb-6 text-gray-800"
+            viewport={{ once: true, margin: "-50px" }}
+            className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 text-gray-800"
           >
             {t("about.whoWeAreTitle")}
           </motion.h2>
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.8 }}
-            className="text-gray-700 text-base md:text-lg leading-relaxed max-w-4xl mx-auto"
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true, margin: "-50px" }}
+            className="text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed max-w-4xl mx-auto w-full"
           >
-            <p>{t("about.whoWeAreDescription")}</p>
-            <br />
-            <br />
+            <p className="mb-4">{t("about.whoWeAreDescription")}</p>
             <p>{t("about.whoWeAreDescription2")}</p>
           </motion.div>
         </div>
       </section>
 
       {/* Message from Founder */}
-      <section className="py-16 bg-gray-100">
-        <div className="max-w-5xl mx-auto px-6 md:px-12 grid md:grid-cols-2 gap-10 items-center">
-          <motion.img
-            src="/assets/founder.jpg"
-            alt="Founder of Al-Hadaf Metal Coating"
-            className="rounded-2xl shadow-lg object-cover w-full h-[400px]"
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-          />
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <h2 className="text-3xl font-bold text-gray-800 mb-4">
-              {t("about.founderMessageTitle")}
-            </h2>
-            <p className="text-gray-700 text-base md:text-lg leading-relaxed">
-              {t("about.founderMessage")}
-              <br />
-              <br />
-              {t("about.founderMessage2")}
-            </p>
-            <p className="mt-6 font-semibold text-gray-800">
-              {t("about.founderSignature")}
-            </p>
-          </motion.div>
+      <section className="py-12 sm:py-16 bg-gray-100 w-full">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 w-full">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+            <motion.img
+              src="/assets/founder.jpg"
+              alt="Founder of Al-Hadaf Metal Coating"
+              className="rounded-2xl shadow-lg object-cover w-full h-[250px] sm:h-[350px] md:h-[420px]"
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true, margin: "-50px" }}
+            />
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6 }}
+              viewport={{ once: true, margin: "-50px" }}
+              className="text-center md:text-left w-full"
+            >
+              <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mb-4">
+                {t("about.founderMessageTitle")}
+              </h2>
+              <p className="text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed mb-4">
+                {t("about.founderMessage")}
+              </p>
+              <p className="text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed">
+                {t("about.founderMessage2")}
+              </p>
+              <p className="mt-6 font-semibold text-gray-800">
+                {t("about.founderSignature")}
+              </p>
+            </motion.div>
+          </div>
         </div>
       </section>
 
       {/* Team Section */}
-      <section className="flex-1 bg-white py-16">
-        <div className="max-w-6xl mx-auto px-6 md:px-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-10 text-gray-800">
+      <section className="flex-1 bg-white py-12 sm:py-16 w-full">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 md:px-8 w-full">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-10 text-gray-800">
             {t("about.meetTeamTitle")}
           </h2>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 sm:gap-10 w-full">
             {teamMembers.map((member, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 50 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
-                viewport={{ once: true }}
-                className="bg-gray-50 rounded-xl shadow-md overflow-hidden text-center hover:shadow-xl transition-shadow duration-300"
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                viewport={{ once: true, margin: "-50px" }}
+                className="bg-gray-50 rounded-xl shadow-md overflow-hidden text-center hover:shadow-xl transition-shadow duration-300 w-full"
               >
                 <img
                   src={member.image}
                   alt={member.name}
-                  className="w-full h-56 object-cover"
+                  className="w-full h-[220px] sm:h-[260px] md:h-[280px] object-cover"
                 />
-                <div className="p-5">
-                  <h3 className="text-lg font-semibold text-gray-800">
+                <div className="p-4 sm:p-5">
+                  <h3 className="text-base sm:text-lg font-semibold text-gray-800">
                     {member.name}
                   </h3>
-                  <p className="text-gray-600">{member.role}</p>
+                  <p className="text-gray-600 text-sm sm:text-base">
+                    {member.role}
+                  </p>
                 </div>
               </motion.div>
             ))}

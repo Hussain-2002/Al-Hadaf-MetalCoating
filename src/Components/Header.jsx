@@ -34,7 +34,7 @@ function Header() {
     { name: t("nav.services"), href: "/services" },
     { name: t("nav.about"), href: "/about" },
     { name: t("nav.ralchart"), href: "/ralchart" },
-    // { name: t("nav.videos"), href: "#videos" },
+    { name: t("nav.blog"), href: "/blog" },
     { name: t("nav.testimonials"), href: "/testimonials" },
     { name: t("nav.contact"), href: "/contact" },
   ];
