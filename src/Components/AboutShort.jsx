@@ -37,15 +37,16 @@ function AboutShort() {
           </h2>
 
           {/* Description */}
-          <p className="text-gray-700 mb-3">
-            {t("about.short1")}
-          </p>
-          <p className="text-gray-700 mb-3">
-            {t("about.short2")}
-          </p>
-          <p className="text-gray-700 mb-6">
-            {t("about.short3")}
-          </p>
+<p className="text-gray-700 mb-3 text-justify">
+  {t("about.short1")}
+</p>
+<p className="text-gray-700 mb-3 text-justify">
+  {t("about.short2")}
+</p>
+<p className="text-gray-700 mb-6 text-justify">
+  {t("about.short3")}
+</p>
+
 
           {/* Experience Line */}
           <div className="mb-6">

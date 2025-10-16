@@ -475,13 +475,13 @@ export default function RALChart() {
               </div>
 
               <div className="flex gap-3 pt-2">
-                <button
+                {/* <button
                   onClick={handleExportCube}
                   className="flex-1 bg-gradient-to-r from-blue-600 to-blue-700 text-white py-3 rounded-lg hover:from-blue-700 hover:to-blue-800 transition font-medium shadow-lg flex items-center justify-center gap-2"
                 >
                   <Download className="w-4 h-4" />
                   Export Cube
-                </button>
+                </button> */}
                 <button
                   onClick={() => setShowChart(true)}
                   className="flex-1 bg-gradient-to-r from-purple-600 to-purple-700 text-white py-3 rounded-lg hover:from-purple-700 hover:to-purple-800 transition font-medium shadow-lg flex items-center justify-center gap-2"

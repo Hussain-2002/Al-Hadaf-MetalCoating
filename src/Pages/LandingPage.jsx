@@ -8,7 +8,8 @@ import Footer from "../components/Footer";
 import { useTranslation } from "react-i18next";
 import AboutShort from "@/Components/AboutShort";
 import Certificates from "../Components/Certificates";
-import SpinWheel from "../components/SpinWheel"; // ✅ NEW: Import SpinWheel
+import SpinWheel from "../components/SpinWheel";
+import ProjectDetailsModal from "../components/ProjectDetailsModal"; // ✅ NEW: Import modal component
 
 // ============================================
 // 🔧 CONFIGURATION - PASTE YOUR APPS SCRIPT URL
@@ -20,7 +21,8 @@ function LandingPage() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [projectsData, setProjectsData] = useState([]);
   const [loadingProjects, setLoadingProjects] = useState(true);
-  const [isSpinWheelOpen, setIsSpinWheelOpen] = useState(false); // ✅ NEW: Spin wheel modal state
+  const [isSpinWheelOpen, setIsSpinWheelOpen] = useState(false);
+  const [selectedProject, setSelectedProject] = useState(null); // ✅ NEW: Store selected project
   const { t } = useTranslation();
 
   // ============================================
@@ -61,19 +63,10 @@ function LandingPage() {
   };
 
   // ============================================
-  // 🎨 HANDLE PROJECT CLICK
+  // 🎨 HANDLE PROJECT CLICK - UPDATED TO OPEN MODAL
   // ============================================
   const handleProjectClick = (project) => {
-    // Encode project data in URL params
-    const params = new URLSearchParams({
-      title: project.Title,
-      lead: project["Author/Lead"],
-      company: project.Company,
-      content: project.Content,
-      images: project.ImageURLs || "",
-      timestamp: project.Timestamp
-    });
-    window.location.href = `/blog/project-details?${params.toString()}`;
+    setSelectedProject(project); // Open modal with project data
   };
 
   // Services data with translation keys
@@ -263,7 +256,7 @@ function LandingPage() {
                         {/* Bottom Center Button */}
                         <div className="absolute bottom-6 left-1/2 transform -translate-x-1/2 z-20">
                           <Button
-                            onClick={() => (window.location.href = `/services/${service.slug}`)}
+                            onClick={() => (window.location.href = `/services`)}
                             className="font-semibold px-6 py-2 rounded-lg transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl cursor-pointer"
                             style={{
                               background: "linear-gradient(to right, #dc2626, #b91c1c)",
@@ -545,9 +538,17 @@ function LandingPage() {
       />
 
       {/* ============================================ */}
+      {/* 🎯 PROJECT DETAILS MODAL - NEW! */}
+      {/* ============================================ */}
+      <ProjectDetailsModal 
+        project={selectedProject} 
+        onClose={() => setSelectedProject(null)} 
+      />
+
+      {/* ============================================ */}
       {/* 🎨 MARQUEE ANIMATION CSS - DESKTOP ONLY */}
       {/* ============================================ */}
-      <style jsx>{`
+      <style>{`
         @keyframes marquee {
           0% {
             transform: translateX(0);

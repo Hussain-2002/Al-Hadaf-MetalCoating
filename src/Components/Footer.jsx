@@ -237,18 +237,44 @@ function Footer() {
             </a>
           </div>
           <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="outline" className="w-full justify-between">
-                {t("footer.changeLang")}
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent>
-              <DropdownMenuItem onClick={() => changeLanguage("en")}>English</DropdownMenuItem>
-              <DropdownMenuItem onClick={() => changeLanguage("ar")}>العربية</DropdownMenuItem>
-              <DropdownMenuItem onClick={() => changeLanguage("hi")}>हिन्दी</DropdownMenuItem>
-              <DropdownMenuItem onClick={() => changeLanguage("ml")}>മലയാളം</DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+  <DropdownMenuTrigger asChild>
+    <Button variant="outline" className="w-full justify-between">
+      {t("footer.changeLang")}
+    </Button>
+  </DropdownMenuTrigger>
+
+  <DropdownMenuContent
+    className="bg-white text-black border border-gray-200 shadow-lg"
+  >
+    <DropdownMenuItem
+      onClick={() => changeLanguage("en")}
+      className="hover:!bg-gray-100 hover:!text-[#646cff]"
+    >
+      English
+    </DropdownMenuItem>
+
+    <DropdownMenuItem
+      onClick={() => changeLanguage("ar")}
+      className="hover:!bg-gray-100 hover:!text-[#646cff]"
+    >
+      العربية
+    </DropdownMenuItem>
+
+    <DropdownMenuItem
+      onClick={() => changeLanguage("hi")}
+      className="hover:!bg-gray-100 hover:!text-[#646cff]"
+    >
+      हिन्दी
+    </DropdownMenuItem>
+
+    <DropdownMenuItem
+      onClick={() => changeLanguage("ml")}
+      className="hover:!bg-gray-100 hover:!text-[#646cff]"
+    >
+      മലയാളം
+    </DropdownMenuItem>
+  </DropdownMenuContent>
+</DropdownMenu>
         </div>
       </div>
 

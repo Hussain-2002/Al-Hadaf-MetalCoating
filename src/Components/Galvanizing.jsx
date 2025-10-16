@@ -1,12 +1,11 @@
-// src/pages/Galvanizing.jsx
+// Galvanizing.jsx - Component Version
 import React, { useState } from "react";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Trans as T } from "react-i18next";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-import { motion, AnimatePresence } from "framer-motion"; // reactbits-style animation
+import { motion, AnimatePresence } from "framer-motion";
+import { submitComment } from "@/utils/submitComment";
 
 export default function Galvanizing() {
   const [activeTab, setActiveTab] = useState("gallery");
@@ -41,10 +40,8 @@ export default function Galvanizing() {
 
   return (
     <div className="min-h-screen bg-[#ffffff] text-white overflow-x-hidden">
-      <Header />
-
       {/* Main Content */}
-      <main className="pt-40 pb-12 px-4 text-center relative">
+      <main className="pb-12 px-4 text-center relative">
         {/* Title */}
         <h1 className="text-4xl md:text-6xl font-extrabold mb-6 text-black">
           <T>Galvanizing</T>
@@ -247,8 +244,6 @@ export default function Galvanizing() {
           )}
         </AnimatePresence>
       </main>
-
-      <Footer />
     </div>
   );
 }

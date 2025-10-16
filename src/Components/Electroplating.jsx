@@ -1,12 +1,11 @@
-// Electroplating.jsx
+// Electroplating.jsx - Component Version
 import React, { useState, useEffect } from "react";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Trans as T } from "react-i18next";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-import { motion, AnimatePresence } from "framer-motion"; // reactbits-style animation
+import { motion, AnimatePresence } from "framer-motion";
+import { submitComment } from "@/utils/submitComment";
 
 export default function Electroplating() {
   const [activeTab, setActiveTab] = useState("gallery");
@@ -46,10 +45,8 @@ export default function Electroplating() {
 
   return (
     <div className="min-h-screen bg-[#ffffff] text-white overflow-x-hidden">
-      <Header />
-
       {/* Main Content */}
-      <main className="pt-40 pb-12 px-4 text-center relative">
+      <main className="pb-12 px-4 text-center relative">
         {/* Title */}
         <h1 className="text-4xl md:text-6xl font-extrabold mb-6 text-black">
           <T>Electroplating</T>
@@ -254,8 +251,6 @@ export default function Electroplating() {
           )}
         </AnimatePresence>
       </main>
-
-      <Footer />
     </div>
   );
 }

@@ -1,7 +1,5 @@
-// ✅ src/pages/BlogCreate.jsx
+// ✅ src/components/BlogCreate.jsx - Component Version
 import { useState } from "react";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Lock, CheckCircle, XCircle, Loader2 } from "lucide-react";
@@ -184,8 +182,7 @@ function BlogCreate() {
   if (!isAuthenticated) {
     return (
       <div className="relative min-h-screen w-full bg-gradient-to-br from-gray-50 to-gray-100">
-        <Header />
-        <main className="pt-32 md:pt-40 pb-16">
+        <main className="pb-16">
           <div className="container mx-auto px-4">
             <div className="max-w-md mx-auto">
               <Card className="p-8 shadow-2xl rounded-2xl">
@@ -236,7 +233,6 @@ function BlogCreate() {
             </div>
           </div>
         </main>
-        <Footer />
       </div>
     );
   }
@@ -246,9 +242,7 @@ function BlogCreate() {
   // ============================================
   return (
     <div className="relative min-h-screen w-full bg-white">
-      <Header />
-
-      <main className="pt-32 md:pt-40 pb-16">
+      <main className="pb-16">
         {/* Header */}
         <section className="container mx-auto px-4 mb-8 text-center">
           <h1 className="text-4xl md:text-5xl font-extrabold mb-4 text-gray-900">
@@ -542,7 +536,6 @@ function BlogCreate() {
           </div>
         </section>
       </main>
-      <Footer />
     </div>
   );
 }

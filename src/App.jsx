@@ -9,17 +9,8 @@ import ContactForm from "./pages/ContactForm.jsx";
 import AboutUs from "./pages/AboutUs.jsx";
 import ServicePage from "./pages/Service.jsx";
 import RAL3DCube from "./Components/RalChart.jsx";
-
-// Service detail components
-import PowderCoating from "./pages/PowderCoating.jsx";
-import Galvanizing from "./pages/Galvanizing.jsx";
-import Electroplating from "./pages/Electroplating.jsx";
-import TinPlating from "./pages/TinPlating.jsx";
-import MetalPlating from "./pages/MetalPlating.jsx";
-import AntiqueFinish from "./pages/AntiqueFinish.jsx";
 import TestimonialPage from "./pages/TestimonialPage";
 import BlogDisplay from './pages/BlogDisplay';
-import BlogCreate from './pages/BlogCreate';
 import ProjectDetails from './pages/ProjectDetails';
 
 function App() {
@@ -33,19 +24,8 @@ function App() {
           <Route path="/contact" element={<ContactForm />} />
           <Route path="/services" element={<ServicePage />} />
           <Route path="/ralchart" element={<RAL3DCube />} />
-
-          {/* 🔹 Individual service detail pages */}
-          <Route path="/services/powder-coating" element={<PowderCoating />} />
-          <Route path="/services/galvanizing" element={<Galvanizing />} />
-          <Route path="/services/electroplating" element={<Electroplating />} />
-          <Route path="/services/tin-plating" element={<TinPlating />} />
-          <Route path="/services/metal-plating" element={<MetalPlating />} />
-          <Route path="/services/antique-finish" element={<AntiqueFinish />} />
-
           <Route path="/testimonials" element={<TestimonialPage />} />
-
           <Route path="/blog" element={<BlogDisplay />} />
-          <Route path="/blog/create" element={<BlogCreate />} />
           <Route path="/blog/project-details" element={<ProjectDetails />} />
         </Routes>
       </Router>

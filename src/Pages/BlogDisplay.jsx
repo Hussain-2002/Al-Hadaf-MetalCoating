@@ -4,7 +4,8 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ArrowUp, Calendar, User, Building2, Users } from "lucide-react";
+import { ArrowUp, Calendar, User, Building2, Users, ArrowLeft } from "lucide-react";
+import BlogCreate from "../components/BlogCreate"; // 👈 Import the create component
 
 // ============================================
 // 🔧 CONFIGURATION
@@ -21,6 +22,7 @@ function BlogDisplay() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [showScroll, setShowScroll] = useState(false);
+  const [showCreateForm, setShowCreateForm] = useState(false); // 👈 NEW: Toggle create form
 
   // ============================================
   // 🔄 FETCH DATA FROM GOOGLE SHEET
@@ -219,6 +221,33 @@ function BlogDisplay() {
   // ============================================
   // 🎨 RENDER COMPONENT
   // ============================================
+  
+  // 👉 If showCreateForm is true, render the BlogCreate component
+  if (showCreateForm) {
+    return (
+      <div className="relative min-h-screen w-full bg-white">
+        <Header />
+        <main className="pt-32 md:pt-40 pb-16">
+          {/* Back Button */}
+          <div className="container mx-auto px-4 mb-8">
+            <Button
+              onClick={() => setShowCreateForm(false)}
+              className="flex items-center gap-2 bg-gray-200 text-gray-700 hover:bg-gray-300"
+            >
+              <ArrowLeft className="w-4 h-4" />
+              Back to Blogs & Projects
+            </Button>
+          </div>
+          
+          {/* Render BlogCreate Component */}
+          <BlogCreate />
+        </main>
+        <Footer />
+      </div>
+    );
+  }
+
+  // 👉 Otherwise, render the normal blog display
   return (
     <div className="relative min-h-screen w-full bg-white">
       {/* Header */}
@@ -315,7 +344,7 @@ function BlogDisplay() {
         <section className="container mx-auto px-4 mt-16">
           <div className="text-center">
             <Button
-              onClick={() => window.location.href = "/blog/create"}
+              onClick={() => setShowCreateForm(true)}
               className="bg-gradient-to-r from-white to-white hover:white hover:to-white text-black font-bold px-8 py-4 rounded-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
             >
               🔒 Admin: Create New Blog/Project

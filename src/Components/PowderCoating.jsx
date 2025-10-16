@@ -1,14 +1,12 @@
-// TinPlating.jsx
-import React, { useState, useEffect } from "react";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+// PowderCoating.jsx - Component Version
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
 import { Trans as T } from "react-i18next";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
-import { motion, AnimatePresence } from "framer-motion"; // reactbits-style animation
+import { motion, AnimatePresence } from "framer-motion";
+import { submitComment } from "@/utils/submitComment";
 
-export default function TinPlating() {
+export default function PowderCoating() {
   const [activeTab, setActiveTab] = useState("gallery");
   const [popupImage, setPopupImage] = useState(null);
   const [popupVideo, setPopupVideo] = useState(null);
@@ -17,14 +15,14 @@ export default function TinPlating() {
   const [sent, setSent] = useState(false);
 
   // Mock gallery + video items
-  const images = Array.from({ length: 12 }).map((_, i) => `/assets/gallery/tin-${i + 1}.jpg`);
-  const videos = Array.from({ length: 6 }).map((_, i) => `/assets/videos/tin-${i + 1}.mp4`);
+  const images = Array.from({ length: 12 }).map((_, i) => `/assets/gallery/powder-${i + 1}.jpg`);
+  const videos = Array.from({ length: 6 }).map((_, i) => `/assets/videos/powder-${i + 1}.mp4`);
 
   // ✅ Unified form submit handler
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await submitComment(form, "Tin Plating"); // 🎯 Service name sent here
+      await submitComment(form, "Powder Coating"); // 🎯 Service name sent here
       setSent(true);
       setForm({ name: "", contact: "", message: "" });
       
@@ -35,27 +33,16 @@ export default function TinPlating() {
     }
   };
 
-  // useEffect(() => {
-  //   const logos = document.querySelectorAll("header img, nav img");
-  //   logos.forEach((img) => {
-  //     if (img && img.src && img.src.includes("logo")) {
-  //       img.src = "/logo.png";
-  //     }
-  //   });
-  // }, []);
-
   return (
     <div className="min-h-screen bg-[#ffffff] text-white overflow-x-hidden">
-      <Header />
-
       {/* Main Content */}
-      <main className="pt-40 pb-12 px-4 text-center relative">
+      <main className="pb-12 px-4 text-center relative">
         {/* Title */}
         <h1 className="text-4xl md:text-6xl font-extrabold mb-6 text-black">
-          <T>Tin Plating</T>
+          <T>Powder Coating</T>
         </h1>
         <p className="text-gray-800 mb-12 max-w-2xl mx-auto">
-          <T>Pure. Protective. Polished — the brilliance of tin plating.</T>
+          <T>Durable. Vibrant. Long-lasting – a coating revolution.</T>
         </p>
 
         {/* TAB PILL SWITCHER */}
@@ -118,7 +105,7 @@ export default function TinPlating() {
                 <motion.img
                   key={i}
                   src={src}
-                  alt={`tin-${i}`}
+                  alt={`powder-${i}`}
                   className="w-full h-48 object-cover rounded-xl cursor-pointer hover:scale-105 transition-transform duration-300"
                   onClick={() => setPopupImage(src)}
                   whileHover={{ scale: 1.05 }}
@@ -254,8 +241,6 @@ export default function TinPlating() {
           )}
         </AnimatePresence>
       </main>
-
-      <Footer />
     </div>
   );
 }
