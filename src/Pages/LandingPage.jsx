@@ -293,7 +293,7 @@ function LandingPage() {
                       {t(`serviceSection.items.${services[currentSlide].key}.shortDesc`)}
                     </p>
                     <Button
-                      onClick={() => (window.location.href = `/services/${services[currentSlide].slug}`)}
+                      onClick={() => (window.location.href = `/services`)}
                       className="font-semibold px-5 py-2 rounded-lg transition-all duration-300 w-full cursor-pointer"
                       style={{
                         background: "linear-gradient(to right, #dc2626, #b91c1c)",
