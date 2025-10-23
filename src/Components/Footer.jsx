@@ -22,17 +22,18 @@ function Footer() {
     <footer className="w-screen bg-white border-t border-gray-200 shadow-lg">
       {/* Map */}
       <div className="w-full">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3625.0042082619456!2d55.420918!3d25.346300!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f5930f83e68a3%3A0x9e36d7b86e1f36a4!2sIndustrial%20Area%2015%20-%20Sharjah%20-%20United%20Arab%20Emirates!5e0!3m2!1sen!2sin!4v1693938300000!5m2!1sen!2sin"
-          width="100%"
-          height="300"
-          style={{ border: 0 }}
-          allowFullScreen
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-          title="Company Location Map"
-        />
-      </div>
+  <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3297.5193421072904!2d55.431439399999995!3d25.2859702!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f5f552ac677f7%3A0x4cea9aa61133067b!2sAl%20Hadaf%20Metal%20Coating!5e1!3m2!1sen!2sin!4v1761217923672!5m2!1sen!2sin"
+    width="100%"
+    height="300"
+    style={{ border: 0 }}
+    allowFullScreen
+    loading="lazy"
+    referrerPolicy="no-referrer-when-downgrade"
+    title="Al Hadaf Metal Coating Location"
+  />
+</div>
+
 
       {/* Desktop */}
       <div className="hidden md:grid max-w-screen-xl mx-auto px-6 grid-cols-4 gap-8 py-8">

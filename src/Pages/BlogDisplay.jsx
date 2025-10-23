@@ -5,12 +5,14 @@ import Footer from "../components/Footer";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { ArrowUp, Calendar, User, Building2, Users, ArrowLeft } from "lucide-react";
-import BlogCreate from "../components/BlogCreate"; // 👈 Import the create component
+import BlogCreate from "../components/BlogCreate";
+import BlogDetailsModal from "../components/BlogDetailsModal"; // ✅ NEW: Blog modal
+import ProjectDetailsModal from "../components/ProjectDetailsModal"; // ✅ NEW: Project modal
 
 // ============================================
 // 🔧 CONFIGURATION
 // ============================================
-const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx0tO-WtDoYrojLZtAwcgxVBcc2DChXfLvrU0aTZ8NrFsBkp9UYmZtejrArvtXa2bXUbA/exec"; // 👈 PASTE YOUR DEPLOYED APPS SCRIPT URL
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbx0tO-WtDoYrojLZtAwcgxVBcc2DChXfLvrU0aTZ8NrFsBkp9UYmZtejrArvtXa2bXUbA/exec";
 
 function BlogDisplay() {
   // ============================================
@@ -22,7 +24,11 @@ function BlogDisplay() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [showScroll, setShowScroll] = useState(false);
-  const [showCreateForm, setShowCreateForm] = useState(false); // 👈 NEW: Toggle create form
+  const [showCreateForm, setShowCreateForm] = useState(false);
+  
+  // ✅ NEW: Modal states
+  const [selectedBlog, setSelectedBlog] = useState(null);
+  const [selectedProject, setSelectedProject] = useState(null);
 
   // ============================================
   // 🔄 FETCH DATA FROM GOOGLE SHEET
@@ -124,7 +130,7 @@ function BlogDisplay() {
 
           {/* Read More Button */}
           <Button
-            onClick={() => openBlogModal(blog)}
+            onClick={() => setSelectedBlog(blog)} // ✅ UPDATED: Open modal
             className="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-semibold rounded-lg transition-all duration-300"
           >
             Read Full Blog
@@ -196,7 +202,7 @@ function BlogDisplay() {
 
           {/* View Details Button */}
           <Button
-            onClick={() => openProjectModal(project)}
+            onClick={() => setSelectedProject(project)} // ✅ UPDATED: Open modal
             className="w-full bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white font-semibold rounded-lg transition-all duration-300"
           >
             View Project Details
@@ -204,18 +210,6 @@ function BlogDisplay() {
         </div>
       </Card>
     );
-  };
-
-  // ============================================
-  // 🔍 MODAL FUNCTIONS (Placeholder - you can enhance)
-  // ============================================
-  const openBlogModal = (blog) => {
-    // For now, show alert. You can create a proper modal component later
-    alert(`Blog: ${blog.Title}\n\nAuthor: ${blog["Author/Lead"]}\n\n${blog.Content}`);
-  };
-
-  const openProjectModal = (project) => {
-    alert(`Project: ${project.Title}\n\nLead: ${project["Author/Lead"]}\nClient: ${project.Company}\n\n${project.Content}`);
   };
 
   // ============================================
@@ -345,7 +339,7 @@ function BlogDisplay() {
           <div className="text-center">
             <Button
               onClick={() => setShowCreateForm(true)}
-              className="bg-gradient-to-r from-white to-white hover:white hover:to-white text-black font-bold px-8 py-4 rounded-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
+              className="bg-gradient-to-r from-white  to-white hover:from-white hover:white  text-black font-bold px-8 py-4 rounded-lg shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
             >
               🔒 Admin: Create New Blog/Project
             </Button>
@@ -366,6 +360,22 @@ function BlogDisplay() {
           <ArrowUp className="h-5 w-5" />
         </Button>
       )}
+
+      {/* ============================================ */}
+      {/* 🎯 BLOG DETAILS MODAL - NEW! */}
+      {/* ============================================ */}
+      <BlogDetailsModal 
+        blog={selectedBlog} 
+        onClose={() => setSelectedBlog(null)} 
+      />
+
+      {/* ============================================ */}
+      {/* 🎯 PROJECT DETAILS MODAL - NEW! */}
+      {/* ============================================ */}
+      <ProjectDetailsModal 
+        project={selectedProject} 
+        onClose={() => setSelectedProject(null)} 
+      />
     </div>
   );
 }

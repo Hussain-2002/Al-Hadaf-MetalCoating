@@ -62,7 +62,7 @@ function Header() {
           {/* Center: Marquee */}
           <div className="overflow-hidden h-6 w-[60%] text-center">
             <div className="animate-marquee-updown whitespace-nowrap">
-              {t("header.announcement")}
+              {/* {t("header.announcement")} */}
             </div>
           </div>
 
