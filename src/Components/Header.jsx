@@ -40,90 +40,9 @@ function Header() {
   ];
 
   return (
-    <header className="fixed top-0 left-0 w-full z-50">
-      {/* 📢 Announcement Bar */}
-      <div
-        className={`relative w-full transition-all duration-400 
-          ${isScrolled ? "bg-yellow-200 text-black" : "bg-white/70 text-black"}`}
-      >
-        {/* ✅ Desktop Layout */}
-        <div className="hidden md:flex items-center justify-between px-6 py-2 text-sm font-medium">
-          {/* Left: Location */}
-          <a
-            href="https://maps.app.goo.gl/LCmcG25VxgHods9c9"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-1 hover:text-yellow-300 transition hover:!text-[#646cff]"
-          >
-            <FaMapMarkerAlt className="text-lg" />
-            <span>{t("header.location")}</span>
-          </a>
-
-          {/* Center: Marquee */}
-          <div className="overflow-hidden h-6 w-[60%] text-center">
-            <div className="animate-marquee-updown whitespace-nowrap">
-              {/* {t("header.announcement")} */}
-            </div>
-          </div>
-
-          
-          
-          {/* Right: Social Icons */}
-          <div className="flex gap-4">
-          <a
-            href="https://facebook.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="transition hover:!text-[#646cff]"
-          >
-            <FaFacebookF />
-          </a>
-          <a
-            href="https://www.instagram.com/alhadafmetalcoating/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="transition hover:!text-[#646cff]"
-          >
-            <FaInstagram />
-          </a>
-        </div>
-      </div>
-
-        {/* ✅ Mobile Layout */}
-        <div className="flex md:hidden flex-col items-center gap-2 px-4 py-2 text-xs">
-          <div className="w-full overflow-hidden text-center">
-            <div className="animate-marquee-updown whitespace-nowrap">
-              {t("header.announcement")}
-            </div>
-          </div>
-
-          <a
-            href="https://maps.app.goo.gl/LCmcG25VxgHods9c9"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-1 text-xs hover:text-yellow-300 transition"
-          >
-            <FaMapMarkerAlt className="text-sm" />
-            <span>{t("header.location")}</span>
-          </a>
-
-          <div className="flex gap-4 justify-center">
-            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-yellow-300 transition">
-              <FaFacebookF />
-            </a>
-            <a href="https://www.instagram.com/alhadafmetalcoating/" target="_blank" rel="noopener noreferrer" className="hover:text-yellow-300 transition">
-              <FaInstagram />
-            </a>
-          </div>
-        </div>
-      </div>
-
-      {/* 🔻 Main Header */}
-      <div
-        className={`transition-all duration-300 ${
-          isScrolled ? "bg-white shadow-md" : "bg-transparent"
-        }`}
-      >
+    <header className="w-full">
+      {/* 🔻 Main Header - ALWAYS TRANSPARENT */}
+      <div className="transition-all duration-300 bg-transparent">
         {/* Desktop Layout */}
         <div className="hidden md:flex items-center justify-between px-8 py-4">
           {/* Left Logo */}
@@ -131,7 +50,10 @@ function Header() {
             <img
               src="/assets/logo.png"
               alt="Al-Hadaf Metal Coating LLC Logo"
-              className="h-20 w-auto"
+              className="h-20 w-auto drop-shadow-2xl"
+              style={{
+                filter: 'drop-shadow(0 0 8px rgba(255,255,255,0.8)) drop-shadow(0 0 4px rgba(0,0,0,0.8))'
+              }}
             />
           </div>
 
@@ -144,12 +66,10 @@ function Header() {
                     <NavigationMenuLink asChild>
                       <Link
                         to={item.href}
-                        className={`relative px-2 lg:px-3 py-1 font-medium whitespace-nowrap transition-all duration-300 ${
-                          isScrolled ? "text-black" : "text-white"
-                        } 
-                          hover:text-yellow-500
-                          after:content-[''] after:block after:w-0 after:h-[2px] after:bg-yellow-500 
-                          after:transition-all after:duration-300 hover:after:w-full`}
+                        className="relative px-2 lg:px-3 py-1 font-bold whitespace-nowrap transition-all duration-300 text-white hover:text-red-500 after:content-[''] after:block after:w-0 after:h-[2px] after:bg-red-500 after:transition-all after:duration-300 hover:after:w-full"
+                        style={{
+                          textShadow: '0 0 10px rgba(0,0,0,0.9), 0 0 20px rgba(0,0,0,0.7), 0 0 2px rgba(255,255,255,0.9), 2px 2px 4px rgba(0,0,0,0.8)'
+                        }}
                       >
                         {item.name}
                       </Link>
@@ -164,7 +84,10 @@ function Header() {
           <div className="flex items-center">
             <Link
               to="/contact"
-              className="px-6 py-2.5 rounded-md bg-red-500 text-white font-semibold text-sm md:text-base hover:bg-red-900 transition shadow-sm"
+              className="px-6 py-2.5 rounded-md bg-red-500 text-white font-semibold text-sm md:text-base hover:bg-red-700 transition shadow-2xl border-2 border-white/30"
+              style={{
+                boxShadow: '0 4px 20px rgba(239, 68, 68, 0.5), 0 0 10px rgba(255,255,255,0.3)'
+              }}
             >
               {t("header.enquireNow")}
             </Link>
@@ -178,11 +101,19 @@ function Header() {
               src="/assets/logo.png"
               alt="Al-Hadaf Metal Coating LLC Logo"
               className="h-12 w-auto"
+              style={{
+                filter: 'drop-shadow(0 0 6px rgba(255,255,255,0.8)) drop-shadow(0 0 3px rgba(0,0,0,0.8))'
+              }}
             />
           </div>
 
           <Drawer>
-            <DrawerTrigger className="p-2 rounded text-white bg-yellow-500">
+            <DrawerTrigger 
+              className="p-2 rounded text-white bg-red-500 font-bold text-xl shadow-lg border-2 border-white/30"
+              style={{
+                boxShadow: '0 4px 15px rgba(239, 68, 68, 0.5)'
+              }}
+            >
               ☰
             </DrawerTrigger>
             <DrawerContent className="bg-white p-6">
@@ -196,7 +127,7 @@ function Header() {
                   <Link
                     key={item.name}
                     to={item.href}
-                    className="text-gray-800 font-medium hover:text-yellow-500 transition"
+                    className="text-gray-800 font-medium hover:text-red-500 transition"
                   >
                     {item.name}
                   </Link>
@@ -205,7 +136,7 @@ function Header() {
               <div className="mt-6 border-t pt-4">
                 <Link
                   to="/contact"
-                  className="w-full block text-center px-6 py-2.5 rounded-md bg-red-500 text-white font-semibold text-base hover:bg-yellow-600 transition shadow-sm"
+                  className="w-full block text-center px-6 py-2.5 rounded-md bg-red-500 text-white font-semibold text-base hover:bg-red-700 transition shadow-sm"
                 >
                   {t("header.enquireNow")}
                 </Link>

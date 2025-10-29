@@ -1,6 +1,7 @@
 // src/App.jsx
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import ScrollToTop from "./Components/ScrollToTop.jsx";
+import StickyContactButtons from "./Components/StickyContactButtons.jsx";
 import { I18nextProvider } from "react-i18next";
 import i18n from "./i18n.js";
 
@@ -20,6 +21,9 @@ function App() {
       <Router>
         {/* 🪄 Auto-scrolls to top on every route change */}
         <ScrollToTop />
+
+        {/* 📱 Sticky Social Media Contact Buttons - Shows on all pages */}
+        <StickyContactButtons />
 
         <Routes>
           {/* 🔹 Landing and main routes */}

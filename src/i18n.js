@@ -70,6 +70,7 @@ const resources = {
       },
 
       about: {
+        
         title: "About Us",
         description:
           "We are committed to delivering high-quality services with innovation and passion.",
@@ -97,6 +98,29 @@ const resources = {
         founderMessage2: "With over 15 years of experience in this field, I take pride in leading a team that shares the same passion for excellence and innovation. Our journey is built on trust, precision, and commitment to deliver unmatched results.",
         founderSignature: "— Al-Hadaf, Founder & CEO",
         meetTeamTitle: "Meet Our Team",
+        missionTitle: "Our Mission",
+        missionDescription: "To provide innovative and sustainable metal coating solutions that exceed customer expectations.",
+        visionTitle: "Our Vision",
+        visionDescription: "To be a global leader in metal coating solutions, recognized for our commitment to quality and sustainability.",
+        coreValuesTitle: "Our Core Values",
+        coreValues: {
+          quality: {
+            title: "Quality Excellence",
+            description: "Delivering superior coating solutions with unmatched precision"
+          },
+          integrity: {
+            title: "Integrity",
+            description: "Honest and transparent business practices in everything we do"
+          },
+          innovation: {
+            title: "Innovation",
+            description: "Continuous improvement through modern techniques and technology"
+          },
+          customer: {
+            title: "Customer Focus",
+            description: "Exceeding customer expectations with dedicated service"
+          }
+        },
         teamMembers: {
           hussain: {
             name: "Hussain",
@@ -284,6 +308,32 @@ const resources = {
         founderMessage2: "مع أكثر من 15 عامًا من الخبرة في هذا المجال، أفخر بقيادة فريق يشاركني نفس الشغف بالتميز والابتكار. رحلتنا مبنية على الثقة والدقة والالتزام بتقديم نتائج لا مثيل لها.",
         founderSignature: "— المؤسس والرئيس التنفيذي",
         meetTeamTitle: "تعرف على فريقنا",
+        missionTitle: "مهمتنا",
+        missionDescription: "تقديم حلول طلاء مبتكرة ومستدامة تتجاوز توقعات العملاء.",
+        visionTitle: "رؤيتنا",
+        visionDescription: "أن نكون رائدين عالميين في حلول طلاء المعادن، معترف بهم لالتزامنا بالجودة والاستدامة.",
+        coreValuesTitle: "قيمنا الأساسية",
+        coreValues: {
+          quality: {
+            title: "التميز في الجودة",
+            description: "تقديم حلول طلاء فائقة بدقة لا مثيل لها"
+          },
+          integrity: {
+            title: "النزاهة",
+            description: "ممارسات تجارية صادقة وشفافة في كل ما نقوم به"
+          },
+          innovation: {
+            title: "الابتكار",
+            description: "التحسين المستمر من خلال التقنيات والأساليب الحديثة"
+          },
+          customer: {
+            title: "التركيز على العميل",
+            description: "تجاوز توقعات العملاء من خلال خدمة مخصصة ومتفانية"
+          }
+        },
+
+        
+
         teamMembers: {
           hussain: {
             name: "حسين",
@@ -472,6 +522,30 @@ const resources = {
         founderMessage2: "इस क्षेत्र में 15 से अधिक वर्षों के अनुभव के साथ, मुझे एक ऐसी टीम का नेतृत्व करने पर गर्व है जो उत्कृष्टता और नवाचार के लिए समान जुनून साझा करती है। हमारी यात्रा विश्वास, सटीकता और बेजोड़ परिणाम देने की प्रतिबद्धता पर बनी है।",
         founderSignature: "— हुसैन अल-हदफ, संस्थापक और सीईओ",
         meetTeamTitle: "हमारी टीम से मिलें",
+        missionTitle: "हमारा मिशन",
+        missionDescription: "नवीन और स्थायी धातु कोटिंग समाधान प्रदान करना जो ग्राहक की अपेक्षाओं से परे हो।",
+        visionTitle: "हमारा दृष्टिकोण",
+        visionDescription: "धातु कोटिंग समाधान में एक वैश्विक नेता बनना, गुणवत्ता और स्थिरता के प्रति हमारी प्रतिबद्धता के लिए मान्यता प्राप्त।",
+        coreValuesTitle: "हमारे मूल मूल्य",
+        coreValues: {
+          quality: {
+            title: "गुणवत्ता उत्कृष्टता",
+            description: "उत्कृष्टता के प्रति हमारी प्रतिबद्धता हर परियोजना में परिलक्षित होती है।"
+          },
+          integrity: {
+            title: "ईमानदारी",
+            description: "हम अपने ग्राहकों और भागीदारों के साथ ईमानदार और पारदर्शी संबंध बनाने में विश्वास करते हैं।"
+          },
+          innovation: {
+            title: "नवाचार",
+            description: "हम नवीनतम तकनीकों और प्रक्रियाओं को अपनाने के लिए प्रतिबद्ध हैं।"
+          },
+          customer: {
+            title: "ग्राहक केंद्रितता",
+            description: "हमारी प्राथमिकता हमारे ग्राहकों की आवश्यकताओं को समझना और उन्हें पूरा करना है।"
+          }
+        },
+
         teamMembers: {
           hussain: {
             name: "हुसैन",
@@ -660,6 +734,29 @@ const resources = {
         founderMessage2: "ഈ മേഖലയിൽ 15 വർഷത്തിലേറെ പരിചയത്തോടെ, മികവിനും നവീകരണത്തിനും വേണ്ടി അതേ അഭിനിവേശം പങ്കിടുന്ന ഒരു ടീമിനെ നയിക്കുന്നതിൽ ഞാൻ അഭിമാനിക്കുന്നു. വിശ്വാസം, കൃത്യത, അതുല്യമായ ഫലങ്ങൾ നൽകാനുള്ള പ്രതിബദ്ധത എന്നിവയിലാണ് ഞങ്ങളുടെ യാത്ര നിർമ്മിച്ചിരിക്കുന്നത്.",
         founderSignature: "— അൽ-ഹദഫ്, സ്ഥാപകനും സിഇഒയും",
         meetTeamTitle: "ഞങ്ങളുടെ ടീമിനെ കാണുക",
+        missionTitle: "ഞങ്ങളുടെ ദൗത്യം",
+        missionDescription: "ഉപഭോക്താക്കളുടെ പ്രതീക്ഷകൾ മറികടക്കുന്ന നവീനവും സുസ്ഥിരവുമായ മെറ്റൽ കോട്ടിംഗ് സൊല്യൂഷനുകൾ നൽകുക.",
+        visionTitle: "ഞങ്ങളുടെ ദർശനം",
+        visionDescription: "മെറ്റൽ കോട്ടിംഗ് സൊല്യൂഷനുകളിൽ ഒരു ആഗോള നേതാവാകുക, ഗുണനിലവാരത്തിനും സുസ്ഥിരതയ്ക്കും വേണ്ടി ഞങ്ങളുടെ പ്രതിബദ്ധതയ്ക്ക് അംഗീകാരം ലഭിക്കുക.",
+        coreValuesTitle: "ഞങ്ങളുടെ മൗലിക മൂല്യങ്ങൾ",
+        coreValues: {
+          quality: {
+            title: "ഗുണനിലവാരത്തിലെ മികവ്",
+            description: "പ്രതിയൊരു പ്രോജക്ടിലും മികവിനോടുള്ള ഞങ്ങളുടെ പ്രതിബദ്ധത പ്രതിഫലിക്കുന്നു."
+          },
+          integrity: {
+            title: "നിഷ്‌ഠ",
+            description: "ഞങ്ങൾ ഞങ്ങളുടെ ഉപഭോക്താക്കളുമായും പങ്കാളികളുമായും നിഷ്‌ഠയുള്ള, പരദർശിയായ ബന്ധങ്ങൾ നിർമ്മിക്കുന്നതിൽ വിശ്വസിക്കുന്നു."
+          },
+          innovation: {
+            title: "നവീകരണം",
+            description: "നവീന സാങ്കേതികവിദ്യകളും പ്രക്രിയകളും സ്വീകരിക്കാൻ ഞങ്ങൾ പ്രതിജ്ഞാബദ്ധരാണ്."
+          },
+          customer: {
+            title: "ഉപഭോക്തൃ കേന്ദ്രീകൃതത",
+            description: "ഞങ്ങളുടെ പ്രാഥമികത ഞങ്ങളുടെ ഉപഭോക്താക്കളുടെ ആവശ്യകതകൾ മനസ്സിലാക്കുകയും അവ നിറവേറ്റുകയും ചെയ്യുകയാണ്."
+          }
+        },
         teamMembers: {
           hussain: {
             name: "ഹുസൈൻ",
