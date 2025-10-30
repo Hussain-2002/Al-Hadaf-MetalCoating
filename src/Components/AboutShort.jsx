@@ -26,12 +26,12 @@ function AboutShort() {
           >
             <div className="relative">
               {/* Decorative frame */}
-              <div className="absolute -inset-4 bg-gradient-to-br from-purple-300 to-pink-300 rounded-3xl opacity-20 blur-xl"></div>
+              <div className="absolute -inset-4  rounded-3xl opacity-20 blur-xl"></div>
               
               {/* Main image container */}
               <div className="relative rounded-3xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-500">
                 <img
-                  src="/assets/about-image.jpg"
+                  src="/assets/logo.png"
                   alt="Al-Hadaf Metal Coating Facility"
                   className="w-full h-[400px] md:h-[500px] object-cover"
                   onError={(e) => {
@@ -39,7 +39,7 @@ function AboutShort() {
                   }}
                 />
                 {/* Gradient overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-purple-900/30 to-transparent"></div>
+                <div className="absolute inset-0 "></div>
               </div>
 
               {/* Floating badge */}
@@ -48,7 +48,7 @@ function AboutShort() {
                 whileInView={{ scale: 1 }}
                 transition={{ delay: 0.5, type: "spring", stiffness: 200 }}
                 viewport={{ once: true }}
-                className="absolute -bottom-6 -right-6 bg-white rounded-2xl shadow-2xl p-6 border-4 border-purple-200"
+                className="absolute -bottom-6 -right-6 bg-white rounded-2xl shadow-2xl p-6 border-4 border-red-200"
               >
                 <div className="text-center">
                   <p className="text-4xl font-bold text-red-600">15+</p>
