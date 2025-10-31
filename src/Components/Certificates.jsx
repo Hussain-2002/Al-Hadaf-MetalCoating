@@ -59,16 +59,15 @@ function Certificates() {
   // ============================================
   const openModal = (cert) => {
     setSelectedCert(cert);
-    setZoomLevel(0.4);
+    setZoomLevel(1);
     setRotation(0);
-    document.body.style.overflow = 'hidden';
+    // Don't disable body scroll - modal handles its own scrolling
   };
 
   const closeModal = () => {
     setSelectedCert(null);
     setZoomLevel(1);
     setRotation(0);
-    document.body.style.overflow = 'unset';
   };
 
   const handleZoomIn = () => {
@@ -84,7 +83,7 @@ function Certificates() {
   };
 
   const handleReset = () => {
-    setZoomLevel(0.5);
+    setZoomLevel(1);
     setRotation(0);
   };
 
@@ -170,7 +169,7 @@ function Certificates() {
         </div>
 
         {/* ============================================ */}
-        {/* 📭 EMPTY STATE */}
+        {/* 🔭 EMPTY STATE */}
         {/* ============================================ */}
         {certificates.length === 0 && (
           <div className="text-center py-12">
@@ -183,43 +182,46 @@ function Certificates() {
       </div>
 
       {/* ============================================ */}
-      {/* 🔍 CERTIFICATE VIEWER MODAL */}
+      {/* 🔍 CERTIFICATE VIEWER MODAL - FULLY FIXED */}
       {/* ============================================ */}
       {selectedCert && (
         <div 
-          className="fixed inset-0 z-[9999] bg-black/95 flex items-center justify-center animate-fade-in"
+          className="fixed inset-0 bg-black/95 flex items-center justify-center animate-fade-in"
+          style={{ zIndex: 999999 }}
           onClick={closeModal}
         >
-          {/* Modal Content */}
+          {/* Modal Content Container */}
           <div 
             className="relative w-full h-full flex flex-col"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Header - Certificate Name & Close Button */}
-            <div className="absolute top-0 left-0 right-0 z-10 bg-gradient-to-b from-black/80 to-transparent p-4 flex items-center justify-between">
-              <h3 className="text-white font-bold text-lg md:text-xl max-w-2xl">
+            {/* Top Header Bar with Title & Close Button */}
+            <div 
+              className="absolute top-0 left-0 right-0 bg-gradient-to-b from-black via-black/80 to-transparent p-4 md:p-6 flex items-center justify-between"
+              style={{ zIndex: 1000000 }}
+            >
+              <h3 className="text-white font-bold text-base md:text-xl lg:text-2xl max-w-[70%] truncate">
                 {selectedCert.name}
               </h3>
               <button
                 onClick={closeModal}
-                className="text-white hover:text-red-500 transition-colors p-2 hover:bg-white/10 rounded-full transform hover:scale-110 duration-300"
+                className="text-white hover:text-red-500 transition-colors p-2 md:p-3 hover:bg-white/10 rounded-full transform hover:scale-110 duration-300 flex-shrink-0"
                 aria-label="Close modal"
               >
                 <X className="w-6 h-6 md:w-8 md:h-8" />
               </button>
             </div>
 
-            {/* Image Container - Scrollable with Zoom */}
-            <div className="flex-1 overflow-auto p-4 md:p-8 flex items-center justify-center">
-              <div className="relative inline-block">
+            {/* Certificate Image Container - Centered & Scrollable */}
+            <div className="flex-1 overflow-auto flex items-center justify-center p-4 pt-20 pb-24 md:pt-24 md:pb-28">
+              <div className="relative">
                 <img
                   src={selectedCert.image}
                   alt={selectedCert.name}
-                  className="w-full h-auto transition-transform duration-300 ease-out"
+                  className="max-w-full max-h-[70vh] md:max-h-[75vh] w-auto h-auto object-contain transition-transform duration-300 ease-out rounded-lg shadow-2xl"
                   style={{
                     transform: `scale(${zoomLevel}) rotate(${rotation}deg)`,
                     transformOrigin: 'center center',
-                    maxWidth: 'none'
                   }}
                   onError={(e) => {
                     e.target.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='800' height='1066'%3E%3Crect fill='%23f3f4f6' width='800' height='1066'/%3E%3Ctext x='50%25' y='50%25' text-anchor='middle' dy='.3em' fill='%239ca3af' font-size='24'%3ECertificate%3C/text%3E%3C/svg%3E";
@@ -228,40 +230,43 @@ function Certificates() {
               </div>
             </div>
 
-            {/* Bottom Controls - Zoom & Rotate */}
-            <div className="absolute bottom-0 left-0 right-0 z-10 bg-gradient-to-t from-black/80 to-transparent p-4">
-              <div className="flex items-center justify-center gap-2 md:gap-4">
-                {/* Zoom Out */}
+            {/* Bottom Control Bar - Zoom & Rotate */}
+            <div 
+              className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black via-black/80 to-transparent p-4 md:p-6"
+              style={{ zIndex: 1000000 }}
+            >
+              <div className="flex items-center justify-center gap-2 md:gap-4 flex-wrap">
+                {/* Zoom Out Button */}
                 <button
                   onClick={handleZoomOut}
                   disabled={zoomLevel <= 0.5}
-                  className="bg-white/20 hover:bg-white/30 disabled:bg-white/10 disabled:cursor-not-allowed text-white p-2 md:p-3 rounded-lg transition-all transform hover:scale-110"
+                  className="bg-white/20 hover:bg-white/30 disabled:bg-white/10 disabled:cursor-not-allowed text-white p-2 md:p-3 rounded-lg transition-all transform hover:scale-110 disabled:hover:scale-100"
                   aria-label="Zoom out"
                 >
                   <ZoomOut className="w-5 h-5 md:w-6 md:h-6" />
                 </button>
 
                 {/* Zoom Level Indicator */}
-                <div className="bg-white/20 px-4 py-2 rounded-lg backdrop-blur-sm">
+                <div className="bg-white/20 px-3 md:px-4 py-2 rounded-lg backdrop-blur-sm min-w-[70px] text-center">
                   <span className="text-white font-bold text-sm md:text-base">
                     {Math.round(zoomLevel * 100)}%
                   </span>
                 </div>
 
-                {/* Zoom In */}
+                {/* Zoom In Button */}
                 <button
                   onClick={handleZoomIn}
                   disabled={zoomLevel >= 3}
-                  className="bg-white/20 hover:bg-white/30 disabled:bg-white/10 disabled:cursor-not-allowed text-white p-2 md:p-3 rounded-lg transition-all transform hover:scale-110"
+                  className="bg-white/20 hover:bg-white/30 disabled:bg-white/10 disabled:cursor-not-allowed text-white p-2 md:p-3 rounded-lg transition-all transform hover:scale-110 disabled:hover:scale-100"
                   aria-label="Zoom in"
                 >
                   <ZoomIn className="w-5 h-5 md:w-6 md:h-6" />
                 </button>
 
                 {/* Divider */}
-                <div className="w-px h-8 bg-white/30 mx-2"></div>
+                <div className="hidden sm:block w-px h-8 bg-white/30 mx-1 md:mx-2"></div>
 
-                {/* Rotate */}
+                {/* Rotate Button */}
                 <button
                   onClick={handleRotate}
                   className="bg-white/20 hover:bg-white/30 text-white p-2 md:p-3 rounded-lg transition-all transform hover:scale-110 hover:rotate-90"
@@ -270,19 +275,21 @@ function Certificates() {
                   <RotateCw className="w-5 h-5 md:w-6 md:h-6" />
                 </button>
 
-                {/* Reset */}
+                {/* Reset Button */}
                 <button
                   onClick={handleReset}
-                  className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-4 py-2 md:px-6 md:py-3 rounded-lg font-semibold transition-all text-sm md:text-base transform hover:scale-105"
+                  className="bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800 text-white px-3 md:px-6 py-2 md:py-3 rounded-lg font-semibold transition-all text-sm md:text-base transform hover:scale-105"
                 >
                   Reset
                 </button>
               </div>
-            </div>
 
-            {/* Close hint text */}
-            <div className="absolute top-20 left-1/2 transform -translate-x-1/2 text-white/60 text-sm pointer-events-none">
-              Click outside to close
+              {/* Close Hint Text */}
+              <div className="text-center mt-3 md:mt-4">
+                <p className="text-white/60 text-xs md:text-sm">
+                  Click outside to close
+                </p>
+              </div>
             </div>
           </div>
         </div>

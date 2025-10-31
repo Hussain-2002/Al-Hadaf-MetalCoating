@@ -6,7 +6,7 @@ function StickyContactButtons() {
 
   // CONFIGURE POSITION HERE
   const POSITION_CONFIG = {
-    top: "24%",
+    top: "16.5%",
     transform: "translateY(-50%)",
   };
 
