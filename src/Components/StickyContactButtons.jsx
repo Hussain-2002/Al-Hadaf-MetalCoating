@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 
 function StickyContactButtons() {
@@ -69,122 +69,239 @@ function StickyContactButtons() {
   ];
 
   return (
-    <div
-      className="fixed right-0 z-50"
-      style={{
-        top: POSITION_CONFIG.top,
-        transform: POSITION_CONFIG.transform,
-      }}
-    >
-      <div className="relative">
-  {/* Animated Hint Text */}
-  {!isExpanded && (
-    <motion.div
-      initial={{ opacity: 0, x: 50 }}
-      animate={{
-        opacity: [0, 1, 1, 0],
-        x: [50, 0, 0, 50],
-      }}
-      transition={{
-        duration: 4,
-        repeat: Infinity,
-        repeatDelay: 2,
-        ease: "easeInOut",
-      }}
-      className="absolute right-full mr-4 top-1/2 -translate-y-1/2 bg-white text-blue-700 font-semibold text-sm px-3 py-1 rounded-full shadow-md whitespace-nowrap flex items-center gap-1"
-    >
-      💬 Click-here
-    </motion.div>
-  )}
-
-
-
-        {/* Toggle Button */}
-<motion.button
-  onClick={() => setIsExpanded(!isExpanded)}
-  whileHover={{ scale: 1.08 }}
-  whileTap={{ scale: 0.95 }}
-  className="bg-gradient-to-br from-sky-500 to-indigo-500 text-white p-3 rounded-l-xl shadow-lg hover:from-sky-600 hover:to-indigo-600 transition-all duration-300 relative overflow-hidden group"
-  aria-label="Toggle contact buttons"
->
-  <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
-  <motion.div
-    animate={{ rotate: isExpanded ? 180 : 0 }}
-    transition={{ duration: 0.3 }}
-  >
-    {isExpanded ? (
-      <svg
-        className="w-5 h-5"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
+    <>
+      {/* 🖥️ DESKTOP VERSION - Fixed on Right Side - lg screens and above */}
+      <div
+        className="hidden lg:block fixed right-0 z-50"
+        style={{
+          top: POSITION_CONFIG.top,
+          transform: POSITION_CONFIG.transform,
+        }}
       >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M6 18L18 6M6 6l12 12"
-        />
-      </svg>
-    ) : (
-      <svg
-        className="w-5 h-5"
-        fill="none"
-        stroke="currentColor"
-        viewBox="0 0 24 24"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          strokeWidth={2}
-          d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
-        />
-      </svg>
-    )}
-  </motion.div>
-</motion.button>
-
-
-        {/* Social Buttons */}
-        <motion.div
-          initial={{ x: 100, opacity: 0 }}
-          animate={{
-            x: isExpanded ? 0 : 100,
-            opacity: isExpanded ? 1 : 0,
-          }}
-          transition={{ duration: 0.3 }}
-          className="absolute right-full top-0 mr-2 space-y-2"
-        >
-          {socialLinks.map((link, index) => (
-            <motion.a
-              key={link.name}
-              href={link.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              initial={{ x: 100, opacity: 0 }}
+        <div className="relative">
+          {/* Animated Hint Text */}
+          {!isExpanded && (
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
               animate={{
-                x: isExpanded ? 0 : 100,
-                opacity: isExpanded ? 1 : 0,
+                opacity: [0, 1, 1, 0],
+                x: [50, 0, 0, 50],
               }}
               transition={{
-                duration: 0.3,
-                delay: index * 0.1,
+                duration: 4,
+                repeat: Infinity,
+                repeatDelay: 2,
+                ease: "easeInOut",
               }}
-              whileHover={{ scale: 1.1, x: -5 }}
-              whileTap={{ scale: 0.95 }}
-              className={`${link.bgColor} ${link.hoverColor} text-white p-2 rounded-md shadow-lg flex items-center justify-center transition-all duration-300 group relative overflow-hidden`}
-              aria-label={`Contact via ${link.name}`}
+              className="absolute right-full mr-4 top-1/2 -translate-y-1/2 bg-white text-blue-700 font-semibold text-sm px-3 py-1 rounded-full shadow-md whitespace-nowrap flex items-center gap-1"
             >
-              <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
-              {link.icon}
-              <span className="absolute right-full mr-2 bg-gray-900 text-white text-xs px-2 py-1 rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-                {link.name}
-              </span>
-            </motion.a>
-          ))}
-        </motion.div>
+              💬 Click-here
+            </motion.div>
+          )}
+
+          {/* Toggle Button */}
+          <motion.button
+            onClick={() => setIsExpanded(!isExpanded)}
+            whileHover={{ scale: 1.08 }}
+            whileTap={{ scale: 0.95 }}
+            className="bg-gradient-to-br from-sky-500 to-indigo-500 text-white p-3 rounded-l-xl shadow-lg hover:from-sky-600 hover:to-indigo-600 transition-all duration-300 relative overflow-hidden group"
+            aria-label="Toggle contact buttons"
+          >
+            <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
+            <motion.div
+              animate={{ rotate: isExpanded ? 180 : 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              {isExpanded ? (
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M6 18L18 6M6 6l12 12"
+                  />
+                </svg>
+              ) : (
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
+                  />
+                </svg>
+              )}
+            </motion.div>
+          </motion.button>
+
+          {/* Social Buttons */}
+          <motion.div
+            initial={{ x: 100, opacity: 0 }}
+            animate={{
+              x: isExpanded ? 0 : 100,
+              opacity: isExpanded ? 1 : 0,
+            }}
+            transition={{ duration: 0.3 }}
+            className="absolute right-full top-0 mr-2 space-y-2"
+          >
+            {socialLinks.map((link, index) => (
+              <motion.a
+                key={link.name}
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ x: 100, opacity: 0 }}
+                animate={{
+                  x: isExpanded ? 0 : 100,
+                  opacity: isExpanded ? 1 : 0,
+                }}
+                transition={{
+                  duration: 0.3,
+                  delay: index * 0.1,
+                }}
+                whileHover={{ scale: 1.1, x: -5 }}
+                whileTap={{ scale: 0.95 }}
+                className={`${link.bgColor} ${link.hoverColor} text-white p-2 rounded-md shadow-lg flex items-center justify-center transition-all duration-300 group relative overflow-hidden`}
+                aria-label={`Contact via ${link.name}`}
+              >
+                <div className="absolute inset-0 bg-white opacity-0 group-hover:opacity-20 transition-opacity duration-300" />
+                {link.icon}
+                <span className="absolute right-full mr-2 bg-gray-900 text-white text-xs px-2 py-1 rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                  {link.name}
+                </span>
+              </motion.a>
+            ))}
+          </motion.div>
+        </div>
       </div>
-    </div>
+
+      {/* 📱 MOBILE VERSION - In Header - below lg screens */}
+      <div className="block lg:hidden">
+        {/* Toggle Button - Shows Chat Icon */}
+        <motion.button
+          onClick={() => setIsExpanded(!isExpanded)}
+          whileTap={{ scale: 0.95 }}
+          className="bg-gradient-to-br from-sky-500 to-indigo-500 text-white p-1.5 rounded-md shadow-lg relative overflow-hidden"
+          aria-label="Toggle contact buttons"
+        >
+          <AnimatePresence mode="wait">
+            {!isExpanded ? (
+              <motion.svg
+                key="chat"
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.8 }}
+                transition={{ duration: 0.2 }}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"
+                />
+              </motion.svg>
+            ) : (
+              <motion.svg
+                key="close"
+                className="w-6 h-6"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                initial={{ opacity: 0, rotate: -90 }}
+                animate={{ opacity: 1, rotate: 0 }}
+                exit={{ opacity: 0, rotate: 90 }}
+                transition={{ duration: 0.2 }}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </motion.svg>
+            )}
+          </AnimatePresence>
+        </motion.button>
+
+        {/* Social Buttons Panel - Slides from Right */}
+        <AnimatePresence>
+          {isExpanded && (
+            <>
+              {/* Backdrop */}
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2 }}
+                className="fixed inset-0 bg-black/50 z-40"
+                onClick={() => setIsExpanded(false)}
+              />
+
+              {/* Social Panel */}
+              <motion.div
+                initial={{ x: "100%" }}
+                animate={{ x: 0 }}
+                exit={{ x: "100%" }}
+                transition={{ type: "spring", damping: 25, stiffness: 300 }}
+                className="fixed top-0 right-0 h-screen w-64 bg-gradient-to-b from-gray-900 to-gray-800 shadow-2xl z-50 flex flex-col"
+              >
+                {/* Header */}
+                <div className="p-4 border-b border-gray-700">
+                  <h3 className="text-white font-bold text-lg flex items-center gap-2">
+                    <span>💬</span> Connect With Us
+                  </h3>
+                </div>
+
+                {/* Social Links */}
+                <div className="flex-1 p-4 space-y-3 overflow-y-auto">
+                  {socialLinks.map((link, index) => (
+                    <motion.a
+                      key={link.name}
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      initial={{ x: 100, opacity: 0 }}
+                      animate={{ x: 0, opacity: 1 }}
+                      transition={{
+                        delay: index * 0.1,
+                        type: "spring",
+                        stiffness: 300,
+                      }}
+                      whileTap={{ scale: 0.95 }}
+                      className={`${link.bgColor} ${link.hoverColor} text-white p-3 rounded-lg shadow-lg flex items-center gap-3 transition-all duration-300`}
+                    >
+                      <div className="flex-shrink-0">{link.icon}</div>
+                      <span className="font-medium">{link.name}</span>
+                    </motion.a>
+                  ))}
+                </div>
+
+                {/* Footer */}
+                <div className="p-4 border-t border-gray-700 text-center">
+                  <p className="text-gray-400 text-xs">
+                    Al-Hadaf Metal Coating LLC
+                  </p>
+                </div>
+              </motion.div>
+            </>
+          )}
+        </AnimatePresence>
+      </div>
+    </>
   );
 }
 

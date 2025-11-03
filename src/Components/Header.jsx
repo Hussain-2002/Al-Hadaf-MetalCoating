@@ -18,6 +18,7 @@ import {
 
 import { FaFacebookF, FaInstagram, FaTwitter, FaMapMarkerAlt } from "react-icons/fa";
 import { useTranslation } from "react-i18next";
+import StickyContactButtons from "./StickyContactButtons";
 
 function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -128,14 +129,14 @@ function Header() {
       </div>
       */}
 
-      {/* 🔻 Main Header */}
+      {/* 📻 Main Header */}
       <div
         className={`transition-all duration-300 ${
-          isScrolled ? "bg-white shadow-md" : "bg-transparent"
+          isScrolled ? "bg-white shadow-md" : "bg-white shadow-md md:bg-transparent md:shadow-none"
         }`}
       >
         {/* Desktop Layout */}
-<div className="hidden md:flex items-center justify-between px-6 py-2 -mt-2 scale-95">
+        <div className="hidden md:flex items-center justify-between px-6 py-2 -mt-2 scale-95">
           {/* Left Logo */}
           <div
             className="flex items-center cursor-pointer"
@@ -185,7 +186,7 @@ function Header() {
         </div>
 
         {/* Mobile Layout */}
-        <div className="flex md:hidden justify-between items-center px-4 py-3">
+        <div className="flex md:hidden justify-between items-center px-3 py-2">
           <div
             className="flex items-center cursor-pointer"
             onClick={() => (window.location.href = "/")}
@@ -193,41 +194,48 @@ function Header() {
             <img
               src="/assets/logo.png"
               alt="Al-Hadaf Metal Coating LLC Logo"
-              className="h-12 w-auto"
+              className="h-10 w-auto"
             />
           </div>
 
-          <Drawer>
-            <DrawerTrigger className="p-2 rounded text-white bg-yellow-500">
-              ☰
-            </DrawerTrigger>
-            <DrawerContent className="bg-white p-6">
-              <DrawerHeader>
-                <DrawerTitle className="text-lg font-bold text-gray-800">
-                  {t("header.menu")}
-                </DrawerTitle>
-              </DrawerHeader>
-              <nav className="flex flex-col space-y-4 mt-4">
-                {navItems.map((item) => (
+          <div className="flex items-center gap-2">
+            {/* Sticky Contact Buttons - Mobile Only */}
+            <StickyContactButtons />
+
+            <Drawer>
+              <DrawerTrigger className="p-1.5 rounded text-white bg-yellow-500">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+              </DrawerTrigger>
+              <DrawerContent className="bg-white p-6">
+                <DrawerHeader>
+                  <DrawerTitle className="text-lg font-bold text-gray-800">
+                    {t("header.menu")}
+                  </DrawerTitle>
+                </DrawerHeader>
+                <nav className="flex flex-col space-y-4 mt-4">
+                  {navItems.map((item) => (
+                    <Link
+                      key={item.name}
+                      to={item.href}
+                      className="text-gray-800 font-medium hover:text-yellow-500 transition"
+                    >
+                      {item.name}
+                    </Link>
+                  ))}
+                </nav>
+                <div className="mt-6 border-t pt-4">
                   <Link
-                    key={item.name}
-                    to={item.href}
-                    className="text-gray-800 font-medium hover:text-yellow-500 transition"
+                    to="/contact"
+                    className="w-full block text-center px-6 py-2.5 rounded-md bg-red-500 text-white font-semibold text-base hover:bg-yellow-600 transition shadow-sm"
                   >
-                    {item.name}
+                    {t("header.enquireNow")}
                   </Link>
-                ))}
-              </nav>
-              <div className="mt-6 border-t pt-4">
-                <Link
-                  to="/contact"
-                  className="w-full block text-center px-6 py-2.5 rounded-md bg-red-500 text-white font-semibold text-base hover:bg-yellow-600 transition shadow-sm"
-                >
-                  {t("header.enquireNow")}
-                </Link>
-              </div>
-            </DrawerContent>
-          </Drawer>
+                </div>
+              </DrawerContent>
+            </Drawer>
+          </div>
         </div>
       </div>
     </header>

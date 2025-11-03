@@ -166,9 +166,10 @@ function LandingPage() {
         >
           {/* 🎥 FULL BACKGROUND VIDEO */}
           <div className="absolute inset-0 w-full h-full">
+            {/* Desktop Video (Landscape) - Hidden on mobile */}
             <video
               ref={videoRef}
-              className="absolute inset-0 w-full h-full object-cover"
+              className="hidden md:block absolute inset-0 w-full h-full object-cover"
               autoPlay
               muted
               loop={false}
@@ -177,6 +178,20 @@ function LandingPage() {
               poster="assets/sample-desktop.png"
             >
               <source src="assets/AL-hadaf.mp4" type="video/mp4" />
+            </video>
+            
+            {/* Mobile Video (Portrait) - Hidden on desktop */}
+            <video
+              ref={videoRef}
+              className="block md:hidden absolute inset-0 w-full h-full object-cover"
+              autoPlay
+              muted
+              loop={false}
+              playsInline
+              preload="auto"
+              poster="assets/sample-mobile.png"
+            >
+              <source src="assets/AL-hadaf-mobile.mp4" type="video/mp4" />
             </video>
             
             {/* Dark Overlay - Fade in gradually */}
@@ -426,13 +441,13 @@ function LandingPage() {
                   onClick={prevSlide}
                   className="absolute left-4 top-1/2 transform -translate-y-1/2 text-white pointer-events-auto bg-black/30 hover:bg-black/50 rounded-full p-2 transition-all duration-300 backdrop-blur-sm"
                 >
-                  <ChevronLeft className="w-8 h-8" />
+                  <ChevronLeft className="w-3 h-3" />
                 </button>
                 <button
                   onClick={nextSlide}
                   className="absolute right-4 top-1/2 transform -translate-y-1/2 text-white pointer-events-auto bg-black/30 hover:bg-black/50 rounded-full p-2 transition-all duration-300 backdrop-blur-sm"
                 >
-                  <ChevronRight className="w-8 h-8" />
+                  <ChevronRight className="w-3 h-3" />
                 </button>
               </div>
 
