@@ -42,93 +42,6 @@ function Header() {
 
   return (
     <header className="fixed top-0 left-0 w-full z-50">
-      {/* 📢 Announcement Bar */}
-      {/*
-      <div
-        className={`relative w-full transition-all duration-400 
-          ${isScrolled ? "bg-yellow-200 text-black" : "bg-white/70 text-black"}`}
-      >
-        {/* ✅ Desktop Layout * /}
-        <div className="hidden md:flex items-center justify-between px-6 py-2 text-sm font-medium">
-          {/* Left: Location * /}
-          <a
-            href="https://maps.app.goo.gl/LCmcG25VxgHods9c9"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-1 hover:text-yellow-300 transition hover:!text-[#646cff]"
-          >
-            <FaMapMarkerAlt className="text-lg" />
-            <span>{t("header.location")}</span>
-          </a>
-
-          {/* Center: Marquee * /}
-          <div className="overflow-hidden h-6 w-[60%] text-center">
-            <div className="animate-marquee-updown whitespace-nowrap">
-              {t("header.announcement")}
-            </div>
-          </div>
-
-          {/* Right: Social Icons * /}
-          <div className="flex gap-4">
-            <a
-              href="https://facebook.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="transition hover:!text-[#646cff]"
-            >
-              <FaFacebookF />
-            </a>
-            <a
-              href="https://www.instagram.com/alhadafmetalcoating/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="transition hover:!text-[#646cff]"
-            >
-              <FaInstagram />
-            </a>
-          </div>
-        </div>
-
-        {/* ✅ Mobile Layout * /}
-        <div className="flex md:hidden flex-col items-center gap-2 px-4 py-2 text-xs">
-          <div className="w-full overflow-hidden text-center">
-            <div className="animate-marquee-updown whitespace-nowrap">
-              {t("header.announcement")}
-            </div>
-          </div>
-
-          <a
-            href="https://maps.app.goo.gl/LCmcG25VxgHods9c9"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-1 text-xs hover:text-yellow-300 transition"
-          >
-            <FaMapMarkerAlt className="text-sm" />
-            <span>{t("header.location")}</span>
-          </a>
-
-          <div className="flex gap-4 justify-center">
-            <a
-              href="https://facebook.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-yellow-300 transition"
-            >
-              <FaFacebookF />
-            </a>
-            <a
-              href="https://www.instagram.com/alhadafmetalcoating/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-yellow-300 transition"
-            >
-              <FaInstagram />
-            </a>
-          </div>
-        </div>
-      </div>
-      */}
-
       {/* 📻 Main Header */}
       <div
         className={`transition-all duration-300 ${
@@ -185,8 +98,8 @@ function Header() {
           </div>
         </div>
 
-        {/* Mobile Layout */}
-        <div className="flex md:hidden justify-between items-center px-3 py-2">
+        {/* Mobile Layout - Fixed Height */}
+        <div className="flex md:hidden justify-between items-center px-3 py-2 h-[60px]">
           <div
             className="flex items-center cursor-pointer"
             onClick={() => (window.location.href = "/")}

@@ -156,13 +156,15 @@ function LandingPage() {
     <div className="relative min-h-screen w-full bg-white overflow-x-hidden">
       <Header />
 
-      <main className="pt-20">
+      {/* 🔥 FIXED: Mobile me pt-0, Desktop me pt-20 */}
+      <main className="pt-0 md:pt-20">
         {/* ============================================ */}
         {/* 🎯 SECTION 1: HERO WITH VIDEO INTRO */}
         {/* ============================================ */}
+        {/* 🔥 FIXED: Mobile me negative margin + padding to compensate for header */}
         <section 
           ref={heroRef}
-          className="relative min-h-screen w-full flex items-center justify-center overflow-hidden"
+          className="relative min-h-screen w-full flex items-center justify-center overflow-hidden -mt-[60px] md:mt-0 pt-[60px] md:pt-0"
         >
           {/* 🎥 FULL BACKGROUND VIDEO */}
           <div className="absolute inset-0 w-full h-full">
@@ -209,7 +211,7 @@ function LandingPage() {
           </div>
 
           {/* Hero Content Container - Fades in after video */}
-<div className={`relative z-10 w-full max-w-7xl mx-auto -mt-25 px-4 sm:px-6 lg:px-8 transition-all duration-1000 ${
+          <div className={`relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 transition-all duration-1000 ${
             showContent ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
           }`}>
             <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
@@ -284,34 +286,33 @@ function LandingPage() {
                 }}
               >
                 <div className="relative w-full aspect-square max-w-lg mx-auto">
-  {/* 🔴 Floating glow effects */}
-  <div className="absolute -top-4 -left-4 w-24 h-24 bg-red-500/30 rounded-full blur-3xl animate-pulse"></div>
-  <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-red-400/30 rounded-full blur-3xl animate-pulse delay-700"></div>
+                  {/* 🔴 Floating glow effects */}
+                  <div className="absolute -top-4 -left-4 w-24 h-24 bg-red-500/30 rounded-full blur-3xl animate-pulse"></div>
+                  <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-red-400/30 rounded-full blur-3xl animate-pulse delay-700"></div>
 
-  {/* ✨ Transparent content (no background box) */}
-  <div className="relative z-10 w-full h-full flex flex-col justify-center items-center text-center space-y-6">
-    <div className="w-24 h-24  rounded-full flex items-center justify-center ">
-      <span className="text-5xl">⚙️</span>
-    </div>
-    <h3 className="text-3xl font-bold text-white drop-shadow-lg">
-      Excellence in Coating
-    </h3>
-    <p className="text-white/80 text-lg max-w-md">
-      Industry-leading surface treatment solutions for all your needs
-    </p>
-    <div className="flex gap-4 pt-4">
-      <div className="bg-white/20 backdrop-blur px-6 py-3 rounded-lg">
-        <p className="text-2xl font-bold text-white">15+</p>
-        <p className="text-sm text-white/70">Years</p>
-      </div>
-      <div className="bg-white/20 backdrop-blur px-6 py-3 rounded-lg">
-        <p className="text-2xl font-bold text-white">500+</p>
-        <p className="text-sm text-white/70">Projects</p>
-      </div>
-    </div>
-  </div>
-</div>
-
+                  {/* ✨ Transparent content (no background box) */}
+                  <div className="relative z-10 w-full h-full flex flex-col justify-center items-center text-center space-y-6">
+                    <div className="w-24 h-24 rounded-full flex items-center justify-center">
+                      <span className="text-5xl">⚙️</span>
+                    </div>
+                    <h3 className="text-3xl font-bold text-white drop-shadow-lg">
+                      Excellence in Coating
+                    </h3>
+                    <p className="text-white/80 text-lg max-w-md">
+                      Industry-leading surface treatment solutions for all your needs
+                    </p>
+                    <div className="flex gap-4 pt-4">
+                      <div className="bg-white/20 backdrop-blur px-6 py-3 rounded-lg">
+                        <p className="text-2xl font-bold text-white">15+</p>
+                        <p className="text-sm text-white/70">Years</p>
+                      </div>
+                      <div className="bg-white/20 backdrop-blur px-6 py-3 rounded-lg">
+                        <p className="text-2xl font-bold text-white">500+</p>
+                        <p className="text-sm text-white/70">Projects</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
