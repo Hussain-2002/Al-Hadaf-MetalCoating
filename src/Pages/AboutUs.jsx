@@ -40,23 +40,23 @@ function AboutUs() {
 
   const industries = [
     {
-      title: "Architectural Metal Coating",
-      description: "Premium powder coating services for windows, doors, facades, and structural elements",
+      title: t("about.architecturalTitle"),
+      description: t("about.architecturalDesc"),
       icon: "🏢"
     },
     {
-      title: "Automotive Metal Coating",
-      description: "Durable coatings for vehicle parts, chassis, wheels, and custom automotive applications",
+      title: t("about.automotiveTitle"),
+      description: t("about.automotiveDesc"),
       icon: "🚗"
     },
     {
-      title: "Industrial Metal Coating",
-      description: "Heavy-duty protective coatings for machinery, equipment, and manufacturing components",
+      title: t("about.industrialTitle"),
+      description: t("about.industrialDesc"),
       icon: "⚙️"
     },
     {
-      title: "Furniture Metal Coating",
-      description: "Decorative and protective finishes for indoor and outdoor furniture pieces",
+      title: t("about.furnitureTitle"),
+      description: t("about.furnitureDesc"),
       icon: "🪑"
     }
   ];
@@ -103,15 +103,11 @@ function AboutUs() {
             className="text-center mb-12"
           >
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 text-gray-800">
-              About Al-Hadaf Metal Coating LLC
+              {t("about.companyOverviewTitle")}
             </h2>
             <div className="text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed max-w-4xl mx-auto space-y-4">
-              <p>
-                Al-Hadaf Metal Coating LLC is a premier metal coating company in the UAE, specializing in advanced powder coating services and surface finishing solutions. With state-of-the-art facilities and cutting-edge technology, we deliver superior metal coating services that exceed industry standards and customer expectations.
-              </p>
-              <p>
-                Our comprehensive metal coating services include powder coating, sandblasting, zinc coating, electrostatic coating, and specialized protective coatings for diverse industrial applications. We serve clients across Dubai, Sharjah, Ajman, and throughout the United Arab Emirates with professional metal finishing solutions.
-              </p>
+              <p>{t("about.companyOverviewP1")}</p>
+              <p>{t("about.companyOverviewP2")}</p>
             </div>
           </motion.div>
 
@@ -144,7 +140,7 @@ function AboutUs() {
             viewport={{ once: true, margin: "-50px" }}
           >
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-8 text-gray-800">
-              Leading the Metal Coating Industry in UAE
+              {t("about.industryExpertiseTitle")}
             </h2>
             
             <div className="grid md:grid-cols-2 gap-8 mb-12">
@@ -156,13 +152,13 @@ function AboutUs() {
                 className="bg-white rounded-xl shadow-lg p-6 sm:p-8"
               >
                 <h3 className="text-xl sm:text-2xl font-bold mb-4 text-gray-800">
-                  Advanced Powder Coating Technology
+                  {t("about.powderCoatingTechTitle")}
                 </h3>
                 <p className="text-gray-700 text-sm sm:text-base leading-relaxed mb-4">
-                  Our powder coating facility utilizes electrostatic spray deposition technology to apply dry powder particles onto metal surfaces. The powder coating process involves electrostatically charging the powder particles, which are then attracted to grounded metal objects. After application, the coated items are cured in high-temperature ovens, creating a durable, uniform finish that surpasses traditional liquid paint in performance and longevity.
+                  {t("about.powderCoatingTechP1")}
                 </p>
                 <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
-                  We offer an extensive range of powder coating finishes including glossy, matte, textured, metallic, and specialized effects. Our metal coating services provide superior corrosion resistance, UV protection, chemical resistance, and exceptional durability for both indoor and outdoor applications.
+                  {t("about.powderCoatingTechP2")}
                 </p>
               </motion.div>
 
@@ -174,13 +170,13 @@ function AboutUs() {
                 className="bg-white rounded-xl shadow-lg p-6 sm:p-8"
               >
                 <h3 className="text-xl sm:text-2xl font-bold mb-4 text-gray-800">
-                  Comprehensive Surface Preparation
+                  {t("about.surfacePreparationTitle")}
                 </h3>
                 <p className="text-gray-700 text-sm sm:text-base leading-relaxed mb-4">
-                  Quality metal coating begins with proper surface preparation. Our advanced pre-treatment processes include sandblasting, chemical cleaning, degreasing, phosphating, and surface profiling. We utilize automated shot blasting equipment and multi-stage pre-treatment systems to ensure optimal adhesion and coating performance.
+                  {t("about.surfacePreparationP1")}
                 </p>
                 <p className="text-gray-700 text-sm sm:text-base leading-relaxed">
-                  Our metal surface treatment capabilities handle aluminum, steel, stainless steel, galvanized metal, and various alloy substrates. Each material receives specialized preparation protocols to achieve maximum coating adhesion, durability, and aesthetic appeal.
+                  {t("about.surfacePreparationP2")}
                 </p>
               </motion.div>
             </div>
@@ -194,18 +190,12 @@ function AboutUs() {
               className="bg-white rounded-xl shadow-lg p-6 sm:p-8 mb-8"
             >
               <h3 className="text-xl sm:text-2xl font-bold mb-4 text-gray-800">
-                Why Powder Coating is Superior to Traditional Paint
+                {t("about.powderVsPaintTitle")}
               </h3>
               <div className="text-gray-700 text-sm sm:text-base leading-relaxed space-y-3">
-                <p>
-                  Powder coating offers significant advantages over conventional liquid paint systems. Unlike wet paint that requires solvents and emits volatile organic compounds (VOCs), powder coating is an environmentally friendly finishing method that produces minimal waste and harmful emissions. The powder overspray can be recovered and reused, making it a sustainable and cost-effective metal coating solution.
-                </p>
-                <p>
-                  The durability of powder coated surfaces far exceeds traditional paint. Powder coating creates a thicker, more uniform coating that resists chipping, scratching, fading, and wear. This enhanced durability translates to longer product lifecycles, reduced maintenance costs, and superior protection against harsh environmental conditions including extreme temperatures, humidity, salt exposure, and UV radiation.
-                </p>
-                <p>
-                  Our powder coating services provide exceptional finish quality with smooth, professional-grade aesthetics. The electrostatic application process ensures complete coverage, even on complex geometries and hard-to-reach areas. The high-temperature curing process creates a chemically bonded surface that delivers unmatched adhesion and performance characteristics.
-                </p>
+                <p>{t("about.powderVsPaintP1")}</p>
+                <p>{t("about.powderVsPaintP2")}</p>
+                <p>{t("about.powderVsPaintP3")}</p>
               </div>
             </motion.div>
 
@@ -217,7 +207,7 @@ function AboutUs() {
               viewport={{ once: true, margin: "-50px" }}
             >
               <h3 className="text-xl sm:text-2xl font-bold text-center mb-8 text-gray-800">
-                Industries Served by Our Metal Coating Services
+                {t("about.industriesServedTitle")}
               </h3>
               <div className="grid sm:grid-cols-2 gap-6">
                 {industries.map((industry, index) => (
@@ -255,7 +245,7 @@ function AboutUs() {
             viewport={{ once: true, margin: "-50px" }}
           >
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-8 text-gray-800">
-              Quality Assurance & Technical Capabilities
+              {t("about.qualityAssuranceTitle")}
             </h2>
             
             <div className="grid md:grid-cols-2 gap-8">
@@ -267,32 +257,32 @@ function AboutUs() {
                 className="bg-gradient-to-br from-blue-50 to-white rounded-xl shadow-md p-6 sm:p-8"
               >
                 <h3 className="text-xl font-bold mb-4 text-gray-800">
-                  State-of-the-Art Coating Facility
+                  {t("about.coatingFacilityTitle")}
                 </h3>
                 <ul className="space-y-3 text-gray-700 text-sm sm:text-base">
                   <li className="flex items-start">
                     <span className="mr-2 text-blue-600 font-bold">•</span>
-                    <span>Automated conveyor powder coating system with precision application controls</span>
+                    <span>{t("about.coatingFacility1")}</span>
                   </li>
                   <li className="flex items-start">
                     <span className="mr-2 text-blue-600 font-bold">•</span>
-                    <span>High-efficiency electrostatic spray guns for uniform powder distribution</span>
+                    <span>{t("about.coatingFacility2")}</span>
                   </li>
                   <li className="flex items-start">
                     <span className="mr-2 text-blue-600 font-bold">•</span>
-                    <span>Industrial curing ovens with precise temperature control and monitoring</span>
+                    <span>{t("about.coatingFacility3")}</span>
                   </li>
                   <li className="flex items-start">
                     <span className="mr-2 text-blue-600 font-bold">•</span>
-                    <span>Advanced dust collection and powder recovery systems</span>
+                    <span>{t("about.coatingFacility4")}</span>
                   </li>
                   <li className="flex items-start">
                     <span className="mr-2 text-blue-600 font-bold">•</span>
-                    <span>Multi-stage chemical pre-treatment tanks for optimal surface preparation</span>
+                    <span>{t("about.coatingFacility5")}</span>
                   </li>
                   <li className="flex items-start">
                     <span className="mr-2 text-blue-600 font-bold">•</span>
-                    <span>Automated shot blasting machines for heavy-duty surface profiling</span>
+                    <span>{t("about.coatingFacility6")}</span>
                   </li>
                 </ul>
               </motion.div>
@@ -305,32 +295,32 @@ function AboutUs() {
                 className="bg-gradient-to-br from-indigo-50 to-white rounded-xl shadow-md p-6 sm:p-8"
               >
                 <h3 className="text-xl font-bold mb-4 text-gray-800">
-                  Quality Control Standards
+                  {t("about.qualityControlTitle")}
                 </h3>
                 <ul className="space-y-3 text-gray-700 text-sm sm:text-base">
                   <li className="flex items-start">
                     <span className="mr-2 text-indigo-600 font-bold">•</span>
-                    <span>Rigorous coating thickness measurement and verification procedures</span>
+                    <span>{t("about.qualityControl1")}</span>
                   </li>
                   <li className="flex items-start">
                     <span className="mr-2 text-indigo-600 font-bold">•</span>
-                    <span>Adhesion testing using cross-hatch and pull-off methods</span>
+                    <span>{t("about.qualityControl2")}</span>
                   </li>
                   <li className="flex items-start">
                     <span className="mr-2 text-indigo-600 font-bold">•</span>
-                    <span>Color matching and consistency verification with spectrophotometry</span>
+                    <span>{t("about.qualityControl3")}</span>
                   </li>
                   <li className="flex items-start">
                     <span className="mr-2 text-indigo-600 font-bold">•</span>
-                    <span>Salt spray testing for corrosion resistance validation</span>
+                    <span>{t("about.qualityControl4")}</span>
                   </li>
                   <li className="flex items-start">
                     <span className="mr-2 text-indigo-600 font-bold">•</span>
-                    <span>UV exposure testing for outdoor durability assessment</span>
+                    <span>{t("about.qualityControl5")}</span>
                   </li>
                   <li className="flex items-start">
                     <span className="mr-2 text-indigo-600 font-bold">•</span>
-                    <span>Complete documentation and traceability for all coating batches</span>
+                    <span>{t("about.qualityControl6")}</span>
                   </li>
                 </ul>
               </motion.div>
@@ -414,18 +404,12 @@ function AboutUs() {
             className="text-center"
           >
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 text-gray-800">
-              Environmental Responsibility in Metal Coating
+              {t("about.environmentalTitle")}
             </h2>
             <div className="max-w-4xl mx-auto space-y-4 text-gray-700 text-sm sm:text-base md:text-lg leading-relaxed">
-              <p>
-                Al-Hadaf Metal Coating LLC is committed to environmentally sustainable metal finishing practices. Our powder coating processes significantly reduce environmental impact compared to traditional wet paint systems. We operate with zero VOC emissions, minimal waste generation, and comprehensive powder recovery systems that recycle overspray material.
-              </p>
-              <p>
-                Our facility implements water conservation measures, energy-efficient curing ovens, and responsible chemical management protocols. We partner with certified powder coating manufacturers who prioritize eco-friendly formulations and sustainable production methods. Our commitment to environmental stewardship extends throughout our operations, from material sourcing to waste disposal.
-              </p>
-              <p>
-                By choosing our powder coating services, clients contribute to reducing industrial pollution while receiving superior coating performance. Our green metal coating solutions help businesses meet sustainability goals without compromising quality, durability, or aesthetic requirements.
-              </p>
+              <p>{t("about.environmentalP1")}</p>
+              <p>{t("about.environmentalP2")}</p>
+              <p>{t("about.environmentalP3")}</p>
             </div>
           </motion.div>
         </div>
@@ -561,7 +545,7 @@ function AboutUs() {
             viewport={{ once: true, margin: "-50px" }}
           >
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-8 text-gray-800">
-              Why Choose Al-Hadaf for Metal Coating Services
+              {t("about.whyChooseUsTitle")}
             </h2>
             
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -578,10 +562,10 @@ function AboutUs() {
                   </svg>
                 </div>
                 <h3 className="text-lg font-bold text-gray-800 mb-3">
-                  Expert Metal Coating Professionals
+                  {t("about.expertProfessionalsTitle")}
                 </h3>
                 <p className="text-gray-600 text-sm leading-relaxed">
-                  Our team comprises highly trained powder coating specialists with extensive experience in metal surface finishing. We ensure every project meets the highest quality standards through meticulous attention to detail and technical expertise.
+                  {t("about.expertProfessionalsDesc")}
                 </p>
               </motion.div>
 
@@ -598,10 +582,10 @@ function AboutUs() {
                   </svg>
                 </div>
                 <h3 className="text-lg font-bold text-gray-800 mb-3">
-                  Fast Turnaround Time
+                  {t("about.fastTurnaroundTitle")}
                 </h3>
                 <p className="text-gray-600 text-sm leading-relaxed">
-                  We understand the importance of project timelines. Our efficient powder coating processes and streamlined workflows ensure quick turnaround times without compromising quality. Same-day and express coating services available for urgent requirements.
+                  {t("about.fastTurnaroundDesc")}
                 </p>
               </motion.div>
 
@@ -618,10 +602,10 @@ function AboutUs() {
                   </svg>
                 </div>
                 <h3 className="text-lg font-bold text-gray-800 mb-3">
-                  Custom Color Matching
+                  {t("about.customColorTitle")}
                 </h3>
                 <p className="text-gray-600 text-sm leading-relaxed">
-                  Access to thousands of RAL, Pantone, and custom powder coating colors. Our color matching capabilities ensure perfect consistency across batches. We provide color samples and can match any existing finish specification.
+                  {t("about.customColorDesc")}
                 </p>
               </motion.div>
 
@@ -638,10 +622,10 @@ function AboutUs() {
                   </svg>
                 </div>
                 <h3 className="text-lg font-bold text-gray-800 mb-3">
-                  Competitive Pricing
+                  {t("about.competitivePricingTitle")}
                 </h3>
                 <p className="text-gray-600 text-sm leading-relaxed">
-                  We offer cost-effective powder coating solutions without sacrificing quality. Transparent pricing, no hidden fees, and volume discounts available for large-scale projects. Get a free quote for your metal coating requirements.
+                  {t("about.competitivePricingDesc")}
                 </p>
               </motion.div>
 
@@ -658,10 +642,10 @@ function AboutUs() {
                   </svg>
                 </div>
                 <h3 className="text-lg font-bold text-gray-800 mb-3">
-                  Guaranteed Durability
+                  {t("about.guaranteedDurabilityTitle")}
                 </h3>
                 <p className="text-gray-600 text-sm leading-relaxed">
-                  All our powder coated finishes come with durability warranties. Proven resistance to weathering, corrosion, chemicals, and mechanical damage. Long-lasting protection that maintains appearance for years.
+                  {t("about.guaranteedDurabilityDesc")}
                 </p>
               </motion.div>
 
@@ -678,10 +662,10 @@ function AboutUs() {
                   </svg>
                 </div>
                 <h3 className="text-lg font-bold text-gray-800 mb-3">
-                  Customer-Centric Service
+                  {t("about.customerCentricTitle")}
                 </h3>
                 <p className="text-gray-600 text-sm leading-relaxed">
-                  Dedicated account managers, free consultations, pickup and delivery services available. We work closely with clients to understand requirements and deliver customized metal coating solutions that exceed expectations.
+                  {t("about.customerCentricDesc")}
                 </p>
               </motion.div>
             </div>
@@ -699,7 +683,7 @@ function AboutUs() {
             viewport={{ once: true, margin: "-50px" }}
           >
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-8 text-gray-800">
-              Powder Coating Applications & Capabilities
+              {t("about.applicationsTitle")}
             </h2>
             
             <div className="grid md:grid-cols-3 gap-6">
@@ -711,16 +695,16 @@ function AboutUs() {
                 className="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-xl p-6 border-l-4 border-blue-500"
               >
                 <h3 className="text-xl font-bold text-gray-800 mb-4">
-                  Architectural Components
+                  {t("about.architecturalComponentsTitle")}
                 </h3>
                 <ul className="space-y-2 text-gray-700 text-sm">
-                  <li>• Aluminum window frames and profiles</li>
-                  <li>• Metal doors and door frames</li>
-                  <li>• Curtain wall systems and facades</li>
-                  <li>• Railings, handrails, and balusters</li>
-                  <li>• Cladding panels and louvers</li>
-                  <li>• Structural steel components</li>
-                  <li>• Decorative metalwork and grilles</li>
+                  <li>{t("about.architecturalComponent1")}</li>
+                  <li>{t("about.architecturalComponent2")}</li>
+                  <li>{t("about.architecturalComponent3")}</li>
+                  <li>{t("about.architecturalComponent4")}</li>
+                  <li>{t("about.architecturalComponent5")}</li>
+                  <li>{t("about.architecturalComponent6")}</li>
+                  <li>{t("about.architecturalComponent7")}</li>
                 </ul>
               </motion.div>
 
@@ -732,16 +716,16 @@ function AboutUs() {
                 className="bg-gradient-to-br from-indigo-50 to-purple-50 rounded-xl p-6 border-l-4 border-indigo-500"
               >
                 <h3 className="text-xl font-bold text-gray-800 mb-4">
-                  Industrial & Manufacturing
+                  {t("about.industrialManufacturingTitle")}
                 </h3>
                 <ul className="space-y-2 text-gray-700 text-sm">
-                  <li>• Machinery housings and enclosures</li>
-                  <li>• Control panels and electrical cabinets</li>
-                  <li>• Storage racks and shelving systems</li>
-                  <li>• Conveyor components and guards</li>
-                  <li>• HVAC equipment and ductwork</li>
-                  <li>• Manufacturing equipment parts</li>
-                  <li>• Safety barriers and protective guards</li>
+                  <li>{t("about.industrialManufacturing1")}</li>
+                  <li>{t("about.industrialManufacturing2")}</li>
+                  <li>{t("about.industrialManufacturing3")}</li>
+                  <li>{t("about.industrialManufacturing4")}</li>
+                  <li>{t("about.industrialManufacturing5")}</li>
+                  <li>{t("about.industrialManufacturing6")}</li>
+                  <li>{t("about.industrialManufacturing7")}</li>
                 </ul>
               </motion.div>
 
@@ -753,16 +737,16 @@ function AboutUs() {
                 className="bg-gradient-to-br from-purple-50 to-pink-50 rounded-xl p-6 border-l-4 border-purple-500"
               >
                 <h3 className="text-xl font-bold text-gray-800 mb-4">
-                  Consumer & Commercial
+                  {t("about.consumerCommercialTitle")}
                 </h3>
                 <ul className="space-y-2 text-gray-700 text-sm">
-                  <li>• Office and outdoor furniture</li>
-                  <li>• Automotive parts and accessories</li>
-                  <li>• Bicycle frames and components</li>
-                  <li>• Appliance housings and panels</li>
-                  <li>• Lighting fixtures and poles</li>
-                  <li>• Signage and display systems</li>
-                  <li>• Playground equipment and structures</li>
+                  <li>{t("about.consumerCommercial1")}</li>
+                  <li>{t("about.consumerCommercial2")}</li>
+                  <li>{t("about.consumerCommercial3")}</li>
+                  <li>{t("about.consumerCommercial4")}</li>
+                  <li>{t("about.consumerCommercial5")}</li>
+                  <li>{t("about.consumerCommercial6")}</li>
+                  <li>{t("about.consumerCommercial7")}</li>
                 </ul>
               </motion.div>
             </div>
@@ -775,23 +759,23 @@ function AboutUs() {
               className="mt-8 bg-gradient-to-r from-blue-600 to-indigo-600 rounded-xl p-8 text-center text-white"
             >
               <h3 className="text-2xl font-bold mb-4">
-                Ready to Transform Your Metal Surfaces?
+                {t("about.readyToTransformTitle")}
               </h3>
               <p className="text-lg mb-6 max-w-3xl mx-auto">
-                Contact Al-Hadaf Metal Coating LLC today for professional powder coating services in UAE. Our experts are ready to discuss your project requirements and provide customized solutions for all your metal finishing needs.
+                {t("about.readyToTransformDesc")}
               </p>
               <div className="flex flex-wrap justify-center gap-4">
                 <a
                   href="/contact"
                   className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors duration-300"
                 >
-                  Get Free Quote
+                  {t("about.getFreeQuote")}
                 </a>
                 <a
                   href="/services"
                   className="bg-transparent border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-colors duration-300"
                 >
-                  View Services
+                  {t("about.viewServices")}
                 </a>
               </div>
             </motion.div>
