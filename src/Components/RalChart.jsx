@@ -1,8 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Download, Grid3X3, Box, X, FileDown } from "lucide-react";
-import Header from "@/Components/Header";
-import Footer from "@/Components/Footer";
-
+import Header from "./Header";
+import Footer from "./Footer";
 const RAL_CATEGORIES = {
   "Yellows": [
     { code: "RAL 1000", hex: "#BEBD7F", name: "Green Beige" },
@@ -248,6 +247,7 @@ export default function RALChart() {
   const [rotateY, setRotateY] = useState(-30);
   const [size, setSize] = useState(200);
   const [showChart, setShowChart] = useState(false);
+  const [isExporting, setIsExporting] = useState(false);
 
   const cubeRef = useRef(null);
   const cubeWrapperRef = useRef(null);
@@ -315,61 +315,144 @@ export default function RALChart() {
   };
 
   const handleExportChart = async () => {
-  try {
-    const el = chartRef.current;
-    if (!el) return;
-
-    // ✅ Step 1: temporarily sanitize all OKLCH / unsupported colors
-    const allEls = el.querySelectorAll("*");
-    allEls.forEach((node) => {
-      const computed = window.getComputedStyle(node);
-      const bg = computed.backgroundColor;
-      if (bg && (bg.includes("oklch") || bg.includes("color("))) {
-        node.dataset.prevBg = node.style.backgroundColor;
-        node.style.backgroundColor = "#ffffff";
+    try {
+      setIsExporting(true);
+      
+      // Load jsPDF from CDN if not already loaded
+      if (!window.jspdf) {
+        await new Promise((resolve, reject) => {
+          const script = document.createElement('script');
+          script.src = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js';
+          script.onload = resolve;
+          script.onerror = reject;
+          document.head.appendChild(script);
+        });
       }
-      const color = computed.color;
-      if (color && (color.includes("oklch") || color.includes("color("))) {
-        node.dataset.prevColor = node.style.color;
-        node.style.color = "#000000";
+      
+      const { jsPDF } = window.jspdf;
+      
+      // Create PDF - A4 size
+      const pdf = new jsPDF({
+        orientation: 'portrait',
+        unit: 'mm',
+        format: 'a4'
+      });
+      
+      const pageWidth = pdf.internal.pageSize.getWidth();
+      const pageHeight = pdf.internal.pageSize.getHeight();
+      const margin = 10;
+      const usableWidth = pageWidth - (margin * 2);
+      
+      let yPos = margin;
+      
+      // Add Title
+      pdf.setFontSize(20);
+      pdf.setFont(undefined, 'bold');
+      pdf.text('RAL Color Chart', pageWidth / 2, yPos, { align: 'center' });
+      yPos += 10;
+      
+      pdf.setFontSize(10);
+      pdf.setFont(undefined, 'normal');
+      pdf.text(`Complete Professional Color Palette - ${RAL_PALETTE.length} Colors`, pageWidth / 2, yPos, { align: 'center' });
+      yPos += 15;
+      
+      // Color box dimensions
+      const boxWidth = 25;
+      const boxHeight = 15;
+      const spacing = 3;
+      const colsPerRow = 3;
+      const textHeight = 12;
+      
+      // Process each category
+      for (const [category, colors] of Object.entries(RAL_CATEGORIES)) {
+        // Check if we need a new page for category header
+        if (yPos + 20 > pageHeight - margin) {
+          pdf.addPage();
+          yPos = margin;
+        }
+        
+        // Category header
+        pdf.setFontSize(14);
+        pdf.setFont(undefined, 'bold');
+        pdf.text(`${category} (${colors.length})`, margin, yPos);
+        yPos += 8;
+        
+        // Draw a line under category
+        pdf.setLineWidth(0.5);
+        pdf.line(margin, yPos, pageWidth - margin, yPos);
+        yPos += 5;
+        
+        // Draw colors
+        for (let i = 0; i < colors.length; i++) {
+          const color = colors[i];
+          const col = i % colsPerRow;
+          const xPos = margin + (col * (boxWidth + spacing + 50));
+          
+          // Check if we need a new page
+          if (yPos + boxHeight + textHeight > pageHeight - margin) {
+            pdf.addPage();
+            yPos = margin;
+            
+            // Repeat category header on new page
+            pdf.setFontSize(14);
+            pdf.setFont(undefined, 'bold');
+            pdf.text(`${category} (continued)`, margin, yPos);
+            yPos += 10;
+          }
+          
+          // Draw color box
+          pdf.setFillColor(color.hex);
+          pdf.rect(xPos, yPos, boxWidth, boxHeight, 'F');
+          
+          // Draw border around color box
+          pdf.setDrawColor(200, 200, 200);
+          pdf.setLineWidth(0.3);
+          pdf.rect(xPos, yPos, boxWidth, boxHeight, 'S');
+          
+          // Add text info
+          pdf.setFontSize(8);
+          pdf.setFont(undefined, 'bold');
+          pdf.setTextColor(0, 0, 0);
+          pdf.text(color.code, xPos + boxWidth + 2, yPos + 4);
+          
+          pdf.setFont(undefined, 'normal');
+          pdf.setFontSize(7);
+          pdf.text(color.name, xPos + boxWidth + 2, yPos + 8);
+          pdf.text(color.hex, xPos + boxWidth + 2, yPos + 12);
+          
+          // Move to next row after 3 colors
+          if ((i + 1) % colsPerRow === 0) {
+            yPos += boxHeight + textHeight + 2;
+          }
+        }
+        
+        // If last row wasn't complete, still move down
+        if (colors.length % colsPerRow !== 0) {
+          yPos += boxHeight + textHeight + 2;
+        }
+        
+        yPos += 5; // Space between categories
       }
-    });
+      
+      // Add footer on last page
+      pdf.setFontSize(8);
+      pdf.setTextColor(128, 128, 128);
+      pdf.text('© 2024 Al Hadaf - Professional RAL Color Chart', pageWidth / 2, pageHeight - 5, { align: 'center' });
+      
+      // Save PDF
+      pdf.save('RAL_Color_Chart_Complete.pdf');
+      
+      setIsExporting(false);
+    } catch (err) {
+      console.error("Export failed:", err);
+      alert("Error exporting chart: " + err.message);
+      setIsExporting(false);
+    }
+  };
 
-    // ✅ Step 2: use html2canvas safely
-    const html2canvas = (await import("html2canvas")).default;
-    const canvas = await html2canvas(el, {
-      backgroundColor: "#ffffff",
-      scale: 2,
-      useCORS: true,
-    });
-
-    // ✅ Step 3: restore all previous styles
-    allEls.forEach((node) => {
-      if (node.dataset.prevBg) {
-        node.style.backgroundColor = node.dataset.prevBg;
-        delete node.dataset.prevBg;
-      }
-      if (node.dataset.prevColor) {
-        node.style.color = node.dataset.prevColor;
-        delete node.dataset.prevColor;
-      }
-    });
-
-    // ✅ Step 4: download the result
-    const link = document.createElement("a");
-    link.download = `RAL_Color_Chart_Complete.png`;
-    link.href = canvas.toDataURL("image/png");
-    link.click();
-  } catch (err) {
-    console.error("Export failed:", err);
-    alert("Error exporting chart. Please refresh or retry.");
-  }
-};
-
-
-  // Download brochure from public/assets folder (public/assets/brochure.pdf)
+  // Download brochure from public/assets folder
   const handleDownloadBrochure = () => {
-    const brochurePath = "/assets/brochure.pdf"; // adjust filename if different
+    const brochurePath = "/assets/brochure.pdf";
     const link = document.createElement("a");
     link.href = brochurePath;
     link.download = "Al_Hadaf_Brochure.pdf";
@@ -408,207 +491,200 @@ export default function RALChart() {
       
       <main className="flex-1 pt-20">
         <div className="max-w-7xl mx-auto px-4 py-8">
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-2">RAL Color Chart</h1>
-          <p className="text-gray-600">Interactive 3D Color Visualization Tool</p>
-        </div>
+          <div className="text-center mb-8">
+            <h1 className="text-4xl font-bold text-gray-900 mb-2">RAL Color Chart</h1>
+            <p className="text-gray-600">Interactive 3D Color Visualization Tool</p>
+          </div>
 
-        <div className="bg-white rounded-2xl shadow-xl p-8 mb-6">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            <div className="space-y-5">
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
-                  <Box className="inline w-4 h-4 mr-1" />
-                  Choose RAL Color
-                </label>
-                <select
-                  value={selectedRal}
-                  onChange={handleRalChange}
-                  className="w-full rounded-lg border-2 border-gray-200 px-4 py-3 bg-white focus:border-blue-500 focus:outline-none transition"
-                >
-                  <option value="">-- Select RAL --</option>
-                  {Object.entries(RAL_CATEGORIES).map(([category, colors]) => (
-                    <optgroup key={category} label={`${category}`}>
-                      {colors.map((r) => (
-                        <option key={r.code} value={r.code}>
-                          {r.code} — {r.name}
-                        </option>
-                      ))}
-                    </optgroup>
-                  ))}
-                </select>
-              </div>
-
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
-                  Custom Hex Color
-                </label>
-                <div className="flex items-center gap-3">
-                  <input
-                    type="color"
-                    value={color}
-                    onChange={handleColorInput}
-                    className="w-14 h-14 rounded-lg border-2 border-gray-200 cursor-pointer"
-                  />
-                  <input
-                    type="text"
-                    value={color}
-                    onChange={handleColorInput}
-                    className="flex-1 rounded-lg border-2 border-gray-200 px-4 py-3 uppercase font-mono focus:border-blue-500 focus:outline-none"
-                  />
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
-                  Cube Size: {size}px
-                </label>
-                <input
-                  type="range"
-                  min={120}
-                  max={300}
-                  value={size}
-                  onChange={(e) => setSize(Number(e.target.value))}
-                  className="w-full h-2 rounded-lg appearance-none cursor-pointer bg-gray-200"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
-                  Rotate X: {rotateX}°
-                </label>
-                <input
-                  type="range"
-                  min={-180}
-                  max={180}
-                  value={rotateX}
-                  onChange={(e) => setRotateX(Number(e.target.value))}
-                  className="w-full h-2 rounded-lg appearance-none cursor-pointer bg-gray-200"
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
-                  Rotate Y: {rotateY}°
-                </label>
-                <input
-                  type="range"
-                  min={-180}
-                  max={180}
-                  value={rotateY}
-                  onChange={(e) => setRotateY(Number(e.target.value))}
-                  className="w-full h-2 rounded-lg appearance-none cursor-pointer bg-gray-200"
-                />
-              </div>
-
-              <div className="flex gap-3 pt-2">
-                {/* <button
-                  onClick={handleExportCube}
-                  className="flex-1 bg-gradient-to-r from-blue-600 to-blue-700 text-white py-3 rounded-lg hover:from-blue-700 hover:to-blue-800 transition font-medium shadow-lg flex items-center justify-center gap-2"
-                >
-                  <Download className="w-4 h-4" />
-                  Export Cube
-                </button> */}
-                <button
-                  onClick={() => setShowChart(true)}
-                  className="flex-1 bg-gradient-to-r from-purple-600 to-purple-700 text-white py-3 rounded-lg hover:from-purple-700 hover:to-purple-800 transition font-medium shadow-lg flex items-center justify-center gap-2"
-                >
-                  <Grid3X3 className="w-4 h-4" />
-                  View Chart
-                </button>
-              </div>
-
-              <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-4 border border-blue-100">
-                <p className="text-sm text-gray-700 leading-relaxed">
-                  💡 <strong>Tip:</strong> Drag the cube to rotate or use sliders. Select from {RAL_PALETTE.length}+ RAL colors!
-                </p>
-              </div>
-            </div>
-
-            <div className="lg:col-span-2 flex flex-col items-center">
-              <div
-                ref={cubeWrapperRef}
-                className="w-full flex justify-center items-center bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl"
-                style={{
-                  minHeight: Math.max(400, size * 1.8),
-                  padding: 24,
-                  cursor: "grab",
-                }}
-              >
-                <div
-                  style={{
-                    perspective: 1200,
-                    width: Math.min(720, size * 2.2),
-                    height: Math.max(400, size * 1.8),
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                  }}
-                >
-                  <div
-                    ref={cubeRef}
-                    className="relative"
-                    style={{
-                      width: `${size}px`,
-                      height: `${size}px`,
-                      transformStyle: "preserve-3d",
-                      transform: `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`,
-                      transition: "transform 160ms ease",
-                    }}
+          <div className="bg-white rounded-2xl shadow-xl p-8 mb-6">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              <div className="space-y-5">
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    <Box className="inline w-4 h-4 mr-1" />
+                    Choose RAL Color
+                  </label>
+                  <select
+                    value={selectedRal}
+                    onChange={handleRalChange}
+                    className="w-full rounded-lg border-2 border-gray-200 px-4 py-3 bg-white focus:border-blue-500 focus:outline-none transition"
                   >
-                    {["front", "back", "right", "left", "top", "bottom"].map((side) => {
-                      const transforms = {
-                        front: `translateZ(${size / 2}px)`,
-                        back: `rotateY(180deg) translateZ(${size / 2}px)`,
-                        right: `rotateY(90deg) translateZ(${size / 2}px)`,
-                        left: `rotateY(-90deg) translateZ(${size / 2}px)`,
-                        top: `rotateX(90deg) translateZ(${size / 2}px)`,
-                        bottom: `rotateX(-90deg) translateZ(${size / 2}px)`,
-                      };
-                      return (
-                        <div
-                          key={side}
-                          className="absolute inset-0"
-                          style={{ ...faceStyle, transform: transforms[side] }}
-                        />
-                      );
-                    })}
+                    <option value="">-- Select RAL --</option>
+                    {Object.entries(RAL_CATEGORIES).map(([category, colors]) => (
+                      <optgroup key={category} label={`${category}`}>
+                        {colors.map((r) => (
+                          <option key={r.code} value={r.code}>
+                            {r.code} — {r.name}
+                          </option>
+                        ))}
+                      </optgroup>
+                    ))}
+                  </select>
+                </div>
 
-                    <div
-                      style={{
-                        position: "absolute",
-                        left: 0,
-                        top: 0,
-                        width: "100%",
-                        height: "100%",
-                        transform: `translateZ(${size / 2 + 2}px)`,
-                        background:
-                          "linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0))",
-                        pointerEvents: "none",
-                      }}
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    Custom Hex Color
+                  </label>
+                  <div className="flex items-center gap-3">
+                    <input
+                      type="color"
+                      value={color}
+                      onChange={handleColorInput}
+                      className="w-14 h-14 rounded-lg border-2 border-gray-200 cursor-pointer"
+                    />
+                    <input
+                      type="text"
+                      value={color}
+                      onChange={handleColorInput}
+                      className="flex-1 rounded-lg border-2 border-gray-200 px-4 py-3 uppercase font-mono focus:border-blue-500 focus:outline-none"
                     />
                   </div>
                 </div>
+
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    Cube Size: {size}px
+                  </label>
+                  <input
+                    type="range"
+                    min={120}
+                    max={300}
+                    value={size}
+                    onChange={(e) => setSize(Number(e.target.value))}
+                    className="w-full h-2 rounded-lg appearance-none cursor-pointer bg-gray-200"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    Rotate X: {rotateX}°
+                  </label>
+                  <input
+                    type="range"
+                    min={-180}
+                    max={180}
+                    value={rotateX}
+                    onChange={(e) => setRotateX(Number(e.target.value))}
+                    className="w-full h-2 rounded-lg appearance-none cursor-pointer bg-gray-200"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    Rotate Y: {rotateY}°
+                  </label>
+                  <input
+                    type="range"
+                    min={-180}
+                    max={180}
+                    value={rotateY}
+                    onChange={(e) => setRotateY(Number(e.target.value))}
+                    className="w-full h-2 rounded-lg appearance-none cursor-pointer bg-gray-200"
+                  />
+                </div>
+
+                <div className="flex gap-3 pt-2">
+                  <button
+                    onClick={() => setShowChart(true)}
+                    className="flex-1 bg-gradient-to-r from-purple-600 to-purple-700 text-white py-3 rounded-lg hover:from-purple-700 hover:to-purple-800 transition font-medium shadow-lg flex items-center justify-center gap-2"
+                  >
+                    <Grid3X3 className="w-4 h-4" />
+                    View Chart
+                  </button>
+                </div>
+
+                <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-4 border border-blue-100">
+                  <p className="text-sm text-gray-700 leading-relaxed">
+                    💡 <strong>Tip:</strong> Drag the cube to rotate or use sliders. Select from {RAL_PALETTE.length}+ RAL colors!
+                  </p>
+                </div>
               </div>
 
-              <div className="mt-6 flex items-center gap-4 bg-white rounded-lg shadow-md p-4 border border-gray-100">
+              <div className="lg:col-span-2 flex flex-col items-center">
                 <div
-                  className="w-16 h-16 rounded-lg shadow-inner"
-                  style={{ background: color, border: "2px solid rgba(0,0,0,0.1)" }}
-                />
-                <div>
-                  <div className="font-bold text-lg text-gray-900">
-                    {selectedRal || "Custom Color"}
+                  ref={cubeWrapperRef}
+                  className="w-full flex justify-center items-center bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl"
+                  style={{
+                    minHeight: Math.max(400, size * 1.8),
+                    padding: 24,
+                    cursor: "grab",
+                  }}
+                >
+                  <div
+                    style={{
+                      perspective: 1200,
+                      width: Math.min(720, size * 2.2),
+                      height: Math.max(400, size * 1.8),
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}
+                  >
+                    <div
+                      ref={cubeRef}
+                      className="relative"
+                      style={{
+                        width: `${size}px`,
+                        height: `${size}px`,
+                        transformStyle: "preserve-3d",
+                        transform: `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`,
+                        transition: "transform 160ms ease",
+                      }}
+                    >
+                      {["front", "back", "right", "left", "top", "bottom"].map((side) => {
+                        const transforms = {
+                          front: `translateZ(${size / 2}px)`,
+                          back: `rotateY(180deg) translateZ(${size / 2}px)`,
+                          right: `rotateY(90deg) translateZ(${size / 2}px)`,
+                          left: `rotateY(-90deg) translateZ(${size / 2}px)`,
+                          top: `rotateX(90deg) translateZ(${size / 2}px)`,
+                          bottom: `rotateX(-90deg) translateZ(${size / 2}px)`,
+                        };
+                        return (
+                          <div
+                            key={side}
+                            className="absolute inset-0"
+                            style={{ ...faceStyle, transform: transforms[side] }}
+                          />
+                        );
+                      })}
+
+                      <div
+                        style={{
+                          position: "absolute",
+                          left: 0,
+                          top: 0,
+                          width: "100%",
+                          height: "100%",
+                          transform: `translateZ(${size / 2 + 2}px)`,
+                          background:
+                            "linear-gradient(135deg, rgba(255,255,255,0.15), rgba(255,255,255,0))",
+                          pointerEvents: "none",
+                        }}
+                      />
+                    </div>
                   </div>
-                  <div className="text-sm font-mono text-gray-600 bg-gray-100 px-3 py-1 rounded mt-1">
-                    {color.toUpperCase()}
+                </div>
+
+                <div className="mt-6 flex items-center gap-4 bg-white rounded-lg shadow-md p-4 border border-gray-100">
+                  <div
+                    className="w-16 h-16 rounded-lg shadow-inner"
+                    style={{ background: color, border: "2px solid rgba(0,0,0,0.1)" }}
+                  />
+                  <div>
+                    <div className="font-bold text-lg text-gray-900">
+                      {selectedRal || "Custom Color"}
+                    </div>
+                    <div className="text-sm font-mono text-gray-600 bg-gray-100 px-3 py-1 rounded mt-1">
+                      {color.toUpperCase()}
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
       </main>
 
       <Footer />
@@ -622,16 +698,17 @@ export default function RALChart() {
                 <p className="text-sm text-gray-600 mt-1">{RAL_PALETTE.length} Professional Colors</p>
               </div>
               <div className="flex gap-3">
-                {/* <button
+                <button
                   onClick={handleExportChart}
-                  className="bg-gradient-to-r from-green-600 to-green-700 text-white px-4 py-2 rounded-lg hover:from-green-700 hover:to-green-800 transition font-medium shadow-lg flex items-center gap-2"
+                  disabled={isExporting}
+                  className="bg-gradient-to-r from-green-600 to-green-700 text-white px-4 py-2 rounded-lg hover:from-green-700 hover:to-green-800 transition font-medium shadow-lg flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <Download className="w-4 h-4" />
-                  Download Chart
-                </button> */}
+                  {isExporting ? 'Exporting...' : 'Download Chart'}
+                </button>
                 <button
                   onClick={handleDownloadBrochure}
-                  className="bg-gradient-to-r from-green-600 to-green-700 text-white px-4 py-2 rounded-lg hover:from-green-700 hover:to-green-800 transition font-medium shadow-lg flex items-center gap-2"
+                  className="bg-gradient-to-r from-blue-600 to-blue-700 text-white px-4 py-2 rounded-lg hover:from-blue-700 hover:to-blue-800 transition font-medium shadow-lg flex items-center gap-2"
                 >
                   <FileDown className="w-4 h-4" />
                   Download Brochure

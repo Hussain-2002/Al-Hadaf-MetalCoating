@@ -26,6 +26,7 @@
     "google-map-react": "^2.2.5",
     "html2canvas": "^1.4.1",
     "i18next": "^25.5.2",
+    "jspdf": "^3.0.4",
     "lucide-react": "^0.542.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
