@@ -1,0 +1,145 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* ---------- LIGHT-ONLY THEME (locked) ---------- */
+:root {
+  /* typography */
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  /* force browser to only use the light color scheme */
+  color-scheme: light;
+
+  /* document colors (light defaults) */
+  color: #0f172a;            /* foreground / text */
+  background-color: #ffffff; /* page background */
+
+  /* design tokens (light palette) */
+  --radius: 0.625rem;
+  --background: #ffffff;
+  --foreground: #0f172a;
+  --card: #f9f9f9;
+  --card-foreground: #0f172a;
+  --popover: #0f172a;
+  --popover-foreground: #0f172a;
+  --primary: #111827;
+  --primary-foreground: #ffffff;
+  --secondary: #64748b;
+  --secondary-foreground: #ffffff;
+  --muted: #f3f4f6;
+  --muted-foreground: #6b7280;
+  --accent: #646cff;
+  --accent-foreground: #ffffff;
+  --destructive: #dc2626;
+  --border: #e6e6e6;
+  --input: #ffffff;
+  --ring: #c7d2fe;
+
+  /* sidebar/chart tokens (keep if used) */
+  --chart-1: #60a5fa;
+  --chart-2: #7c3aed;
+  --chart-3: #ef4444;
+  --chart-4: #f59e0b;
+  --chart-5: #10b981;
+}
+
+/* ---------- links ---------- */
+a {
+  font-weight: 500;
+  color: var(--color-black);
+  text-decoration: inherit;
+}
+a:hover {
+  color: #ffffff;
+}
+
+/* ---------- page layout ---------- */
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+  /* body background / text come from tokens (see @layer base below) */
+}
+
+/* ---------- headings ---------- */
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+/* ---------- BUTTONS - LIGHT DEFAULT (no OS influence) ---------- */
+/* Use token values so buttons follow your site's light theme */
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: var(--card);            /* light background */
+  color: var(--card-foreground);            /* dark text */
+  cursor: pointer;
+  transition: border-color 0.25s, background-color 0.25s;
+  -webkit-tap-highlight-color: transparent;
+}
+button:hover {
+  border-color: var(--accent);
+}
+button:focus,
+button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+/* ---------- theme token mapping for shadcn/Tailwind use ---------- */
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+}
+
+/* ---------- Tailwind base layer: uses mapped tokens ---------- */
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+@keyframes marquee-updown {
+  0%, 100% { transform: translateY(100%); }
+  50% { transform: translateY(-100%); }
+}
+
+.animate-marquee-updown {
+  display: inline-block;
+  animation: marquee-updown 4s linear infinite;
+}
