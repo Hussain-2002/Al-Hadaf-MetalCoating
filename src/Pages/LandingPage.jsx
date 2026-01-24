@@ -11,6 +11,8 @@ import AboutShort from "@/Components/AboutShort";
 import Certificates from "../Components/Certificates";
 import SpinWheel from "../components/SpinWheel";
 import ProjectDetailsModal from "../components/ProjectDetailsModal";
+import FestiveModal from "../components/FestiveModal";
+
 
 // ============================================
 // 🔧 CONFIGURATION
@@ -155,6 +157,9 @@ function LandingPage() {
   return (
     <div className="relative min-h-screen w-full bg-white overflow-x-hidden">
       <Header />
+      
+<FestiveModal />
+
 
       {/* 🔥 FIXED: Mobile me pt-0, Desktop me pt-20 */}
       <main className="pt-0 md:pt-20">
@@ -225,14 +230,17 @@ function LandingPage() {
                   transition: 'all 0.1s ease-out'
                 }}
               >
-                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight">
-                  <span 
-                    className="block mb-2 bg-gradient-to-r from-red-400 via-red-500 to-red-400 bg-clip-text text-transparent"
-                    style={{ textShadow: '0 4px 20px rgba(239, 68, 68, 0.5)' }}
-                  >
-                    {t("welcome")}
-                  </span>
-                </h1>
+                <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold">
+  <span
+    className="inline-block mb-2 pb-[0.15em] bg-gradient-to-r from-red-400 via-red-500 to-red-400 bg-clip-text text-transparent drop-shadow-[0_4px_20px_rgba(239,68,68,0.5)]"
+  >
+    {t("welcome")}
+  </span>
+</h1>
+
+
+
+
 
                 <p className="text-lg sm:text-xl md:text-2xl text-white/90 leading-relaxed max-w-2xl drop-shadow-lg">
                   {t("description")}

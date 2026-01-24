@@ -166,12 +166,12 @@ function Footer() {
       हिन्दी
     </DropdownMenuItem>
 
-    <DropdownMenuItem
+    {/* <DropdownMenuItem
       onClick={() => changeLanguage("ml")}
       className="hover:!bg-gray-100 hover:!text-[#646cff]"
     >
       മലയാളം
-    </DropdownMenuItem>
+    </DropdownMenuItem> */}
   </DropdownMenuContent>
 </DropdownMenu>
 
@@ -268,12 +268,12 @@ function Footer() {
       हिन्दी
     </DropdownMenuItem>
 
-    <DropdownMenuItem
+    {/* <DropdownMenuItem
       onClick={() => changeLanguage("ml")}
       className="hover:!bg-gray-100 hover:!text-[#646cff]"
     >
       മലയാളം
-    </DropdownMenuItem>
+    </DropdownMenuItem> */}
   </DropdownMenuContent>
 </DropdownMenu>
         </div>
@@ -286,7 +286,7 @@ function Footer() {
   <span className="text-xs">
     Project designed and developed by{" "}
     <a
-      href="https://husainitservices.com"
+      href="https://hussainiitservices.com/"
       target="_blank"
       rel="noopener noreferrer"
       className="transition hover:!text-[#646cff] font-medium"

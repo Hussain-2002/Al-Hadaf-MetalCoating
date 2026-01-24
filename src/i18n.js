@@ -7,7 +7,7 @@ const resources = {
     translation: {
       welcome: "Welcome to Al-Hadaf Metal Coating LLC",
       description:
-        "We specialize in delivering top-quality surface finishing solutions with precision and durability. Explore our wide range of services trusted by industries across UAE.",
+        "We specialize in delivering top-quality surface finishing solutions with precision and durability. Trusted experts serving Dubai, Sharjah, Abu Dhabi, and across UAE.",
       readMore: "Read More",
       viewWork: "View Our Work",
 
@@ -46,7 +46,8 @@ const resources = {
         connect: "Connect",
         changeLang: "Change Language",
         whatsapp: "WhatsApp",
-        address: "Industrial Area 15 - Sharjah, UAE",
+
+        address: "Industrial Area 15, Near National Paints - Sharjah, UAE",
         company: "Al Hadaf Metal Coating LLC",
         rights: "All Rights Reserved.",
       },
@@ -74,17 +75,14 @@ const resources = {
         heroTitle: "About Al-Hadaf Metal Coating LLC",
         heroDescription: "Delivering excellence in surface finishing and metal coating solutions since our establishment in 2022 – backed by over 15 years of hands-on experience in the industry.",
         
-        // Company Overview Section
         companyOverviewTitle: "About Al-Hadaf Metal Coating LLC",
         companyOverviewP1: "Al-Hadaf Metal Coating LLC is a premier metal coating company in the UAE, specializing in advanced powder coating services and surface finishing solutions. With state-of-the-art facilities and cutting-edge technology, we deliver superior metal coating services that exceed industry standards and customer expectations.",
         companyOverviewP2: "Our comprehensive metal coating services include powder coating, sandblasting, zinc coating, electrostatic coating, and specialized protective coatings for diverse industrial applications. We serve clients across Dubai, Sharjah, Ajman, and throughout the United Arab Emirates with professional metal finishing solutions.",
         
-        // Who We Are Section
         whoWeAreTitle: "Who We Are",
         whoWeAreDescription: "Established in 2022, Al-Hadaf Metal Coating LLC has quickly become one of the leading providers of surface finishing and metal coating services in the UAE. With over 15 years of experience in the metal coating industry, we pride ourselves on precision, durability, and top-quality craftsmanship.",
         whoWeAreDescription2: "Our team specializes in a wide range of coating technologies, ensuring that every project – from industrial applications to architectural finishes – meets the highest international standards. We believe in combining innovation, sustainability, and customer satisfaction to deliver results that stand the test of time.",
         
-        // Metal Coating Industry Expertise
         industryExpertiseTitle: "Leading the Metal Coating Industry in UAE",
         powderCoatingTechTitle: "Advanced Powder Coating Technology",
         powderCoatingTechP1: "Our powder coating facility utilizes electrostatic spray deposition technology to apply dry powder particles onto metal surfaces. The powder coating process involves electrostatically charging the powder particles, which are then attracted to grounded metal objects. After application, the coated items are cured in high-temperature ovens, creating a durable, uniform finish that surpasses traditional liquid paint in performance and longevity.",
@@ -109,7 +107,6 @@ const resources = {
         furnitureTitle: "Furniture Metal Coating",
         furnitureDesc: "Decorative and protective finishes for indoor and outdoor furniture pieces",
         
-        // Quality and Certifications
         qualityAssuranceTitle: "Quality Assurance & Technical Capabilities",
         coatingFacilityTitle: "State-of-the-Art Coating Facility",
         coatingFacility1: "Automated conveyor powder coating system with precision application controls",
@@ -127,7 +124,6 @@ const resources = {
         qualityControl5: "UV exposure testing for outdoor durability assessment",
         qualityControl6: "Complete documentation and traceability for all coating batches",
         
-        // Core Values
         coreValuesTitle: "Our Core Values",
         coreValues: {
           quality: {
@@ -148,13 +144,11 @@ const resources = {
           }
         },
         
-        // Environmental Commitment
         environmentalTitle: "Environmental Responsibility in Metal Coating",
         environmentalP1: "Al-Hadaf Metal Coating LLC is committed to environmentally sustainable metal finishing practices. Our powder coating processes significantly reduce environmental impact compared to traditional wet paint systems. We operate with zero VOC emissions, minimal waste generation, and comprehensive powder recovery systems that recycle overspray material.",
         environmentalP2: "Our facility implements water conservation measures, energy-efficient curing ovens, and responsible chemical management protocols. We partner with certified powder coating manufacturers who prioritize eco-friendly formulations and sustainable production methods. Our commitment to environmental stewardship extends throughout our operations, from material sourcing to waste disposal.",
         environmentalP3: "By choosing our powder coating services, clients contribute to reducing industrial pollution while receiving superior coating performance. Our green metal coating solutions help businesses meet sustainability goals without compromising quality, durability, or aesthetic requirements.",
         
-        // Vision/Mission/Founder Section
         founderMessageTitle: "A Message from Our Founder",
         founderMessage: "At Al-Hadaf Metal Coating, our mission is simple – to redefine surface perfection through technology and craftsmanship. Every coating we apply reflects our dedication to quality, sustainability, and long-term partnerships with our clients.",
         founderMessage2: "With over 15 years of experience in this field, I take pride in leading a team that shares the same passion for excellence and innovation. Our journey is built on trust, precision, and commitment to deliver unmatched results.",
@@ -166,7 +160,6 @@ const resources = {
         missionTitle: "Our Mission",
         missionDescription: "To provide innovative and sustainable metal coating solutions that exceed customer expectations.",
         
-        // Why Choose Us
         whyChooseUsTitle: "Why Choose Al-Hadaf for Metal Coating Services",
         expertProfessionalsTitle: "Expert Metal Coating Professionals",
         expertProfessionalsDesc: "Our team comprises highly trained powder coating specialists with extensive experience in metal surface finishing. We ensure every project meets the highest quality standards through meticulous attention to detail and technical expertise.",
@@ -186,7 +179,6 @@ const resources = {
         customerCentricTitle: "Customer-Centric Service",
         customerCentricDesc: "Dedicated account managers, free consultations, pickup and delivery services available. We work closely with clients to understand requirements and deliver customized metal coating solutions that exceed expectations.",
         
-        // Powder Coating Applications
         applicationsTitle: "Powder Coating Applications & Capabilities",
         architecturalComponentsTitle: "Architectural Components",
         architecturalComponent1: "• Aluminum window frames and profiles",
@@ -220,7 +212,6 @@ const resources = {
         getFreeQuote: "Get Free Quote",
         viewServices: "View Services",
         
-        // Team Section
         meetTeamTitle: "Meet Our Team",
         teamMembers: {
           hussain: {
@@ -315,6 +306,7 @@ const resources = {
       },
     },
   },
+
 
   ar: {
     translation: {

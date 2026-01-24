@@ -12,22 +12,25 @@ function AboutUs() {
     {
       name: t("about.teamMembers.hussain.name"),
       role: t("about.teamMembers.hussain.role"),
-      image: "/assets/team-founder.jpg",
+      image: "/assets/team-founder.png",
     },
-    {
-      name: t("about.teamMembers.mannan.name"),
-      role: t("about.teamMembers.mannan.role"),
-      image: "/assets/team-operations.jpg",
-    },
+
     {
       name: t("about.teamMembers.saleh.name"),
       role: t("about.teamMembers.saleh.role"),
-      image: "/assets/team-engineer.jpg",
+      image: "/assets/team-operations.png",
     },
+    
+    {
+      name: t("about.teamMembers.mannan.name"),
+      role: t("about.teamMembers.mannan.role"),
+      image: "/assets/team-engineer.png",
+    },
+    
     {
       name: t("about.teamMembers.aisha.name"),
       role: t("about.teamMembers.aisha.role"),
-      image: "/assets/team-quality.jpg",
+      image: "/assets/team-quality.png",
     },
   ];
 
@@ -447,7 +450,7 @@ function AboutUs() {
                   className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center p-6 sm:p-8 md:p-12"
                 >
                   <img
-                    src="/assets/founder.jpg"
+                    src="/assets/founder.png"
                     alt="Founder of Al-Hadaf Metal Coating"
                     className="rounded-2xl shadow-lg object-cover w-full h-[250px] sm:h-[350px] md:h-[420px]"
                   />
