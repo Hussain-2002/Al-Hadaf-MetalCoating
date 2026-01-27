@@ -8,7 +8,6 @@ const resources = {
       welcome: "Welcome to Al-Hadaf Metal Coating LLC",
       description:
         "We specialize in delivering top-quality surface finishing solutions with precision and durability. Trusted experts serving Dubai, Sharjah, Abu Dhabi, and across UAE.",
-      readMore: "Read More",
       viewWork: "View Our Work",
 
       services: {
