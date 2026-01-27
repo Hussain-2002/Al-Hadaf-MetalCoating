@@ -223,12 +223,12 @@ const resources = {
             role: "Operations Manager",
           },
           saleh: {
-            name: "Mohammed Saleh",
-            role: "Production Engineer",
+            name: "Shk. Juzar Hussain Zaki",
+            role: "Partner",
           },
           aisha: {
-            name: "Aisha Kareem",
-            role: "Quality Supervisor",
+            name: "Betsy",
+            role: "Sales Manager",
           },
         },
       },
@@ -527,13 +527,15 @@ const resources = {
             role: "مدير العمليات",
           },
           saleh: {
-            name: "محمد صالح",
-            role: "مهندس الإنتاج",
-          },
-          aisha: {
-            name: "عائشة كريم",
-            role: "مشرفة الجودة",
-          },
+  name: "الشيخ جُزر حسين زكي",
+  role: "شريك",
+},
+
+          aaisha: {
+  name: "بيتسي",
+  role: "مديرة المبيعات",
+},
+
         },
       },
 
@@ -830,13 +832,15 @@ const resources = {
             role: "ऑपरेशंस मैनेजर",
           },
           saleh: {
-            name: "मोहम्मद सालेह",
-            role: "प्रोडक्शन इंजीनियर",
-          },
-          aisha: {
-            name: "आइशा करीम",
-            role: "गुणवत्ता पर्यवेक्षक",
-          },
+  name: "शेख जुज़र हुसैन ज़की",
+  role: "साझेदार",
+},
+
+aisha: {
+  name: "बेट्सी",
+  role: "बिक्री प्रबंधिका",
+},
+
         },
       },
 
