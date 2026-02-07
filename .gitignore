@@ -13,6 +13,7 @@ lerna-debug.log*
 # Dependency Directories
 # ───────────────────────────────
 node_modules/
+dist/
 
 # ───────────────────────────────
 # Build / Compiler Caches (keep dist!)

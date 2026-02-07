@@ -158,7 +158,7 @@ function LandingPage() {
     <div className="relative min-h-screen w-full bg-white overflow-x-hidden">
       <Header />
       
-<FestiveModal />
+{/* <FestiveModal /> */}
 
 
       {/* 🔥 FIXED: Mobile me pt-0, Desktop me pt-20 */}
